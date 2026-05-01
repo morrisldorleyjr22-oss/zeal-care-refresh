@@ -6,14 +6,31 @@ import {
   Facebook,
   Instagram,
   Linkedin,
+  Twitter,
+  Youtube,
   ArrowUpRight,
   Sparkles,
 } from "lucide-react";
 import ContactChip from "@/components/ContactChip";
 import DonateButton from "@/components/DonateButton";
 import { ICON_STROKE, ICON_STROKE_LG } from "@/lib/icon-defaults";
+import { useSetting } from "@/hooks/useSiteSettings";
 
 export default function Footer() {
+  const contact = useSetting("contact_info");
+  const footer = useSetting("footer");
+  const social = useSetting("social_links");
+  const donate = useSetting("donate");
+
+  const socialIcons = [
+    { key: "facebook" as const, Icon: Facebook, label: "Facebook" },
+    { key: "instagram" as const, Icon: Instagram, label: "Instagram" },
+    { key: "linkedin" as const, Icon: Linkedin, label: "LinkedIn" },
+    { key: "twitter" as const, Icon: Twitter, label: "Twitter / X" },
+    { key: "youtube" as const, Icon: Youtube, label: "YouTube" },
+  ].filter((s) => (social as Record<string, string>)[s.key]);
+
+  return (
   return (
     <footer className="relative bg-hero-gradient text-white overflow-hidden">
       {/* Decorative background */}
@@ -79,6 +96,22 @@ export default function Footer() {
       <div className="relative container-zc pb-14 grid gap-12 md:grid-cols-12">
         {/* Brand */}
         <div className="md:col-span-4 flex flex-col gap-5">
+          <DonateButton label={donate.label || "Become a Donor"} to={donate.url} size="lg" />
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white/25 font-semibold px-7 py-4 rounded-full uppercase tracking-wide text-sm hover:bg-white/20 hover:border-white/40 transition-colors backdrop-blur-sm"
+            >
+              Volunteer Now
+              <ArrowUpRight className="h-4 w-4" strokeWidth={ICON_STROKE} />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Main footer */}
+      <div className="relative container-zc pb-14 grid gap-12 md:grid-cols-12">
+        {/* Brand */}
+        <div className="md:col-span-4 flex flex-col gap-5">
           <Link to="/" className="flex items-center gap-3 group">
             <div className="size-11 bg-accent rounded-2xl flex items-center justify-center shadow-yellow-glow group-hover:rotate-6 transition-transform">
               <div className="size-3.5 bg-navy rounded-full" />
@@ -88,32 +121,31 @@ export default function Footer() {
             </span>
           </Link>
           <p className="text-sm text-white/75 leading-relaxed max-w-sm">
-            Empowering youth through education, STEM, and leadership. Together, we
-            ignite potential and inspire change for a brighter future.
+            {footer.tagline}
           </p>
 
           {/* Social rail */}
-          <div className="pt-2">
-            <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent/90 mb-3">
-              Follow the journey
+          {socialIcons.length > 0 && (
+            <div className="pt-2">
+              <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent/90 mb-3">
+                Follow the journey
+              </div>
+              <div className="flex items-center gap-3">
+                {socialIcons.map(({ Icon, label, key }) => (
+                  <a
+                    key={label}
+                    href={(social as Record<string, string>)[key]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="group size-10 rounded-xl bg-white/10 border border-white/15 hover:bg-accent hover:border-accent hover:text-navy flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    <Icon className="h-4 w-4" strokeWidth={ICON_STROKE_LG} />
+                  </a>
+                ))}
+              </div>
             </div>
-            <div className="flex items-center gap-3">
-              {[
-                { Icon: Facebook, label: "Facebook" },
-                { Icon: Instagram, label: "Instagram" },
-                { Icon: Linkedin, label: "LinkedIn" },
-              ].map(({ Icon, label }) => (
-                <a
-                  key={label}
-                  href="#"
-                  aria-label={label}
-                  className="group size-10 rounded-xl bg-white/10 border border-white/15 hover:bg-accent hover:border-accent hover:text-navy flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  <Icon className="h-4 w-4" strokeWidth={ICON_STROKE_LG} />
-                </a>
-              ))}
-            </div>
-          </div>
+          )}
         </div>
 
         <FooterCol

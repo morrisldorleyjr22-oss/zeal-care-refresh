@@ -80,23 +80,7 @@ export default function Footer() {
             </p>
           </div>
           <div className="lg:col-span-5 flex flex-wrap gap-3 lg:justify-end relative">
-            <DonateButton label="Become a Donor" size="lg" />
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white/25 font-semibold px-7 py-4 rounded-full uppercase tracking-wide text-sm hover:bg-white/20 hover:border-white/40 transition-colors backdrop-blur-sm"
-            >
-              Volunteer Now
-              <ArrowUpRight className="h-4 w-4" strokeWidth={ICON_STROKE} />
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Main footer */}
-      <div className="relative container-zc pb-14 grid gap-12 md:grid-cols-12">
-        {/* Brand */}
-        <div className="md:col-span-4 flex flex-col gap-5">
-          <DonateButton label={donate.label || "Become a Donor"} to={donate.url} size="lg" />
+            <DonateButton label={donate.label || "Become a Donor"} to={donate.url} size="lg" />
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white/25 font-semibold px-7 py-4 rounded-full uppercase tracking-wide text-sm hover:bg-white/20 hover:border-white/40 transition-colors backdrop-blur-sm"

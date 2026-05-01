@@ -40,8 +40,15 @@ const awards = [
   { year: "2022", title: "Civic Excellence Citation", body: "Awarded by the Monrovia City Corporation for community service." },
 ];
 
-function Avatar({ name }: { name: string }) {
+function Avatar({ name, photo }: { name: string; photo?: string }) {
   const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
+  if (photo) {
+    return (
+      <div className="size-20 rounded-2xl overflow-hidden ring-2 ring-accent/60 shadow-yellow-glow">
+        <img src={photo} alt={name} loading="lazy" className="w-full h-full object-cover" />
+      </div>
+    );
+  }
   return (
     <div className="size-20 rounded-2xl bg-yellow-gradient flex items-center justify-center text-navy font-black text-2xl shadow-yellow-glow">
       {initials}
@@ -59,6 +66,16 @@ export default function WhoWeAre() {
         description="The people, partners, and systems behind Zeal Care's mission to transform education in Liberia."
       />
 
+      {/* Team meeting hero strip */}
+      <section className="container-zc pt-16">
+        <figure className="rounded-[2rem] overflow-hidden border border-secondary shadow-card-lg">
+          <img src={teamMeeting} alt="Zeal Care team in person meeting while others joined online" loading="lazy" className="w-full h-auto object-cover" />
+          <figcaption className="bg-navy text-white/80 text-xs font-medium px-6 py-3 text-center">
+            Zeal Care Team in person meeting while others far away joined online to participate
+          </figcaption>
+        </figure>
+      </section>
+
       {/* Leadership */}
       <section className="container-zc py-24 md:py-32 scroll-mt-32" id="leadership">
         <div className="max-w-3xl">
@@ -70,12 +87,27 @@ export default function WhoWeAre() {
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {leadership.map((p) => (
             <article key={p.name} className="bg-white rounded-[2rem] p-7 border border-secondary hover:shadow-card-lg transition-all">
-              <Avatar name={p.name} />
+              <Avatar name={p.name} photo={p.photo} />
               <h3 className="mt-5 text-lg font-black text-navy">{p.name}</h3>
               <p className="text-sm font-bold text-primary mt-1">{p.role}</p>
               <p className="mt-3 text-sm text-navy/70 leading-relaxed">{p.bio}</p>
             </article>
           ))}
+        </div>
+
+        {/* Partnership snapshot */}
+        <div className="mt-16 grid lg:grid-cols-12 gap-8 items-center bg-soft-gradient rounded-[2rem] border border-secondary p-6 md:p-8">
+          <div className="lg:col-span-7 rounded-2xl overflow-hidden">
+            <img src={partnershipPhoto} alt="Zeal Care Team and Esfans Academy administrator in a partnership discussion" loading="lazy" className="w-full h-full object-cover aspect-[4/3]" />
+          </div>
+          <div className="lg:col-span-5">
+            <span className="eyebrow">In the field</span>
+            <h3 className="mt-2 text-2xl md:text-3xl font-black text-navy">Partnership in motion</h3>
+            <p className="mt-3 text-navy/70 leading-relaxed text-sm">
+              Zeal Care Team and the Esfans Academy administrator in a partnership discussion — one of many on-the-ground
+              conversations that shape how we deliver education across Monrovia and beyond.
+            </p>
+          </div>
         </div>
       </section>
 

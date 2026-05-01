@@ -4,15 +4,16 @@ import { Calendar, Play, Newspaper, ArrowRight, Search } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { useReveal } from "@/hooks/useReveal";
 import { articles, categories } from "@/data/articles";
-import comm from "@/assets/community-wide.jpg";
-import stem from "@/assets/program-stem.jpg";
-import lead from "@/assets/program-leadership.jpg";
-import gallerySurvey from "@/assets/project-survey.jpg";
-import galleryAnalysis from "@/assets/project-analysis.jpg";
-import galleryInterviews from "@/assets/project-interviews.jpg";
-import galleryMaterials from "@/assets/project-materials-row.jpg";
-import galleryFeePayment from "@/assets/project-feepayment.jpg";
-import galleryTeam from "@/assets/team-meeting.jpg";
+import comm from "@/assets/community-wide.jpg?responsive";
+import stem from "@/assets/program-stem.jpg?responsive";
+import lead from "@/assets/program-leadership.jpg?responsive";
+import gallerySurvey from "@/assets/project-survey.jpg?responsive";
+import galleryAnalysis from "@/assets/project-analysis.jpg?responsive";
+import galleryInterviews from "@/assets/project-interviews.jpg?responsive";
+import galleryMaterials from "@/assets/project-materials-row.jpg?responsive";
+import galleryFeePayment from "@/assets/project-feepayment.jpg?responsive";
+import galleryTeam from "@/assets/team-meeting.jpg?responsive";
+import ResponsiveImage from "@/components/ResponsiveImage";
 
 const events = [
   { date: "May 18, 2026", title: "Annual Donor Gala", place: "Monrovia, Liberia" },
@@ -106,11 +107,12 @@ export default function Media() {
               >
                 <Link to={`/media/${n.slug}`} className="block">
                   <div className="aspect-[16/10] overflow-hidden relative">
-                    <img
-                      src={n.img}
+                    <ResponsiveImage
+                      picture={n.img}
                       alt={n.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(min-width: 1024px) 32vw, (min-width: 768px) 45vw, 90vw"
+                      className="block w-full h-full"
+                      imgClassName="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <span className="absolute top-3 left-3 bg-accent text-navy text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">
                       {n.tag}
@@ -178,11 +180,12 @@ export default function Media() {
                 key={i}
                 className={`reveal reveal-delay-${i + 1} group relative aspect-video rounded-[1.5rem] overflow-hidden cursor-pointer`}
               >
-                <img
-                  src={img}
+                <ResponsiveImage
+                  picture={img}
                   alt="Featured film"
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(min-width: 1024px) 32vw, 90vw"
+                  className="block w-full h-full"
+                  imgClassName="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-navy/40 group-hover:bg-navy/20 transition-colors" />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -212,7 +215,13 @@ export default function Media() {
             { img: galleryFeePayment, caption: "School fee payment with bloc leadership" },
           ].map((g, i) => (
             <figure key={i} className="relative aspect-square overflow-hidden rounded-2xl group">
-              <img src={g.img} alt={g.caption} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <ResponsiveImage
+                picture={g.img}
+                alt={g.caption}
+                sizes="(min-width: 768px) 32vw, 50vw"
+                className="block w-full h-full"
+                imgClassName="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
               <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/85 via-navy/40 to-transparent text-white text-[11px] font-medium px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 {g.caption}
               </figcaption>

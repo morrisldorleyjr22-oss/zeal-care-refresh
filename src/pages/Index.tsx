@@ -163,27 +163,27 @@ export default function Index() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <span className="eyebrow">Our Impact Areas</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black tracking-tight text-navy">Our Core Programs</h2>
+            <h2 className="mt-3 text-3xl md:text-4xl font-black tracking-tight text-navy">Our Core Programs</h2>
           </div>
-          <Link to="/what-we-do" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">
+          <Link to="/what-we-do" className="inline-flex items-center gap-2 font-bold text-sm text-primary hover:text-navy transition-colors">
             View all programs <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {programs.map((p) => (
-            <article key={p.title} className="group rounded-[2rem] overflow-hidden border border-secondary bg-white hover:shadow-card-lg transition-all">
+          {programs.map((p, i) => (
+            <article key={p.title} className={`reveal reveal-delay-${i + 1} hover-lift group rounded-[2rem] overflow-hidden border border-secondary bg-white`}>
               <div className="aspect-[4/3] overflow-hidden">
                 <img src={p.img} alt={p.title} loading="lazy" width={1280} height={960}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
-              <div className="p-7">
-                <div className="size-12 -mt-12 mb-4 relative bg-accent rounded-2xl flex items-center justify-center shadow-yellow-glow">
+              <div className="p-6">
+                <div className="size-11 -mt-11 mb-3 relative bg-accent rounded-2xl flex items-center justify-center shadow-yellow-glow tilt-hover">
                   <p.icon className="h-5 w-5 text-navy" strokeWidth={2.5} />
                 </div>
-                <h3 className="text-xl font-black text-navy">{p.title}</h3>
-                <p className="mt-2 text-navy/70 font-medium">{p.desc}</p>
-                <Link to="/what-we-do" className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-primary group-hover:text-navy transition-colors">
+                <h3 className="text-lg md:text-xl font-black text-navy">{p.title}</h3>
+                <p className="mt-2 text-sm text-navy/70 font-medium">{p.desc}</p>
+                <Link to="/what-we-do" className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-primary group-hover:text-navy transition-colors">
                   View details <ChevronRight className="h-4 w-4" />
                 </Link>
               </div>

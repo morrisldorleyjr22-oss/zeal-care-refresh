@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import ContactChip from "@/components/ContactChip";
+import DonateButton from "@/components/DonateButton";
+import { ICON_STROKE_LG } from "@/lib/icon-defaults";
 
 export default function Footer() {
   return (
@@ -16,10 +19,8 @@ export default function Footer() {
             </p>
           </div>
           <div className="lg:col-span-5 flex flex-wrap gap-4 lg:justify-end">
-            <Link to="/ways-to-give" className="btn-primary">
-              Become a Donor <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link to="/contact" className="bg-white/10 text-white border-2 border-white/20 font-semibold px-7 py-4 rounded-2xl text-base hover:bg-white/20 transition-colors">
+            <DonateButton label="Become a Donor" size="lg" />
+            <Link to="/contact" className="inline-flex items-center justify-center bg-white/10 text-white border-2 border-white/20 font-semibold px-7 py-4 rounded-full uppercase tracking-wide text-sm hover:bg-white/20 transition-colors">
               Volunteer Now
             </Link>
           </div>

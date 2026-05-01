@@ -1,7 +1,8 @@
 import PageHero from "@/components/PageHero";
 import { Scale, Sprout, Shield } from "lucide-react";
-import img1 from "@/assets/program-education.jpg";
-import img2 from "@/assets/program-leadership.jpg";
+import img1 from "@/assets/program-education.jpg?responsive";
+import img2 from "@/assets/program-leadership.jpg?responsive";
+import ResponsiveImage from "@/components/ResponsiveImage";
 
 const stats = [
   { value: "73%", label: "Children without digital learning devices" },
@@ -35,7 +36,13 @@ export default function WhyEmpowerment() {
         </div>
         <div className="lg:col-span-5 relative">
           <div className="rounded-[2rem] overflow-hidden shadow-card-lg">
-            <img src={img1} alt="Children receiving books" loading="lazy" className="w-full aspect-[4/5] object-cover" />
+            <ResponsiveImage
+              picture={img1}
+              alt="Children receiving books"
+              sizes="(min-width: 1024px) 40vw, 90vw"
+              className="block w-full aspect-[4/5]"
+              imgClassName="w-full h-full object-cover"
+            />
           </div>
           <div className="absolute -bottom-6 -left-6 bg-accent rounded-2xl p-5 shadow-yellow-glow rotate-[-4deg]">
             <Sprout className="h-8 w-8 text-navy" />
@@ -48,7 +55,13 @@ export default function WhyEmpowerment() {
         <div className="container-zc grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="rounded-[2rem] overflow-hidden border border-white/10">
-              <img src={img2} alt="Mentorship in action" loading="lazy" className="w-full aspect-[4/3] object-cover" />
+              <ResponsiveImage
+                picture={img2}
+                alt="Mentorship in action"
+                sizes="(min-width: 1024px) 40vw, 90vw"
+                className="block w-full aspect-[4/3]"
+                imgClassName="w-full h-full object-cover"
+              />
             </div>
           </div>
           <div className="lg:col-span-7 order-1 lg:order-2">

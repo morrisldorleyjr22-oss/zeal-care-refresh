@@ -194,7 +194,7 @@ export default function WhatWeDo() {
       {/* Impact in Numbers */}
       <section id="impact" className="scroll-mt-32 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={community} alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover" />
+          <ResponsiveImage picture={community} alt="" sizes="100vw" className="block w-full h-full" imgClassName="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-navy/85" />
         </div>
         <div className="container-zc relative py-20 text-white">

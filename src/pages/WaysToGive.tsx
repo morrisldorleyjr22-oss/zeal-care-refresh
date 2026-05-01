@@ -84,7 +84,7 @@ export default function WaysToGive() {
       </section>
 
       {/* Ways */}
-      <section className="container-zc pb-24">
+      <section id="ways" className="scroll-mt-32 container-zc pb-24">
         <div className="text-center max-w-3xl mx-auto">
           <span className="eyebrow">Engagement Pathways</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">How You Can Help</h2>
@@ -152,8 +152,33 @@ export default function WaysToGive() {
         </div>
       </section>
 
+      {/* Become a Partner */}
+      <section id="partner" className="scroll-mt-32 container-zc pb-24">
+        <div className="bg-navy text-white rounded-[2.5rem] p-10 md:p-14 grid lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-7">
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Corporate & Institutional</span>
+            <h2 className="mt-3 text-4xl md:text-5xl font-black">Become a Partner</h2>
+            <p className="mt-5 text-white/80 text-lg leading-relaxed">
+              Align your brand, foundation, or institution with measurable child-focused impact. Partnership tracks include flagship
+              sponsorship, STEM lab co-branding, scholarship endowments, and employee mentorship programs.
+            </p>
+            <a href="mailto:partners@zealcare.org" className="mt-6 inline-flex items-center gap-2 bg-accent text-navy px-6 py-3 rounded-full font-bold text-sm hover:bg-white transition-colors">
+              Start a conversation <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+          <div className="lg:col-span-5 grid grid-cols-2 gap-3">
+            {["Flagship", "STEM Lab", "Scholarship", "Mentorship"].map((p) => (
+              <div key={p} className="bg-white/5 border border-white/10 rounded-2xl p-5 text-center">
+                <div className="font-black text-white">{p}</div>
+                <div className="mt-1 text-xs text-white/60 uppercase tracking-widest">Track</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
-      <section className="bg-soft-gradient py-24">
+      <section id="faq" className="scroll-mt-32 bg-soft-gradient py-24">
         <div className="container-zc max-w-3xl mx-auto">
           <span className="eyebrow">Common Questions</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Giving FAQ</h2>
@@ -169,7 +194,7 @@ export default function WaysToGive() {
       </section>
 
       {/* Final appeal */}
-      <section className="container-zc py-24">
+      <section id="appeals" className="scroll-mt-32 container-zc py-24">
         <div className="bg-hero-gradient rounded-[2.5rem] p-10 md:p-16 text-white relative overflow-hidden">
           <div className="absolute -top-20 -right-20 size-80 bg-accent/20 rounded-full blur-3xl" />
           <div className="relative max-w-3xl">

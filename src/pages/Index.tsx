@@ -197,16 +197,16 @@ export default function Index() {
         <div className="absolute -top-40 -right-40 size-[28rem] bg-accent/15 rounded-full blur-3xl" />
         <div className="container-zc relative">
           <div className="max-w-4xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Voices of Impact</span>
-            <Quote className="h-12 w-12 text-accent mt-6" />
-            <p className="mt-6 text-3xl md:text-4xl font-light leading-tight text-balance">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">Voices of Impact</span>
+            <Quote className="h-10 w-10 text-accent mt-5" />
+            <p className="mt-5 text-2xl md:text-3xl font-light leading-tight text-balance">
               "The digital skills I learned here got me my first job at a local tech firm. I am now the breadwinner for my family."
             </p>
-            <div className="mt-8 flex items-center gap-4">
-              <div className="size-14 rounded-full bg-accent flex items-center justify-center font-black text-navy text-xl">K</div>
+            <div className="mt-7 flex items-center gap-4">
+              <div className="size-12 rounded-full bg-accent flex items-center justify-center font-black text-navy text-lg">K</div>
               <div>
-                <div className="font-bold">Kelvin M.</div>
-                <div className="text-sm text-white/60">STEM Scholar</div>
+                <div className="font-bold text-sm">Kelvin M.</div>
+                <div className="text-xs text-white/60">STEM Scholar</div>
               </div>
             </div>
           </div>

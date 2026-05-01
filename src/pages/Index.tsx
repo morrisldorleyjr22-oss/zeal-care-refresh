@@ -233,13 +233,13 @@ export default function Index() {
         <div className="bg-soft-gradient rounded-[2.5rem] border border-secondary p-8 md:p-14 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-5">
             <span className="eyebrow">Accountability Standard</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Radical Integrity.</h2>
-            <p className="mt-5 text-navy/70 text-lg leading-relaxed">
+            <h2 className="mt-3 text-3xl md:text-4xl font-black text-navy">Radical Integrity.</h2>
+            <p className="mt-4 text-base md:text-lg text-navy/70 leading-relaxed">
               Our verified fiscal methodology ensures that institutional resources are deployed where they create the most equity.
             </p>
-            <div className="mt-8 inline-flex items-center gap-3 bg-accent text-navy font-black rounded-2xl px-6 py-4">
-              <span className="text-3xl tabular-nums">85%</span>
-              <span className="text-sm uppercase tracking-widest">Direct Impact</span>
+            <div className="mt-7 inline-flex items-center gap-3 bg-accent text-navy font-black rounded-2xl px-5 py-3.5">
+              <span className="text-2xl tabular-nums">85%</span>
+              <span className="text-xs uppercase tracking-widest">Direct Impact</span>
             </div>
           </div>
           <div className="lg:col-span-7 space-y-5">

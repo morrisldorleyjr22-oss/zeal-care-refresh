@@ -91,10 +91,10 @@ export default function Index() {
           <div className="bg-white rounded-3xl p-6 md:p-8 shadow-card-lg border border-secondary grid grid-cols-2 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-secondary">
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col items-center justify-center text-center px-4 py-4 md:py-2">
-                <span className="text-3xl md:text-4xl font-black text-primary tabular-nums tracking-tighter">
+                <span className="text-2xl md:text-3xl font-black text-primary tabular-nums tracking-tighter">
                   {s.value}
                 </span>
-                <span className="text-[11px] font-bold text-navy mt-1 uppercase tracking-widest">{s.label}</span>
+                <span className="text-[10px] font-bold text-navy mt-1 uppercase tracking-widest">{s.label}</span>
               </div>
             ))}
           </div>

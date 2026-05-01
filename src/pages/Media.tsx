@@ -42,7 +42,7 @@ export default function Media() {
       />
 
       {/* Newsroom */}
-      <section className="container-zc py-16 md:py-20">
+      <section id="newsroom" className="scroll-mt-32 container-zc py-16 md:py-20">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
             <span className="eyebrow">Institutional Updates</span>
@@ -129,8 +129,37 @@ export default function Media() {
         )}
       </section>
 
-      {/* Cinematics */}
-      <section className="bg-navy text-white py-16 md:py-20">
+      {/* Success Stories */}
+      <section id="stories" className="scroll-mt-32 bg-soft-gradient py-16 md:py-20">
+        <div className="container-zc">
+          <div className="max-w-3xl">
+            <span className="eyebrow">Voices from the Hub</span>
+            <h2 className="mt-2 text-3xl md:text-4xl font-black text-navy">Success Stories</h2>
+            <p className="mt-3 text-navy/70">Real scholars. Real outcomes. Their words, not ours.</p>
+          </div>
+          <div className="mt-10 grid md:grid-cols-3 gap-6">
+            {[
+              { name: "Samuel K., 15", quote: "The STEM lab changed my life. I never knew I could build robots in Liberia.", track: "Robotics Scholar" },
+              { name: "Aminata D., 14", quote: "I was going to drop out. Now I'm planning to study engineering.", track: "Education Sponsorship" },
+              { name: "Joseph T., 17", quote: "I started my first business with skills I learned at Zeal Care.", track: "Entrepreneurship" },
+            ].map((s) => (
+              <article key={s.name} className="bg-white rounded-[1.75rem] border border-secondary p-7 hover-lift">
+                <div className="size-12 rounded-2xl bg-accent text-navy flex items-center justify-center font-black text-lg">
+                  {s.name[0]}
+                </div>
+                <p className="mt-5 text-navy/80 leading-relaxed italic">"{s.quote}"</p>
+                <div className="mt-6">
+                  <div className="font-black text-navy text-sm">{s.name}</div>
+                  <div className="text-[11px] font-bold text-primary uppercase tracking-widest">{s.track}</div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Cinematics / Video */}
+      <section id="video" className="scroll-mt-32 bg-navy text-white py-16 md:py-20">
         <div className="container-zc">
           <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
             Visual Narratives
@@ -161,10 +190,26 @@ export default function Media() {
         </div>
       </section>
 
+      {/* Photo Gallery */}
+      <section id="gallery" className="scroll-mt-32 container-zc py-16 md:py-20">
+        <div className="max-w-3xl">
+          <span className="eyebrow">In Pictures</span>
+          <h2 className="mt-2 text-3xl md:text-4xl font-black text-navy">Photo Gallery</h2>
+        </div>
+        <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-3">
+          {[comm, stem, lead, comm, stem, lead].map((img, i) => (
+            <div key={i} className="aspect-square overflow-hidden rounded-2xl group">
+              <img src={img} alt="Zeal Care moment" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Events */}
-      <section className="container-zc py-16 md:py-20">
-        <span className="eyebrow">Mark Your Calendar</span>
-        <h2 className="mt-2 text-3xl md:text-4xl font-black text-navy">Upcoming Events</h2>
+      <section id="events" className="scroll-mt-32 bg-soft-gradient py-16 md:py-20">
+        <div className="container-zc">
+          <span className="eyebrow">Mark Your Calendar</span>
+          <h2 className="mt-2 text-3xl md:text-4xl font-black text-navy">Events & Calendar</h2>
 
         <div className="mt-8 space-y-3">
           {events.map((e, i) => (

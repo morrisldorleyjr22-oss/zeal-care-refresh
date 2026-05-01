@@ -36,8 +36,9 @@ const programs = [
 const partners = ["USAID", "Orange", "Ecobank", "UNICEF", "Global Fund", "World Vision"];
 
 export default function Index() {
+  const ref = useReveal<HTMLDivElement>();
   return (
-    <>
+    <div ref={ref}>
       {/* HERO */}
       <section className="relative bg-hero-gradient text-white overflow-hidden">
         <div className="absolute -top-32 -right-32 size-[28rem] bg-accent/20 rounded-full blur-3xl pointer-events-none" />

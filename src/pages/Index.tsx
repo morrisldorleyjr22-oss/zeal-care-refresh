@@ -221,7 +221,7 @@ export default function Index() {
         </div>
         <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
           {partners.map((p) => (
-            <span key={p} className="text-2xl md:text-3xl font-black text-navy/30 hover:text-primary transition-colors tracking-tight">
+            <span key={p} className="text-xl md:text-2xl font-black text-navy/30 hover:text-primary transition-colors tracking-tight">
               {p}
             </span>
           ))}

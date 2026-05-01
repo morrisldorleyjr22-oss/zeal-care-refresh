@@ -1,12 +1,17 @@
 import PageHero from "@/components/PageHero";
 import { Quote, Handshake, Trophy, ShieldCheck, FileBarChart2, Briefcase, FileText, Clock } from "lucide-react";
 import community from "@/assets/community-wide.jpg";
+import teamMeeting from "@/assets/team-meeting.jpg";
+import partnershipPhoto from "@/assets/leader-team-classroom.jpg";
+import portraitTitus from "@/assets/leader-titus.jpg";
+import portraitMohammed from "@/assets/leader-mohammed.jpg";
+import portraitBeverley from "@/assets/leader-beverley.jpg";
 
 const leadership = [
-  { name: "Titus S. Foko", role: "Founder & Executive Director", bio: "Strategic vision and program architect leading Zeal Care's mission across Liberia." },
-  { name: "Mohammed Soko Kamara", role: "ED, Marketing & Communications", bio: "Champions Zeal Care's voice, partnerships, and storytelling across Africa and beyond." },
-  { name: "Joetta C. Paye", role: "ED, Talent Management", bio: "Builds the people systems that allow our young, mission-driven team to thrive." },
-  { name: "William Mammie", role: "ED, Organization Development", bio: "Designs the operational backbone that scales our work across new communities." },
+  { name: "Titus S. Foko", role: "Founder & Executive Director", bio: "Strategic vision and program architect leading Zeal Care's mission across Liberia.", photo: portraitTitus },
+  { name: "Mohammed Soko Kamara", role: "ED, Marketing & Communications", bio: "Champions Zeal Care's voice, partnerships, and storytelling across Africa and beyond.", photo: portraitMohammed },
+  { name: "Beverley Chelsea Saungweme", role: "ED, International Affairs", bio: "Former Project Team Lead for phase one. Drives Zeal Care's global partnerships and diaspora engagement.", photo: portraitBeverley },
+  { name: "William Mammie", role: "Graphic & Media Officer", bio: "Designs the operational backbone and visual narrative that scales our work across new communities." },
 ];
 
 const board = [

@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import ContactChip from "@/components/ContactChip";
+import DonateButton from "@/components/DonateButton";
+import { ICON_STROKE_LG } from "@/lib/icon-defaults";
 
 export default function Footer() {
   return (
@@ -16,10 +19,8 @@ export default function Footer() {
             </p>
           </div>
           <div className="lg:col-span-5 flex flex-wrap gap-4 lg:justify-end">
-            <Link to="/ways-to-give" className="btn-primary">
-              Become a Donor <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link to="/contact" className="bg-white/10 text-white border-2 border-white/20 font-semibold px-7 py-4 rounded-2xl text-base hover:bg-white/20 transition-colors">
+            <DonateButton label="Become a Donor" size="lg" />
+            <Link to="/contact" className="inline-flex items-center justify-center bg-white/10 text-white border-2 border-white/20 font-semibold px-7 py-4 rounded-full uppercase tracking-wide text-sm hover:bg-white/20 transition-colors">
               Volunteer Now
             </Link>
           </div>
@@ -39,9 +40,13 @@ export default function Footer() {
             Empowering youth through education, STEM, and leadership. Together, we ignite potential and inspire change for a brighter future.
           </p>
           <div className="flex items-center gap-3 pt-2">
-            {[Facebook, Instagram, Linkedin].map((Icon, i) => (
-              <a key={i} href="#" aria-label="Social link" className="group size-10 rounded-xl bg-white/5 border border-white/10 hover:bg-accent hover:border-accent hover:text-navy flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5">
-                <Icon className="h-4 w-4" strokeWidth={2} />
+            {[
+              { Icon: Facebook, label: "Facebook" },
+              { Icon: Instagram, label: "Instagram" },
+              { Icon: Linkedin, label: "LinkedIn" },
+            ].map(({ Icon, label }) => (
+              <a key={label} href="#" aria-label={label} className="group size-10 rounded-xl bg-white/5 border border-white/10 hover:bg-accent hover:border-accent hover:text-navy flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5">
+                <Icon className="h-4 w-4" strokeWidth={ICON_STROKE_LG} />
               </a>
             ))}
           </div>
@@ -62,25 +67,10 @@ export default function Footer() {
 
         <div className="md:col-span-3 flex flex-col gap-4">
           <h4 className="font-bold uppercase text-xs tracking-[0.2em] text-accent">Get in Touch</h4>
-          <ul className="space-y-3 text-sm text-white/75">
-            <li className="flex items-start gap-3">
-              <span className="inline-flex size-7 items-center justify-center rounded-lg bg-white/5 border border-white/10 shrink-0">
-                <MapPin className="h-3.5 w-3.5 text-accent" strokeWidth={2.25} />
-              </span>
-              <span className="pt-1">Monrovia, Liberia</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="inline-flex size-7 items-center justify-center rounded-lg bg-white/5 border border-white/10 shrink-0">
-                <Phone className="h-3.5 w-3.5 text-accent" strokeWidth={2.25} />
-              </span>
-              <span className="pt-1">+231 886 727 619</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="inline-flex size-7 items-center justify-center rounded-lg bg-white/5 border border-white/10 shrink-0">
-                <Mail className="h-3.5 w-3.5 text-accent" strokeWidth={2.25} />
-              </span>
-              <span className="pt-1">info@zealcare.org</span>
-            </li>
+          <ul className="space-y-3">
+            <li><ContactChip icon={MapPin} label="Monrovia, Liberia" variant="light" /></li>
+            <li><ContactChip icon={Phone} label="+231 886 727 619" href="tel:+231886727619" variant="light" /></li>
+            <li><ContactChip icon={Mail} label="info@zealcare.org" href="mailto:info@zealcare.org" variant="light" /></li>
           </ul>
         </div>
       </div>

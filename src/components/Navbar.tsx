@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Mail, Phone, ChevronDown, ChevronRight, MapPin, Heart } from "lucide-react";
+import { Menu, X, Mail, Phone, ChevronDown, ChevronRight, MapPin } from "lucide-react";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { ICON_STROKE } from "@/lib/icon-defaults";
+import ContactChip from "@/components/ContactChip";
+import DonateButton from "@/components/DonateButton";
 
 type Child = { hash: string; label: string };
 type NavItem = {
@@ -381,21 +384,11 @@ export default function Navbar() {
       <div className="hidden md:block bg-hero-gradient text-white text-xs border-b border-white/10">
         <div className="container-zc flex items-center justify-between py-2.5">
           <div className="flex items-center gap-6">
-            <a href="mailto:info@zealcare.org" className="group flex items-center gap-2 text-white/85 hover:text-accent transition-colors">
-              <span className="inline-flex size-5 items-center justify-center rounded-full bg-white/10 group-hover:bg-accent/20 transition-colors">
-                <Mail className="h-3 w-3" strokeWidth={2.25} />
-              </span>
-              <span className="font-medium tracking-wide">info@zealcare.org</span>
-            </a>
-            <a href="tel:+231886727619" className="group flex items-center gap-2 text-white/85 hover:text-accent transition-colors">
-              <span className="inline-flex size-5 items-center justify-center rounded-full bg-white/10 group-hover:bg-accent/20 transition-colors">
-                <Phone className="h-3 w-3" strokeWidth={2.25} />
-              </span>
-              <span className="font-medium tracking-wide">+231 886 727 619</span>
-            </a>
+            <ContactChip icon={Mail} label="info@zealcare.org" href="mailto:info@zealcare.org" size="sm" variant="dark" />
+            <ContactChip icon={Phone} label="+231 886 727 619" href="tel:+231886727619" size="sm" variant="dark" />
           </div>
           <div className="flex items-center gap-2 text-[11px] tracking-[0.22em] uppercase text-white/80 font-semibold">
-            <MapPin className="h-3 w-3 text-accent" strokeWidth={2.5} />
+            <MapPin className="h-3 w-3 text-accent" strokeWidth={ICON_STROKE} />
             Monrovia · Liberia
           </div>
         </div>
@@ -437,13 +430,7 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-2">
-            <Link
-              to="/ways-to-give"
-              className="hidden sm:inline-flex items-center gap-2 bg-accent text-navy px-5 py-3 rounded-full font-bold text-sm shadow-yellow-glow hover:scale-[1.04] active:scale-100 transition-transform duration-300"
-            >
-              <Heart className="h-4 w-4 fill-navy" strokeWidth={2.25} />
-              Donate Now
-            </Link>
+            <DonateButton className="hidden sm:inline-flex" size="sm" />
             <button
               ref={toggleBtnRef}
               aria-label="Toggle menu"
@@ -485,14 +472,7 @@ export default function Navbar() {
                     />
                   );
                 })}
-                <Link
-                  to="/ways-to-give"
-                  onClick={() => setOpen(false)}
-                  className="mt-3 inline-flex items-center justify-center gap-2 bg-accent text-navy px-5 py-3 rounded-full font-bold text-sm shadow-yellow-glow"
-                >
-                  <Heart className="h-4 w-4 fill-navy" strokeWidth={2.25} />
-                  Donate Now
-                </Link>
+                <DonateButton onClick={() => setOpen(false)} variant="block" size="md" className="mt-3" />
               </div>
             </div>
           </>

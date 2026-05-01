@@ -8,10 +8,10 @@ export default function Footer() {
       <div className="container-zc py-16 md:py-20 border-b border-white/10">
         <div className="grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7">
-            <h2 className="text-3xl md:text-5xl font-black leading-tight tracking-tight text-balance">
+            <h2 className="text-2xl md:text-4xl font-black leading-tight tracking-tight text-balance">
               Ready to make an impact?
             </h2>
-            <p className="mt-4 text-white/70 text-lg max-w-2xl">
+            <p className="mt-3 text-white/70 text-base md:text-lg max-w-2xl">
               Your support helps us provide a future full of hope and possibility for underprivileged children in Liberia.
             </p>
           </div>

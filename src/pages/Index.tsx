@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ShieldCheck, Clock, Sparkles, GraduationCap, Lightbulb, Cpu, Quote, ChevronRight } from "lucide-react";
-import heroImg from "@/assets/hero-children-1.jpg";
-import portraitImg from "@/assets/hero-children-2.jpg";
-import stemImg from "@/assets/program-stem.jpg";
-import leadershipImg from "@/assets/program-leadership.jpg";
-import educationImg from "@/assets/program-education.jpg";
+import heroImg from "@/assets/hero-children-1.jpg?responsive";
+import portraitImg from "@/assets/hero-children-2.jpg?responsive";
+import stemImg from "@/assets/program-stem.jpg?responsive";
+import leadershipImg from "@/assets/program-leadership.jpg?responsive";
+import educationImg from "@/assets/program-education.jpg?responsive";
+import ResponsiveImage from "@/components/ResponsiveImage";
 import { useReveal } from "@/hooks/useReveal";
 
 const stats = [
@@ -73,13 +74,24 @@ export default function Index() {
           {/* Collage */}
           <div className="lg:col-span-6 relative h-[480px] sm:h-[560px] w-full">
             <div className="absolute top-0 right-0 w-[78%] h-[88%] rounded-[2.5rem] overflow-hidden shadow-card-lg rotate-2 z-20 ring-1 ring-white/20">
-              <img src={heroImg} alt="Joyful Liberian schoolchildren raising their hands in class"
-                width={1280} height={1600} className="w-full h-full object-cover" />
+              <ResponsiveImage
+                picture={heroImg}
+                alt="Joyful Liberian schoolchildren raising their hands in class"
+                sizes="(min-width: 1024px) 45vw, 90vw"
+                className="block w-full h-full"
+                imgClassName="w-full h-full object-cover"
+                eager
+              />
             </div>
             <div className="absolute bottom-0 left-0 w-[55%] h-[58%] bg-accent rounded-[2rem] p-2 shadow-yellow-glow -rotate-3 z-30 animate-float">
               <div className="w-full h-full rounded-[1.5rem] overflow-hidden">
-                <img src={portraitImg} alt="Smiling young scholar holding her books" loading="lazy"
-                  width={1024} height={1024} className="w-full h-full object-cover" />
+                <ResponsiveImage
+                  picture={portraitImg}
+                  alt="Smiling young scholar holding her books"
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                  className="block w-full h-full"
+                  imgClassName="w-full h-full object-cover"
+                />
               </div>
             </div>
             <div className="absolute top-1/4 -left-2 size-24 bg-accent rounded-full z-10 flex items-center justify-center shadow-yellow-glow animate-float">
@@ -107,8 +119,13 @@ export default function Index() {
       <section className="container-zc py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-5 relative">
           <div className="rounded-[2rem] overflow-hidden shadow-card-lg">
-            <img src={stemImg} alt="Children learning together with technology" loading="lazy"
-              width={1280} height={960} className="w-full aspect-[4/5] object-cover" />
+            <ResponsiveImage
+              picture={stemImg}
+              alt="Children learning together with technology"
+              sizes="(min-width: 1024px) 40vw, 90vw"
+              className="block w-full aspect-[4/5]"
+              imgClassName="w-full h-full object-cover"
+            />
           </div>
           <div className="absolute -bottom-6 -right-6 bg-accent text-navy rounded-2xl px-6 py-5 shadow-yellow-glow max-w-[16rem] hidden md:block">
             <div className="text-3xl font-black tabular-nums">12+</div>
@@ -176,8 +193,13 @@ export default function Index() {
           {programs.map((p, i) => (
             <article key={p.title} className={`reveal reveal-delay-${i + 1} hover-lift group rounded-[2rem] overflow-hidden border border-secondary bg-white`}>
               <div className="aspect-[4/3] overflow-hidden">
-                <img src={p.img} alt={p.title} loading="lazy" width={1280} height={960}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <ResponsiveImage
+                  picture={p.img}
+                  alt={p.title}
+                  sizes="(min-width: 1024px) 32vw, (min-width: 768px) 45vw, 90vw"
+                  className="block w-full h-full"
+                  imgClassName="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
               <div className="p-6">
                 <div className="size-11 -mt-11 mb-3 relative bg-accent rounded-2xl flex items-center justify-center shadow-yellow-glow tilt-hover">

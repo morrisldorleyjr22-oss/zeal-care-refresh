@@ -157,42 +157,48 @@ export default function Footer() {
             Get in Touch
           </h4>
           <ul className="space-y-3">
-            <li>
-              <ContactChip icon={MapPin} label="Monrovia, Liberia" variant="light" />
-            </li>
-            <li>
-              <ContactChip
-                icon={Phone}
-                label="+231 886 727 619"
-                href="tel:+231886727619"
-                variant="light"
-              />
-            </li>
-            <li>
-              <ContactChip
-                icon={Mail}
-                label="info@zealcare.org"
-                href="mailto:info@zealcare.org"
-                variant="light"
-              />
-            </li>
+            {contact.address_line && (
+              <li><ContactChip icon={MapPin} label={contact.address_line} variant="light" /></li>
+            )}
+            {contact.phone && (
+              <li>
+                <ContactChip
+                  icon={Phone}
+                  label={contact.phone}
+                  href={`tel:${contact.phone.replace(/\s+/g, "")}`}
+                  variant="light"
+                />
+              </li>
+            )}
+            {contact.email && (
+              <li>
+                <ContactChip
+                  icon={Mail}
+                  label={contact.email}
+                  href={`mailto:${contact.email}`}
+                  variant="light"
+                />
+              </li>
+            )}
           </ul>
 
-          <div className="mt-2 rounded-2xl bg-accent/10 border border-accent/25 p-4">
-            <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent">
-              Office Hours
+          {footer.office_hours && (
+            <div className="mt-2 rounded-2xl bg-accent/10 border border-accent/25 p-4">
+              <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent">
+                Office Hours
+              </div>
+              <div className="mt-1.5 text-sm font-semibold text-white">
+                {footer.office_hours}
+              </div>
             </div>
-            <div className="mt-1.5 text-sm font-semibold text-white">
-              Mon – Fri · 9:00 – 17:00 GMT
-            </div>
-          </div>
+          )}
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="relative border-t border-white/10 bg-navy/30 backdrop-blur-sm">
         <div className="container-zc py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/60">
-          <p>© {new Date().getFullYear()} Zeal Care. All rights reserved.</p>
+          <p>{footer.copyright}</p>
           <div className="flex items-center gap-2 font-semibold uppercase tracking-[0.22em]">
             <span className="size-1 rounded-full bg-accent" />
             Igniting Potential

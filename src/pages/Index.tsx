@@ -139,7 +139,7 @@ export default function Index() {
       {/* WHAT SETS US APART */}
       <section className="bg-soft-gradient py-24 md:py-32">
         <div className="container-zc">
-          <div className="text-center max-w-3xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto reveal">
             <span className="eyebrow">The Zeal Advantage</span>
             <h2 className="mt-3 text-3xl md:text-4xl font-black tracking-tight text-navy text-balance">
               We don't do band-aids. <span className="text-primary">We build foundations.</span>

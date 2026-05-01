@@ -2,14 +2,12 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 /**
- * Tracks which section id is currently most-visible in the viewport
- * and keeps the URL hash in sync (without scroll-jumping).
- *
- * Returns the active section id (without the leading #), or "" if none.
+ * Tracks which section id is currently most-visible in the viewport.
+ * Syncs the URL hash via history.replaceState (does NOT trigger react-router
+ * navigation, so the page does not re-scroll).
  */
 export function useActiveSection(ids: string[]) {
   const [active, setActive] = useState<string>("");
-  const { pathname, hash } = useLocation();
   const { pathname, hash } = useLocation();
 
   // Initialize from hash on route change
@@ -46,18 +44,24 @@ export function useActiveSection(ids: string[]) {
               bestId = id;
             }
           });
-          if (bestRatio > 0.15 && bestId !== active) {
-            setActive(bestId);
-            // Quietly sync the hash without scrolling
-            const newHash = `#${bestId}`;
-            if (window.location.hash !== newHash) {
-              navigate(`${pathname}${newHash}`, { replace: true });
-            }
+          if (bestRatio > 0.15) {
+            setActive((prev) => {
+              if (prev === bestId) return prev;
+              const newHash = `#${bestId}`;
+              if (window.location.hash !== newHash) {
+                // Update URL silently — no scroll, no react-router re-render
+                window.history.replaceState(
+                  window.history.state,
+                  "",
+                  `${window.location.pathname}${window.location.search}${newHash}`,
+                );
+              }
+              return bestId;
+            });
           }
         });
       },
       {
-        // Account for sticky navbar (~100px) and detect mid-viewport sections
         rootMargin: "-110px 0px -55% 0px",
         threshold: [0, 0.15, 0.3, 0.5, 0.75, 1],
       },

@@ -1,12 +1,17 @@
-import edu from "@/assets/program-education.jpg";
-import stem from "@/assets/program-stem.jpg";
-import lead from "@/assets/program-leadership.jpg";
-import ent from "@/assets/program-entrepreneurship.jpg";
-import comm from "@/assets/community-wide.jpg";
+import edu from "@/assets/program-education.jpg?responsive";
+import stem from "@/assets/program-stem.jpg?responsive";
+import lead from "@/assets/program-leadership.jpg?responsive";
+import ent from "@/assets/program-entrepreneurship.jpg?responsive";
+import comm from "@/assets/community-wide.jpg?responsive";
+
+export type Picture = {
+  sources: Record<string, string>;
+  img: { src: string; w: number; h: number };
+};
 
 export type Article = {
   slug: string;
-  img: string;
+  img: Picture;
   tag: "Field Story" | "STEM Lab" | "Leadership" | "Workshop" | "Christmas" | "Advocacy";
   date: string;
   iso: string;

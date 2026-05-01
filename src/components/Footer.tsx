@@ -33,9 +33,9 @@ export default function Footer() {
             <div className="size-10 bg-accent rounded-2xl flex items-center justify-center">
               <div className="size-3.5 bg-navy rounded-full" />
             </div>
-            <span className="font-black text-2xl tracking-tight text-white uppercase">Zeal Care</span>
+            <span className="font-black text-xl tracking-tight text-white uppercase">Zeal Care</span>
           </Link>
-          <p className="text-white/70 leading-relaxed max-w-sm">
+          <p className="text-sm text-white/70 leading-relaxed max-w-sm">
             Empowering youth through education, STEM, and leadership. Together, we ignite potential and inspire change for a brighter future.
           </p>
           <div className="flex items-center gap-3 pt-2">

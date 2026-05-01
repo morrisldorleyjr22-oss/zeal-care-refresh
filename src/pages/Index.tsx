@@ -115,15 +115,15 @@ export default function Index() {
         </div>
         <div className="lg:col-span-7 lg:pl-8">
           <span className="eyebrow">Our Institutional Purpose</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black tracking-tight text-navy">
+          <h2 className="mt-3 text-3xl md:text-4xl font-black tracking-tight text-navy">
             Our Mission
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-navy/75 max-w-2xl">
+          <p className="mt-5 text-base md:text-lg leading-relaxed text-navy/75 max-w-2xl">
             At <strong>ZEAL CARE</strong>, we believe every child deserves a chance to thrive, regardless of their background.
             Our mission is to break the cycle of poverty by providing quality education and mentorship to underserved communities.
           </p>
-          <blockquote className="mt-8 border-l-4 border-accent bg-secondary/60 rounded-r-2xl p-6 text-navy italic font-medium text-lg">
-            <Quote className="h-6 w-6 text-accent mb-2" />
+          <blockquote className="mt-7 border-l-4 border-accent bg-secondary/60 rounded-r-2xl p-5 text-navy italic font-medium text-base md:text-lg">
+            <Quote className="h-5 w-5 text-accent mb-2" />
             "Education is the most powerful weapon which you can use to change the world."
           </blockquote>
           <div className="mt-8 flex gap-4">

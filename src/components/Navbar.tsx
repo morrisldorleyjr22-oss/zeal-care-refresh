@@ -430,13 +430,7 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-2">
-            <Link
-              to="/ways-to-give"
-              className="hidden sm:inline-flex items-center gap-2 bg-accent text-navy px-5 py-3 rounded-full font-bold text-sm shadow-yellow-glow hover:scale-[1.04] active:scale-100 transition-transform duration-300"
-            >
-              <Heart className="h-4 w-4 fill-navy" strokeWidth={2.25} />
-              Donate Now
-            </Link>
+            <DonateButton className="hidden sm:inline-flex" size="sm" />
             <button
               ref={toggleBtnRef}
               aria-label="Toggle menu"
@@ -478,14 +472,7 @@ export default function Navbar() {
                     />
                   );
                 })}
-                <Link
-                  to="/ways-to-give"
-                  onClick={() => setOpen(false)}
-                  className="mt-3 inline-flex items-center justify-center gap-2 bg-accent text-navy px-5 py-3 rounded-full font-bold text-sm shadow-yellow-glow"
-                >
-                  <Heart className="h-4 w-4 fill-navy" strokeWidth={2.25} />
-                  Donate Now
-                </Link>
+                <DonateButton onClick={() => setOpen(false)} variant="block" size="md" className="mt-3" />
               </div>
             </div>
           </>

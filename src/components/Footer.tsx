@@ -31,7 +31,6 @@ export default function Footer() {
   ].filter((s) => (social as Record<string, string>)[s.key]);
 
   return (
-  return (
     <footer className="relative bg-hero-gradient text-white overflow-hidden">
       {/* Decorative background */}
       <div

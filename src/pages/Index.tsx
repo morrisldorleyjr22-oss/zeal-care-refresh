@@ -51,10 +51,10 @@ export default function Index() {
                 Empowering Africa's Future Leaders
               </span>
             </div>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-balance">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight text-balance">
               Igniting Potential, <span className="text-accent">Inspiring Change.</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/85 leading-relaxed max-w-[46ch]">
+            <p className="text-base md:text-lg text-white/85 leading-relaxed max-w-[46ch]">
               We believe every child is a spark of genius. We provide the tools, mentorship, and opportunities to set that genius free.
             </p>
             <div className="flex flex-wrap gap-4 mt-2">

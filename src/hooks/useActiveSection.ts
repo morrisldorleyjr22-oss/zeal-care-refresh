@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 /**
  * Tracks which section id is currently most-visible in the viewport
@@ -10,7 +10,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 export function useActiveSection(ids: string[]) {
   const [active, setActive] = useState<string>("");
   const { pathname, hash } = useLocation();
-  const navigate = useNavigate();
+  const { pathname, hash } = useLocation();
 
   // Initialize from hash on route change
   useEffect(() => {

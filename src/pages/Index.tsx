@@ -5,6 +5,7 @@ import portraitImg from "@/assets/hero-children-2.jpg";
 import stemImg from "@/assets/program-stem.jpg";
 import leadershipImg from "@/assets/program-leadership.jpg";
 import educationImg from "@/assets/program-education.jpg";
+import { useReveal } from "@/hooks/useReveal";
 
 const stats = [
   { value: "850+", label: "Active Scholars" },

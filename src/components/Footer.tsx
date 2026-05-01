@@ -6,14 +6,30 @@ import {
   Facebook,
   Instagram,
   Linkedin,
+  Twitter,
+  Youtube,
   ArrowUpRight,
   Sparkles,
 } from "lucide-react";
 import ContactChip from "@/components/ContactChip";
 import DonateButton from "@/components/DonateButton";
 import { ICON_STROKE, ICON_STROKE_LG } from "@/lib/icon-defaults";
+import { useSetting } from "@/hooks/useSiteSettings";
 
 export default function Footer() {
+  const contact = useSetting("contact_info");
+  const footer = useSetting("footer");
+  const social = useSetting("social_links");
+  const donate = useSetting("donate");
+
+  const socialIcons = [
+    { key: "facebook" as const, Icon: Facebook, label: "Facebook" },
+    { key: "instagram" as const, Icon: Instagram, label: "Instagram" },
+    { key: "linkedin" as const, Icon: Linkedin, label: "LinkedIn" },
+    { key: "twitter" as const, Icon: Twitter, label: "Twitter / X" },
+    { key: "youtube" as const, Icon: Youtube, label: "YouTube" },
+  ].filter((s) => (social as Record<string, string>)[s.key]);
+
   return (
     <footer className="relative bg-hero-gradient text-white overflow-hidden">
       {/* Decorative background */}
@@ -63,7 +79,7 @@ export default function Footer() {
             </p>
           </div>
           <div className="lg:col-span-5 flex flex-wrap gap-3 lg:justify-end relative">
-            <DonateButton label="Become a Donor" size="lg" />
+            <DonateButton label={donate.label || "Become a Donor"} to={donate.url} size="lg" />
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white/25 font-semibold px-7 py-4 rounded-full uppercase tracking-wide text-sm hover:bg-white/20 hover:border-white/40 transition-colors backdrop-blur-sm"
@@ -88,32 +104,31 @@ export default function Footer() {
             </span>
           </Link>
           <p className="text-sm text-white/75 leading-relaxed max-w-sm">
-            Empowering youth through education, STEM, and leadership. Together, we
-            ignite potential and inspire change for a brighter future.
+            {footer.tagline}
           </p>
 
           {/* Social rail */}
-          <div className="pt-2">
-            <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent/90 mb-3">
-              Follow the journey
+          {socialIcons.length > 0 && (
+            <div className="pt-2">
+              <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent/90 mb-3">
+                Follow the journey
+              </div>
+              <div className="flex items-center gap-3">
+                {socialIcons.map(({ Icon, label, key }) => (
+                  <a
+                    key={label}
+                    href={(social as Record<string, string>)[key]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="group size-10 rounded-xl bg-white/10 border border-white/15 hover:bg-accent hover:border-accent hover:text-navy flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    <Icon className="h-4 w-4" strokeWidth={ICON_STROKE_LG} />
+                  </a>
+                ))}
+              </div>
             </div>
-            <div className="flex items-center gap-3">
-              {[
-                { Icon: Facebook, label: "Facebook" },
-                { Icon: Instagram, label: "Instagram" },
-                { Icon: Linkedin, label: "LinkedIn" },
-              ].map(({ Icon, label }) => (
-                <a
-                  key={label}
-                  href="#"
-                  aria-label={label}
-                  className="group size-10 rounded-xl bg-white/10 border border-white/15 hover:bg-accent hover:border-accent hover:text-navy flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  <Icon className="h-4 w-4" strokeWidth={ICON_STROKE_LG} />
-                </a>
-              ))}
-            </div>
-          </div>
+          )}
         </div>
 
         <FooterCol
@@ -142,42 +157,48 @@ export default function Footer() {
             Get in Touch
           </h4>
           <ul className="space-y-3">
-            <li>
-              <ContactChip icon={MapPin} label="Monrovia, Liberia" variant="light" />
-            </li>
-            <li>
-              <ContactChip
-                icon={Phone}
-                label="+231 886 727 619"
-                href="tel:+231886727619"
-                variant="light"
-              />
-            </li>
-            <li>
-              <ContactChip
-                icon={Mail}
-                label="info@zealcare.org"
-                href="mailto:info@zealcare.org"
-                variant="light"
-              />
-            </li>
+            {contact.address_line && (
+              <li><ContactChip icon={MapPin} label={contact.address_line} variant="light" /></li>
+            )}
+            {contact.phone && (
+              <li>
+                <ContactChip
+                  icon={Phone}
+                  label={contact.phone}
+                  href={`tel:${contact.phone.replace(/\s+/g, "")}`}
+                  variant="light"
+                />
+              </li>
+            )}
+            {contact.email && (
+              <li>
+                <ContactChip
+                  icon={Mail}
+                  label={contact.email}
+                  href={`mailto:${contact.email}`}
+                  variant="light"
+                />
+              </li>
+            )}
           </ul>
 
-          <div className="mt-2 rounded-2xl bg-accent/10 border border-accent/25 p-4">
-            <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent">
-              Office Hours
+          {footer.office_hours && (
+            <div className="mt-2 rounded-2xl bg-accent/10 border border-accent/25 p-4">
+              <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent">
+                Office Hours
+              </div>
+              <div className="mt-1.5 text-sm font-semibold text-white">
+                {footer.office_hours}
+              </div>
             </div>
-            <div className="mt-1.5 text-sm font-semibold text-white">
-              Mon – Fri · 9:00 – 17:00 GMT
-            </div>
-          </div>
+          )}
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="relative border-t border-white/10 bg-navy/30 backdrop-blur-sm">
         <div className="container-zc py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/60">
-          <p>© {new Date().getFullYear()} Zeal Care. All rights reserved.</p>
+          <p>{footer.copyright}</p>
           <div className="flex items-center gap-2 font-semibold uppercase tracking-[0.22em]">
             <span className="size-1 rounded-full bg-accent" />
             Igniting Potential

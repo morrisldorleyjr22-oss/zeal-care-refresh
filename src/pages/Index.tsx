@@ -7,6 +7,7 @@ import leadershipImg from "@/assets/program-leadership.jpg?responsive";
 import educationImg from "@/assets/program-education.jpg?responsive";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import { useReveal } from "@/hooks/useReveal";
+import { useSetting } from "@/hooks/useSiteSettings";
 
 const stats = [
   { value: "850+", label: "Active Scholars" },
@@ -38,6 +39,7 @@ const partners = ["USAID", "Orange", "Ecobank", "UNICEF", "Global Fund", "World 
 
 export default function Index() {
   const ref = useReveal<HTMLDivElement>();
+  const hero = useSetting("hero_home");
   return (
     <div ref={ref}>
       {/* HERO */}
@@ -51,23 +53,23 @@ export default function Index() {
             <div className="inline-flex items-center gap-3 bg-white/10 border border-white/20 rounded-full px-5 py-2 w-max">
               <span className="size-2 rounded-full bg-accent animate-pulse" />
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/90">
-                Empowering Africa's Future Leaders
+                {hero.eyebrow}
               </span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight text-balance">
-              Igniting Potential, <span className="text-accent">Inspiring Change.</span>
+              {hero.title}
             </h1>
             <p className="text-base md:text-lg text-white/85 leading-relaxed max-w-[46ch]">
-              We believe every child is a spark of genius. We provide the tools, mentorship, and opportunities to set that genius free.
+              {hero.subtitle}
             </p>
             <div className="flex flex-wrap gap-4 mt-2">
-              <Link to="/ways-to-give" className="btn-primary">
-                Sponsor a Child
+              <Link to={hero.cta_primary_url} className="btn-primary">
+                {hero.cta_primary_label}
                 <span className="size-6 bg-navy rounded-full flex items-center justify-center text-accent">
                   <ArrowRight className="h-3 w-3" />
                 </span>
               </Link>
-              <Link to="/what-we-do" className="btn-secondary">Our Impact</Link>
+              <Link to={hero.cta_secondary_url} className="btn-secondary">{hero.cta_secondary_label}</Link>
             </div>
           </div>
 

@@ -5,6 +5,7 @@ import { useActiveSection } from "@/hooks/useActiveSection";
 import { ICON_STROKE } from "@/lib/icon-defaults";
 import ContactChip from "@/components/ContactChip";
 import DonateButton from "@/components/DonateButton";
+import { useSetting } from "@/hooks/useSiteSettings";
 
 type Child = { hash: string; label: string };
 type NavItem = {
@@ -378,19 +379,28 @@ export default function Navbar() {
   const toggleExpanded = (key: string) =>
     setExpanded((prev) => ({ ...prev, [key]: !prev[key] }));
 
+  const contact = useSetting("contact_info");
+  const donate = useSetting("donate");
+
   return (
     <header className="sticky top-0 z-50">
       {/* Top utility bar — matches hero blue */}
       <div className="hidden md:block bg-hero-gradient text-white text-xs border-b border-white/10">
         <div className="container-zc flex items-center justify-between py-2.5">
           <div className="flex items-center gap-6">
-            <ContactChip icon={Mail} label="info@zealcare.org" href="mailto:info@zealcare.org" size="sm" variant="dark" />
-            <ContactChip icon={Phone} label="+231 886 727 619" href="tel:+231886727619" size="sm" variant="dark" />
+            {contact.email && (
+              <ContactChip icon={Mail} label={contact.email} href={`mailto:${contact.email}`} size="sm" variant="dark" />
+            )}
+            {contact.phone && (
+              <ContactChip icon={Phone} label={contact.phone} href={`tel:${contact.phone.replace(/\s+/g, "")}`} size="sm" variant="dark" />
+            )}
           </div>
-          <div className="flex items-center gap-2 text-[11px] tracking-[0.22em] uppercase text-white/80 font-semibold">
-            <MapPin className="h-3 w-3 text-accent" strokeWidth={ICON_STROKE} />
-            Monrovia · Liberia
-          </div>
+          {contact.address_line && (
+            <div className="flex items-center gap-2 text-[11px] tracking-[0.22em] uppercase text-white/80 font-semibold">
+              <MapPin className="h-3 w-3 text-accent" strokeWidth={ICON_STROKE} />
+              {contact.address_line}
+            </div>
+          )}
         </div>
       </div>
 
@@ -430,7 +440,7 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-2">
-            <DonateButton className="hidden sm:inline-flex" size="sm" />
+            <DonateButton className="hidden sm:inline-flex" size="sm" to={donate.url} label={donate.label} />
             <button
               ref={toggleBtnRef}
               aria-label="Toggle menu"
@@ -472,7 +482,7 @@ export default function Navbar() {
                     />
                   );
                 })}
-                <DonateButton onClick={() => setOpen(false)} variant="block" size="md" className="mt-3" />
+                <DonateButton onClick={() => setOpen(false)} variant="block" size="md" className="mt-3" to={donate.url} label={donate.label} />
               </div>
             </div>
           </>

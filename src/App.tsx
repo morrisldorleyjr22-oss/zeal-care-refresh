@@ -11,6 +11,7 @@ import WhoWeAre from "./pages/WhoWeAre";
 import WhatWeDo from "./pages/WhatWeDo";
 import WaysToGive from "./pages/WaysToGive";
 import Media from "./pages/Media";
+import ArticleDetail from "./pages/ArticleDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 

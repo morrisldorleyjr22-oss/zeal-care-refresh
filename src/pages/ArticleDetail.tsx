@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Calendar, Clock, Share2, User } from "lucide-react";
 import { articles, getArticleBySlug } from "@/data/articles";
 import { useReveal } from "@/hooks/useReveal";
+import ResponsiveImage from "@/components/ResponsiveImage";
 import { toast } from "sonner";
 
 export default function ArticleDetail() {
@@ -48,10 +49,13 @@ export default function ArticleDetail() {
       {/* Hero image */}
       <section className="relative">
         <div className="aspect-[16/8] md:aspect-[21/9] w-full overflow-hidden bg-navy">
-          <img
-            src={article.img}
+          <ResponsiveImage
+            picture={article.img}
             alt={article.title}
-            className="w-full h-full object-cover opacity-90"
+            sizes="100vw"
+            className="block w-full h-full"
+            imgClassName="w-full h-full object-cover opacity-90"
+            eager
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/30 to-transparent" />
@@ -151,11 +155,12 @@ export default function ArticleDetail() {
               className={`reveal reveal-delay-${i + 1} hover-lift group rounded-3xl overflow-hidden border border-secondary bg-white block`}
             >
               <div className="aspect-[16/10] overflow-hidden">
-                <img
-                  src={r.img}
+                <ResponsiveImage
+                  picture={r.img}
                   alt={r.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(min-width: 1024px) 32vw, (min-width: 768px) 45vw, 90vw"
+                  className="block w-full h-full"
+                  imgClassName="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-5">

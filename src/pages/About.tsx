@@ -1,6 +1,7 @@
 import PageHero from "@/components/PageHero";
 import { Heart, Users, Globe2, Eye, Sparkles, HandHeart, Target, BookOpen, Compass, Award, Lightbulb, Shield, Smile, Brain } from "lucide-react";
-import community from "@/assets/community-wide.jpg";
+import community from "@/assets/community-wide.jpg?responsive";
+import ResponsiveImage from "@/components/ResponsiveImage";
 
 const values = [
   { icon: Heart, title: "Integrity", body: "We fulfill our commitments and conduct ourselves in a way that is true to our identity." },
@@ -154,7 +155,13 @@ export default function About() {
       {/* Quote band */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={community} alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover" />
+          <ResponsiveImage
+            picture={community}
+            alt=""
+            sizes="100vw"
+            className="block w-full h-full"
+            imgClassName="w-full h-full object-cover"
+          />
           <div className="absolute inset-0 bg-navy/85" />
         </div>
         <div className="container-zc relative py-24 md:py-32 text-center text-white">

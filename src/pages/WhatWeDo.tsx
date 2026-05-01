@@ -1,14 +1,15 @@
 import PageHero from "@/components/PageHero";
 import { GraduationCap, Lightbulb, Briefcase, Cpu, Smartphone, HeartHandshake, BookOpen, Shield } from "lucide-react";
-import community from "@/assets/community-wide.jpg";
-import stem from "@/assets/program-stem.jpg";
-import edu from "@/assets/program-education.jpg";
-import lead from "@/assets/program-leadership.jpg";
-import ent from "@/assets/program-entrepreneurship.jpg";
-import projSurvey from "@/assets/project-survey.jpg";
-import projInterviews from "@/assets/project-interviews.jpg";
-import projMaterials from "@/assets/project-materials-row.jpg";
-import projFee from "@/assets/project-feepayment.jpg";
+import community from "@/assets/community-wide.jpg?responsive";
+import stem from "@/assets/program-stem.jpg?responsive";
+import edu from "@/assets/program-education.jpg?responsive";
+import lead from "@/assets/program-leadership.jpg?responsive";
+import ent from "@/assets/program-entrepreneurship.jpg?responsive";
+import projSurvey from "@/assets/project-survey.jpg?responsive";
+import projInterviews from "@/assets/project-interviews.jpg?responsive";
+import projMaterials from "@/assets/project-materials-row.jpg?responsive";
+import projFee from "@/assets/project-feepayment.jpg?responsive";
+import ResponsiveImage from "@/components/ResponsiveImage";
 
 const supports = [
   { label: "School Fees & Tuition", icon: GraduationCap },
@@ -117,7 +118,13 @@ export default function WhatWeDo() {
           ].map((s) => (
             <figure key={s.label} className="rounded-2xl overflow-hidden border border-secondary bg-white hover:shadow-card-lg transition-all group">
               <div className="aspect-[4/3] overflow-hidden">
-                <img src={s.img} alt={s.label} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <ResponsiveImage
+                  picture={s.img}
+                  alt={s.label}
+                  sizes="(min-width: 1024px) 22vw, (min-width: 768px) 45vw, 90vw"
+                  className="block w-full h-full"
+                  imgClassName="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
               <figcaption className="p-4">
                 <div className="text-[11px] font-bold text-primary uppercase tracking-widest">{s.label}</div>
@@ -138,7 +145,13 @@ export default function WhatWeDo() {
             {programs.map((p, i) => (
               <article key={p.title} className="bg-white rounded-[2rem] overflow-hidden border border-secondary hover:shadow-card-lg transition-all">
                 <div className="aspect-[16/9] overflow-hidden">
-                  <img src={p.img} alt={p.title} loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  <ResponsiveImage
+                    picture={p.img}
+                    alt={p.title}
+                    sizes="(min-width: 768px) 45vw, 90vw"
+                    className="block w-full h-full"
+                    imgClassName="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
                 <div className="p-8">
                   <div className="flex items-center gap-3">
@@ -181,7 +194,7 @@ export default function WhatWeDo() {
       {/* Impact in Numbers */}
       <section id="impact" className="scroll-mt-32 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={community} alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover" />
+          <ResponsiveImage picture={community} alt="" sizes="100vw" className="block w-full h-full" imgClassName="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-navy/85" />
         </div>
         <div className="container-zc relative py-20 text-white">

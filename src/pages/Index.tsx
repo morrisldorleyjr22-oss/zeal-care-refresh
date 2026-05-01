@@ -217,7 +217,7 @@ export default function Index() {
       <section className="container-zc py-20">
         <div className="text-center mb-10">
           <span className="eyebrow">Strategic Global Ecosystem</span>
-          <h2 className="mt-3 text-3xl md:text-4xl font-black text-navy">Our Strategic Partners</h2>
+          <h2 className="mt-3 text-2xl md:text-3xl font-black text-navy">Our Strategic Partners</h2>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
           {partners.map((p) => (

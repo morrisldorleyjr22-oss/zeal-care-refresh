@@ -157,17 +157,20 @@ export default function WhatWeDo() {
             <h2 className="mt-3 text-4xl md:text-5xl font-black">Impact in Numbers</h2>
           </div>
           <div className="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
-        <div className="absolute inset-0">
-          <img src={community} alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-navy/85" />
-        </div>
-        <div className="container-zc relative py-20 text-white grid md:grid-cols-3 gap-8 text-center">
-          {[{ v: "850+", l: "Children Empowered" }, { v: "12+", l: "Years of Sustained Care" }, { v: "2+", l: "Communities Impacted" }].map((s) => (
-            <div key={s.l}>
-              <div className="text-5xl md:text-6xl font-black text-accent tabular-nums tracking-tighter">{s.v}</div>
-              <div className="mt-2 text-sm font-bold uppercase tracking-widest text-white/80">{s.l}</div>
-            </div>
-          ))}
+            {[
+              { v: "850+", l: "Children Empowered" },
+              { v: "12+", l: "Years of Sustained Care" },
+              { v: "2+", l: "Communities Impacted" },
+              { v: "65%", l: "Female Scholars" },
+              { v: "100%", l: "Enrollment Rate" },
+              { v: "$45K", l: "Grand Bassa Goal" },
+            ].map((s) => (
+              <div key={s.l} className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                <div className="text-5xl font-black text-accent tabular-nums tracking-tighter">{s.v}</div>
+                <div className="mt-2 text-xs font-bold uppercase tracking-widest text-white/80">{s.l}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </>

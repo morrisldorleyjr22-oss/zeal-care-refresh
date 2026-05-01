@@ -7,6 +7,12 @@ import { articles, categories } from "@/data/articles";
 import comm from "@/assets/community-wide.jpg";
 import stem from "@/assets/program-stem.jpg";
 import lead from "@/assets/program-leadership.jpg";
+import gallerySurvey from "@/assets/project-survey.jpg";
+import galleryAnalysis from "@/assets/project-analysis.jpg";
+import galleryInterviews from "@/assets/project-interviews.jpg";
+import galleryMaterials from "@/assets/project-materials-row.jpg";
+import galleryFeePayment from "@/assets/project-feepayment.jpg";
+import galleryTeam from "@/assets/team-meeting.jpg";
 
 const events = [
   { date: "May 18, 2026", title: "Annual Donor Gala", place: "Monrovia, Liberia" },
@@ -197,10 +203,20 @@ export default function Media() {
           <h2 className="mt-2 text-3xl md:text-4xl font-black text-navy">Photo Gallery</h2>
         </div>
         <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-3">
-          {[comm, stem, lead, comm, stem, lead].map((img, i) => (
-            <div key={i} className="aspect-square overflow-hidden rounded-2xl group">
-              <img src={img} alt="Zeal Care moment" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-            </div>
+          {[
+            { img: galleryTeam, caption: "Team meeting — in person & online" },
+            { img: gallerySurvey, caption: "Project digital survey, June 2024" },
+            { img: galleryAnalysis, caption: "Educational survey analysis, Bloc D" },
+            { img: galleryInterviews, caption: "Candidate & guardian interviews" },
+            { img: galleryMaterials, caption: "Procuring school materials" },
+            { img: galleryFeePayment, caption: "School fee payment with bloc leadership" },
+          ].map((g, i) => (
+            <figure key={i} className="relative aspect-square overflow-hidden rounded-2xl group">
+              <img src={g.img} alt={g.caption} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/85 via-navy/40 to-transparent text-white text-[11px] font-medium px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                {g.caption}
+              </figcaption>
+            </figure>
           ))}
         </div>
       </section>

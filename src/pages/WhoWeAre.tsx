@@ -1,12 +1,17 @@
 import PageHero from "@/components/PageHero";
 import { Quote, Handshake, Trophy, ShieldCheck, FileBarChart2, Briefcase, FileText, Clock } from "lucide-react";
 import community from "@/assets/community-wide.jpg";
+import teamMeeting from "@/assets/team-meeting.jpg";
+import partnershipPhoto from "@/assets/leader-team-classroom.jpg";
+import portraitTitus from "@/assets/leader-titus.jpg";
+import portraitMohammed from "@/assets/leader-mohammed.jpg";
+import portraitBeverley from "@/assets/leader-beverley.jpg";
 
 const leadership = [
-  { name: "Titus S. Foko", role: "Founder & Executive Director", bio: "Strategic vision and program architect leading Zeal Care's mission across Liberia." },
-  { name: "Mohammed Soko Kamara", role: "ED, Marketing & Communications", bio: "Champions Zeal Care's voice, partnerships, and storytelling across Africa and beyond." },
-  { name: "Joetta C. Paye", role: "ED, Talent Management", bio: "Builds the people systems that allow our young, mission-driven team to thrive." },
-  { name: "William Mammie", role: "ED, Organization Development", bio: "Designs the operational backbone that scales our work across new communities." },
+  { name: "Titus S. Foko", role: "Founder & Executive Director", bio: "Strategic vision and program architect leading Zeal Care's mission across Liberia.", photo: portraitTitus },
+  { name: "Mohammed Soko Kamara", role: "ED, Marketing & Communications", bio: "Champions Zeal Care's voice, partnerships, and storytelling across Africa and beyond.", photo: portraitMohammed },
+  { name: "Beverley Chelsea Saungweme", role: "ED, International Affairs", bio: "Former Project Team Lead for phase one. Drives Zeal Care's global partnerships and diaspora engagement.", photo: portraitBeverley },
+  { name: "William Mammie", role: "Graphic & Media Officer", bio: "Designs the operational backbone and visual narrative that scales our work across new communities." },
 ];
 
 const board = [
@@ -35,8 +40,15 @@ const awards = [
   { year: "2022", title: "Civic Excellence Citation", body: "Awarded by the Monrovia City Corporation for community service." },
 ];
 
-function Avatar({ name }: { name: string }) {
+function Avatar({ name, photo }: { name: string; photo?: string }) {
   const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
+  if (photo) {
+    return (
+      <div className="size-20 rounded-2xl overflow-hidden ring-2 ring-accent/60 shadow-yellow-glow">
+        <img src={photo} alt={name} loading="lazy" className="w-full h-full object-cover" />
+      </div>
+    );
+  }
   return (
     <div className="size-20 rounded-2xl bg-yellow-gradient flex items-center justify-center text-navy font-black text-2xl shadow-yellow-glow">
       {initials}
@@ -54,6 +66,16 @@ export default function WhoWeAre() {
         description="The people, partners, and systems behind Zeal Care's mission to transform education in Liberia."
       />
 
+      {/* Team meeting hero strip */}
+      <section className="container-zc pt-16">
+        <figure className="rounded-[2rem] overflow-hidden border border-secondary shadow-card-lg">
+          <img src={teamMeeting} alt="Zeal Care team in person meeting while others joined online" loading="lazy" className="w-full h-auto object-cover" />
+          <figcaption className="bg-navy text-white/80 text-xs font-medium px-6 py-3 text-center">
+            Zeal Care Team in person meeting while others far away joined online to participate
+          </figcaption>
+        </figure>
+      </section>
+
       {/* Leadership */}
       <section className="container-zc py-24 md:py-32 scroll-mt-32" id="leadership">
         <div className="max-w-3xl">
@@ -65,12 +87,27 @@ export default function WhoWeAre() {
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {leadership.map((p) => (
             <article key={p.name} className="bg-white rounded-[2rem] p-7 border border-secondary hover:shadow-card-lg transition-all">
-              <Avatar name={p.name} />
+              <Avatar name={p.name} photo={p.photo} />
               <h3 className="mt-5 text-lg font-black text-navy">{p.name}</h3>
               <p className="text-sm font-bold text-primary mt-1">{p.role}</p>
               <p className="mt-3 text-sm text-navy/70 leading-relaxed">{p.bio}</p>
             </article>
           ))}
+        </div>
+
+        {/* Partnership snapshot */}
+        <div className="mt-16 grid lg:grid-cols-12 gap-8 items-center bg-soft-gradient rounded-[2rem] border border-secondary p-6 md:p-8">
+          <div className="lg:col-span-7 rounded-2xl overflow-hidden">
+            <img src={partnershipPhoto} alt="Zeal Care Team and Esfans Academy administrator in a partnership discussion" loading="lazy" className="w-full h-full object-cover aspect-[4/3]" />
+          </div>
+          <div className="lg:col-span-5">
+            <span className="eyebrow">In the field</span>
+            <h3 className="mt-2 text-2xl md:text-3xl font-black text-navy">Partnership in motion</h3>
+            <p className="mt-3 text-navy/70 leading-relaxed text-sm">
+              Zeal Care Team and the Esfans Academy administrator in a partnership discussion — one of many on-the-ground
+              conversations that shape how we deliver education across Monrovia and beyond.
+            </p>
+          </div>
         </div>
       </section>
 

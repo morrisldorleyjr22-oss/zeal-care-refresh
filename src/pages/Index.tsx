@@ -139,19 +139,19 @@ export default function Index() {
         <div className="container-zc">
           <div className="text-center max-w-3xl mx-auto">
             <span className="eyebrow">The Zeal Advantage</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black tracking-tight text-navy text-balance">
+            <h2 className="mt-3 text-3xl md:text-4xl font-black tracking-tight text-navy text-balance">
               We don't do band-aids. <span className="text-primary">We build foundations.</span>
             </h2>
           </div>
 
-          <div className="mt-16 grid md:grid-cols-3 gap-6 md:gap-8">
-            {advantages.map((a) => (
-              <div key={a.title} className="group bg-white rounded-[2rem] p-8 md:p-10 border border-secondary hover:shadow-card-lg transition-all duration-300 flex flex-col">
-                <div className={`size-16 ${a.color} ${a.rotate} rounded-2xl flex items-center justify-center mb-7 group-hover:-translate-y-1.5 transition-transform`}>
-                  <a.icon className="h-7 w-7" strokeWidth={2.5} />
+          <div className="mt-14 grid md:grid-cols-3 gap-6 md:gap-8">
+            {advantages.map((a, i) => (
+              <div key={a.title} className={`reveal reveal-delay-${i + 1} hover-lift group bg-white rounded-[2rem] p-7 md:p-8 border border-secondary flex flex-col`}>
+                <div className={`size-14 ${a.color} ${a.rotate} rounded-2xl flex items-center justify-center mb-6 group-hover:-translate-y-1.5 transition-transform`}>
+                  <a.icon className="h-6 w-6" strokeWidth={2.5} />
                 </div>
-                <h3 className="text-2xl font-black text-navy mb-3">{a.title}</h3>
-                <p className="text-navy/70 leading-relaxed font-medium flex-grow">{a.body}</p>
+                <h3 className="text-xl md:text-2xl font-black text-navy mb-2">{a.title}</h3>
+                <p className="text-sm md:text-base text-navy/70 leading-relaxed font-medium flex-grow">{a.body}</p>
               </div>
             ))}
           </div>

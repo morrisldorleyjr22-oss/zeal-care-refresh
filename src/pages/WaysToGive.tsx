@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
-import { CalendarClock, Package, Building2, Smartphone, ArrowRight } from "lucide-react";
+import { CalendarClock, Package, Building2, Smartphone, ArrowRight, Heart } from "lucide-react";
+import { ICON_STROKE } from "@/lib/icon-defaults";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const ways = [
@@ -76,8 +77,9 @@ export default function WaysToGive() {
             <div className="mt-8 inline-flex items-center gap-2 bg-navy text-white rounded-full px-5 py-2 w-max font-bold text-sm">
               100% Direct Program Funding
             </div>
-            <button className="mt-6 btn-primary !bg-navy !text-accent !shadow-card-lg w-max">
-              Donate ${amount} now <ArrowRight className="h-4 w-4" />
+            <button className="mt-6 inline-flex items-center justify-center gap-2 bg-navy text-accent font-bold uppercase tracking-wide px-7 py-4 rounded-full text-sm shadow-card-lg hover:scale-[1.03] transition-transform duration-300 w-max">
+              <Heart className="h-4 w-4" strokeWidth={ICON_STROKE} fill="currentColor" />
+              Donate ${amount} now
             </button>
           </div>
         </div>

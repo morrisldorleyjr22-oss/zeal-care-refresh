@@ -235,6 +235,7 @@ export default function Media() {
               </Link>
             </div>
           ))}
+          </div>
         </div>
       </section>
     </div>

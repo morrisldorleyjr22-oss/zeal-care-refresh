@@ -40,8 +40,8 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-3 pt-2">
             {[Facebook, Instagram, Linkedin].map((Icon, i) => (
-              <a key={i} href="#" aria-label="Social link" className="size-10 rounded-full bg-white/10 hover:bg-accent hover:text-navy flex items-center justify-center transition-colors">
-                <Icon className="h-4 w-4" />
+              <a key={i} href="#" aria-label="Social link" className="group size-10 rounded-xl bg-white/5 border border-white/10 hover:bg-accent hover:border-accent hover:text-navy flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5">
+                <Icon className="h-4 w-4" strokeWidth={2} />
               </a>
             ))}
           </div>
@@ -63,9 +63,24 @@ export default function Footer() {
         <div className="md:col-span-3 flex flex-col gap-4">
           <h4 className="font-bold uppercase text-xs tracking-[0.2em] text-accent">Get in Touch</h4>
           <ul className="space-y-3 text-sm text-white/75">
-            <li className="flex gap-3"><MapPin className="h-4 w-4 text-accent shrink-0 mt-0.5" /> Monrovia, Liberia</li>
-            <li className="flex gap-3"><Phone className="h-4 w-4 text-accent shrink-0 mt-0.5" /> +231 886 727 619</li>
-            <li className="flex gap-3"><Mail className="h-4 w-4 text-accent shrink-0 mt-0.5" /> info@zealcare.org</li>
+            <li className="flex items-start gap-3">
+              <span className="inline-flex size-7 items-center justify-center rounded-lg bg-white/5 border border-white/10 shrink-0">
+                <MapPin className="h-3.5 w-3.5 text-accent" strokeWidth={2.25} />
+              </span>
+              <span className="pt-1">Monrovia, Liberia</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="inline-flex size-7 items-center justify-center rounded-lg bg-white/5 border border-white/10 shrink-0">
+                <Phone className="h-3.5 w-3.5 text-accent" strokeWidth={2.25} />
+              </span>
+              <span className="pt-1">+231 886 727 619</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="inline-flex size-7 items-center justify-center rounded-lg bg-white/5 border border-white/10 shrink-0">
+                <Mail className="h-3.5 w-3.5 text-accent" strokeWidth={2.25} />
+              </span>
+              <span className="pt-1">info@zealcare.org</span>
+            </li>
           </ul>
         </div>
       </div>

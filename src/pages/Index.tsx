@@ -5,6 +5,7 @@ import portraitImg from "@/assets/hero-children-2.jpg";
 import stemImg from "@/assets/program-stem.jpg";
 import leadershipImg from "@/assets/program-leadership.jpg";
 import educationImg from "@/assets/program-education.jpg";
+import { useReveal } from "@/hooks/useReveal";
 
 const stats = [
   { value: "850+", label: "Active Scholars" },
@@ -35,8 +36,9 @@ const programs = [
 const partners = ["USAID", "Orange", "Ecobank", "UNICEF", "Global Fund", "World Vision"];
 
 export default function Index() {
+  const ref = useReveal<HTMLDivElement>();
   return (
-    <>
+    <div ref={ref}>
       {/* HERO */}
       <section className="relative bg-hero-gradient text-white overflow-hidden">
         <div className="absolute -top-32 -right-32 size-[28rem] bg-accent/20 rounded-full blur-3xl pointer-events-none" />
@@ -51,10 +53,10 @@ export default function Index() {
                 Empowering Africa's Future Leaders
               </span>
             </div>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-balance">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight text-balance">
               Igniting Potential, <span className="text-accent">Inspiring Change.</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/85 leading-relaxed max-w-[46ch]">
+            <p className="text-base md:text-lg text-white/85 leading-relaxed max-w-[46ch]">
               We believe every child is a spark of genius. We provide the tools, mentorship, and opportunities to set that genius free.
             </p>
             <div className="flex flex-wrap gap-4 mt-2">
@@ -91,10 +93,10 @@ export default function Index() {
           <div className="bg-white rounded-3xl p-6 md:p-8 shadow-card-lg border border-secondary grid grid-cols-2 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-secondary">
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col items-center justify-center text-center px-4 py-4 md:py-2">
-                <span className="text-3xl md:text-4xl font-black text-primary tabular-nums tracking-tighter">
+                <span className="text-2xl md:text-3xl font-black text-primary tabular-nums tracking-tighter">
                   {s.value}
                 </span>
-                <span className="text-[11px] font-bold text-navy mt-1 uppercase tracking-widest">{s.label}</span>
+                <span className="text-[10px] font-bold text-navy mt-1 uppercase tracking-widest">{s.label}</span>
               </div>
             ))}
           </div>
@@ -115,15 +117,15 @@ export default function Index() {
         </div>
         <div className="lg:col-span-7 lg:pl-8">
           <span className="eyebrow">Our Institutional Purpose</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black tracking-tight text-navy">
+          <h2 className="mt-3 text-3xl md:text-4xl font-black tracking-tight text-navy">
             Our Mission
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-navy/75 max-w-2xl">
+          <p className="mt-5 text-base md:text-lg leading-relaxed text-navy/75 max-w-2xl">
             At <strong>ZEAL CARE</strong>, we believe every child deserves a chance to thrive, regardless of their background.
             Our mission is to break the cycle of poverty by providing quality education and mentorship to underserved communities.
           </p>
-          <blockquote className="mt-8 border-l-4 border-accent bg-secondary/60 rounded-r-2xl p-6 text-navy italic font-medium text-lg">
-            <Quote className="h-6 w-6 text-accent mb-2" />
+          <blockquote className="mt-7 border-l-4 border-accent bg-secondary/60 rounded-r-2xl p-5 text-navy italic font-medium text-base md:text-lg">
+            <Quote className="h-5 w-5 text-accent mb-2" />
             "Education is the most powerful weapon which you can use to change the world."
           </blockquote>
           <div className="mt-8 flex gap-4">
@@ -137,21 +139,21 @@ export default function Index() {
       {/* WHAT SETS US APART */}
       <section className="bg-soft-gradient py-24 md:py-32">
         <div className="container-zc">
-          <div className="text-center max-w-3xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto reveal">
             <span className="eyebrow">The Zeal Advantage</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black tracking-tight text-navy text-balance">
+            <h2 className="mt-3 text-3xl md:text-4xl font-black tracking-tight text-navy text-balance">
               We don't do band-aids. <span className="text-primary">We build foundations.</span>
             </h2>
           </div>
 
-          <div className="mt-16 grid md:grid-cols-3 gap-6 md:gap-8">
-            {advantages.map((a) => (
-              <div key={a.title} className="group bg-white rounded-[2rem] p-8 md:p-10 border border-secondary hover:shadow-card-lg transition-all duration-300 flex flex-col">
-                <div className={`size-16 ${a.color} ${a.rotate} rounded-2xl flex items-center justify-center mb-7 group-hover:-translate-y-1.5 transition-transform`}>
-                  <a.icon className="h-7 w-7" strokeWidth={2.5} />
+          <div className="mt-14 grid md:grid-cols-3 gap-6 md:gap-8">
+            {advantages.map((a, i) => (
+              <div key={a.title} className={`reveal reveal-delay-${i + 1} hover-lift group bg-white rounded-[2rem] p-7 md:p-8 border border-secondary flex flex-col`}>
+                <div className={`size-14 ${a.color} ${a.rotate} rounded-2xl flex items-center justify-center mb-6 group-hover:-translate-y-1.5 transition-transform`}>
+                  <a.icon className="h-6 w-6" strokeWidth={2.5} />
                 </div>
-                <h3 className="text-2xl font-black text-navy mb-3">{a.title}</h3>
-                <p className="text-navy/70 leading-relaxed font-medium flex-grow">{a.body}</p>
+                <h3 className="text-xl md:text-2xl font-black text-navy mb-2">{a.title}</h3>
+                <p className="text-sm md:text-base text-navy/70 leading-relaxed font-medium flex-grow">{a.body}</p>
               </div>
             ))}
           </div>
@@ -163,27 +165,27 @@ export default function Index() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <span className="eyebrow">Our Impact Areas</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black tracking-tight text-navy">Our Core Programs</h2>
+            <h2 className="mt-3 text-3xl md:text-4xl font-black tracking-tight text-navy">Our Core Programs</h2>
           </div>
-          <Link to="/what-we-do" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">
+          <Link to="/what-we-do" className="inline-flex items-center gap-2 font-bold text-sm text-primary hover:text-navy transition-colors">
             View all programs <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {programs.map((p) => (
-            <article key={p.title} className="group rounded-[2rem] overflow-hidden border border-secondary bg-white hover:shadow-card-lg transition-all">
+          {programs.map((p, i) => (
+            <article key={p.title} className={`reveal reveal-delay-${i + 1} hover-lift group rounded-[2rem] overflow-hidden border border-secondary bg-white`}>
               <div className="aspect-[4/3] overflow-hidden">
                 <img src={p.img} alt={p.title} loading="lazy" width={1280} height={960}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
-              <div className="p-7">
-                <div className="size-12 -mt-12 mb-4 relative bg-accent rounded-2xl flex items-center justify-center shadow-yellow-glow">
+              <div className="p-6">
+                <div className="size-11 -mt-11 mb-3 relative bg-accent rounded-2xl flex items-center justify-center shadow-yellow-glow tilt-hover">
                   <p.icon className="h-5 w-5 text-navy" strokeWidth={2.5} />
                 </div>
-                <h3 className="text-xl font-black text-navy">{p.title}</h3>
-                <p className="mt-2 text-navy/70 font-medium">{p.desc}</p>
-                <Link to="/what-we-do" className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-primary group-hover:text-navy transition-colors">
+                <h3 className="text-lg md:text-xl font-black text-navy">{p.title}</h3>
+                <p className="mt-2 text-sm text-navy/70 font-medium">{p.desc}</p>
+                <Link to="/what-we-do" className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-primary group-hover:text-navy transition-colors">
                   View details <ChevronRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -197,16 +199,16 @@ export default function Index() {
         <div className="absolute -top-40 -right-40 size-[28rem] bg-accent/15 rounded-full blur-3xl" />
         <div className="container-zc relative">
           <div className="max-w-4xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Voices of Impact</span>
-            <Quote className="h-12 w-12 text-accent mt-6" />
-            <p className="mt-6 text-3xl md:text-4xl font-light leading-tight text-balance">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">Voices of Impact</span>
+            <Quote className="h-10 w-10 text-accent mt-5" />
+            <p className="mt-5 text-2xl md:text-3xl font-light leading-tight text-balance">
               "The digital skills I learned here got me my first job at a local tech firm. I am now the breadwinner for my family."
             </p>
-            <div className="mt-8 flex items-center gap-4">
-              <div className="size-14 rounded-full bg-accent flex items-center justify-center font-black text-navy text-xl">K</div>
+            <div className="mt-7 flex items-center gap-4">
+              <div className="size-12 rounded-full bg-accent flex items-center justify-center font-black text-navy text-lg">K</div>
               <div>
-                <div className="font-bold">Kelvin M.</div>
-                <div className="text-sm text-white/60">STEM Scholar</div>
+                <div className="font-bold text-sm">Kelvin M.</div>
+                <div className="text-xs text-white/60">STEM Scholar</div>
               </div>
             </div>
           </div>
@@ -217,11 +219,11 @@ export default function Index() {
       <section className="container-zc py-20">
         <div className="text-center mb-10">
           <span className="eyebrow">Strategic Global Ecosystem</span>
-          <h2 className="mt-3 text-3xl md:text-4xl font-black text-navy">Our Strategic Partners</h2>
+          <h2 className="mt-3 text-2xl md:text-3xl font-black text-navy">Our Strategic Partners</h2>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
           {partners.map((p) => (
-            <span key={p} className="text-2xl md:text-3xl font-black text-navy/30 hover:text-primary transition-colors tracking-tight">
+            <span key={p} className="text-xl md:text-2xl font-black text-navy/30 hover:text-primary transition-colors tracking-tight">
               {p}
             </span>
           ))}
@@ -233,13 +235,13 @@ export default function Index() {
         <div className="bg-soft-gradient rounded-[2.5rem] border border-secondary p-8 md:p-14 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-5">
             <span className="eyebrow">Accountability Standard</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Radical Integrity.</h2>
-            <p className="mt-5 text-navy/70 text-lg leading-relaxed">
+            <h2 className="mt-3 text-3xl md:text-4xl font-black text-navy">Radical Integrity.</h2>
+            <p className="mt-4 text-base md:text-lg text-navy/70 leading-relaxed">
               Our verified fiscal methodology ensures that institutional resources are deployed where they create the most equity.
             </p>
-            <div className="mt-8 inline-flex items-center gap-3 bg-accent text-navy font-black rounded-2xl px-6 py-4">
-              <span className="text-3xl tabular-nums">85%</span>
-              <span className="text-sm uppercase tracking-widest">Direct Impact</span>
+            <div className="mt-7 inline-flex items-center gap-3 bg-accent text-navy font-black rounded-2xl px-5 py-3.5">
+              <span className="text-2xl tabular-nums">85%</span>
+              <span className="text-xs uppercase tracking-widest">Direct Impact</span>
             </div>
           </div>
           <div className="lg:col-span-7 space-y-5">
@@ -261,6 +263,6 @@ export default function Index() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

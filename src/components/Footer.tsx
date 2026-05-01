@@ -8,10 +8,10 @@ export default function Footer() {
       <div className="container-zc py-16 md:py-20 border-b border-white/10">
         <div className="grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7">
-            <h2 className="text-3xl md:text-5xl font-black leading-tight tracking-tight text-balance">
+            <h2 className="text-2xl md:text-4xl font-black leading-tight tracking-tight text-balance">
               Ready to make an impact?
             </h2>
-            <p className="mt-4 text-white/70 text-lg max-w-2xl">
+            <p className="mt-3 text-white/70 text-base md:text-lg max-w-2xl">
               Your support helps us provide a future full of hope and possibility for underprivileged children in Liberia.
             </p>
           </div>
@@ -33,9 +33,9 @@ export default function Footer() {
             <div className="size-10 bg-accent rounded-2xl flex items-center justify-center">
               <div className="size-3.5 bg-navy rounded-full" />
             </div>
-            <span className="font-black text-2xl tracking-tight text-white uppercase">Zeal Care</span>
+            <span className="font-black text-xl tracking-tight text-white uppercase">Zeal Care</span>
           </Link>
-          <p className="text-white/70 leading-relaxed max-w-sm">
+          <p className="text-sm text-white/70 leading-relaxed max-w-sm">
             Empowering youth through education, STEM, and leadership. Together, we ignite potential and inspire change for a brighter future.
           </p>
           <div className="flex items-center gap-3 pt-2">

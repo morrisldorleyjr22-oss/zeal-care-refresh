@@ -34,7 +34,9 @@ const App = () => (
             <Route path="/ways-to-give" element={<WaysToGive />} />
             <Route path="/ignite-potential" element={<WaysToGive />} />
             <Route path="/media" element={<Media />} />
+            <Route path="/media/:slug" element={<ArticleDetail />} />
             <Route path="/news" element={<Media />} />
+            <Route path="/news/:slug" element={<ArticleDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -5,6 +5,10 @@ import stem from "@/assets/program-stem.jpg";
 import edu from "@/assets/program-education.jpg";
 import lead from "@/assets/program-leadership.jpg";
 import ent from "@/assets/program-entrepreneurship.jpg";
+import projSurvey from "@/assets/project-survey.jpg";
+import projInterviews from "@/assets/project-interviews.jpg";
+import projMaterials from "@/assets/project-materials-row.jpg";
+import projFee from "@/assets/project-feepayment.jpg";
 
 const supports = [
   { label: "School Fees & Tuition", icon: GraduationCap },
@@ -94,7 +98,36 @@ export default function WhatWeDo() {
         </div>
       </section>
 
-      {/* Programs */}
+      {/* Project in Action */}
+      <section id="in-action" className="scroll-mt-32 container-zc pt-16 pb-8">
+        <div className="max-w-3xl">
+          <span className="eyebrow">Project in Action</span>
+          <h2 className="mt-3 text-3xl md:text-4xl font-black text-navy">From survey to school bag</h2>
+          <p className="mt-4 text-navy/70 leading-relaxed">
+            Every sponsorship begins with a community survey, leads to candidate interviews with parents and bloc leaders,
+            and ends with school materials and fees paid in full — transparently, in front of the community.
+          </p>
+        </div>
+        <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { img: projSurvey, label: "Digital Survey", note: "Door-to-door community mapping in Bloc D, Monrovia." },
+            { img: projInterviews, label: "Candidate Interviews", note: "Shortlisted children meet our team with parents & bloc leaders." },
+            { img: projMaterials, label: "Procuring Materials", note: "Uniforms, shoes, books, pens — sourced and verified." },
+            { img: projFee, label: "School Fee Payment", note: "Paid directly to schools in the presence of bloc leadership." },
+          ].map((s) => (
+            <figure key={s.label} className="rounded-2xl overflow-hidden border border-secondary bg-white hover:shadow-card-lg transition-all group">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img src={s.img} alt={s.label} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <figcaption className="p-4">
+                <div className="text-[11px] font-bold text-primary uppercase tracking-widest">{s.label}</div>
+                <p className="mt-1 text-sm text-navy/70 leading-snug">{s.note}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
       <section id="programs" className="scroll-mt-32 bg-soft-gradient py-24 md:py-32">
         <div className="container-zc">
           <div className="max-w-3xl mx-auto text-center">

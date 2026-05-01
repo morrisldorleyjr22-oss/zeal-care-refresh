@@ -1,11 +1,12 @@
 import PageHero from "@/components/PageHero";
 import { Quote, Handshake, Trophy, ShieldCheck, FileBarChart2, Briefcase, FileText, Clock } from "lucide-react";
-import community from "@/assets/community-wide.jpg";
-import teamMeeting from "@/assets/team-meeting.jpg";
-import partnershipPhoto from "@/assets/leader-team-classroom.jpg";
-import portraitTitus from "@/assets/leader-titus.jpg";
-import portraitMohammed from "@/assets/leader-mohammed.jpg";
-import portraitBeverley from "@/assets/leader-beverley.jpg";
+import community from "@/assets/community-wide.jpg?responsive";
+import teamMeeting from "@/assets/team-meeting.jpg?responsive";
+import partnershipPhoto from "@/assets/leader-team-classroom.jpg?responsive";
+import portraitTitus from "@/assets/leader-titus.jpg?responsive";
+import portraitMohammed from "@/assets/leader-mohammed.jpg?responsive";
+import portraitBeverley from "@/assets/leader-beverley.jpg?responsive";
+import ResponsiveImage from "@/components/ResponsiveImage";
 
 const leadership = [
   { name: "Titus S. Foko", role: "Founder & Executive Director", bio: "Strategic vision and program architect leading Zeal Care's mission across Liberia.", photo: portraitTitus },
@@ -40,12 +41,18 @@ const awards = [
   { year: "2022", title: "Civic Excellence Citation", body: "Awarded by the Monrovia City Corporation for community service." },
 ];
 
-function Avatar({ name, photo }: { name: string; photo?: string }) {
+function Avatar({ name, photo }: { name: string; photo?: { sources: Record<string, string>; img: { src: string; w: number; h: number } } }) {
   const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
   if (photo) {
     return (
       <div className="size-20 rounded-2xl overflow-hidden ring-2 ring-accent/60 shadow-yellow-glow">
-        <img src={photo} alt={name} loading="lazy" className="w-full h-full object-cover" />
+        <ResponsiveImage
+          picture={photo}
+          alt={name}
+          sizes="80px"
+          className="block w-full h-full"
+          imgClassName="w-full h-full object-cover"
+        />
       </div>
     );
   }
@@ -69,7 +76,14 @@ export default function WhoWeAre() {
       {/* Team meeting hero strip */}
       <section className="container-zc pt-16">
         <figure className="rounded-[2rem] overflow-hidden border border-secondary shadow-card-lg">
-          <img src={teamMeeting} alt="Zeal Care team in person meeting while others joined online" loading="lazy" className="w-full h-auto object-cover" />
+          <ResponsiveImage
+            picture={teamMeeting}
+            alt="Zeal Care team in person meeting while others joined online"
+            sizes="(min-width: 1280px) 1200px, 100vw"
+            className="block w-full"
+            imgClassName="w-full h-auto object-cover"
+            eager
+          />
           <figcaption className="bg-navy text-white/80 text-xs font-medium px-6 py-3 text-center">
             Zeal Care Team in person meeting while others far away joined online to participate
           </figcaption>
@@ -98,7 +112,13 @@ export default function WhoWeAre() {
         {/* Partnership snapshot */}
         <div className="mt-16 grid lg:grid-cols-12 gap-8 items-center bg-soft-gradient rounded-[2rem] border border-secondary p-6 md:p-8">
           <div className="lg:col-span-7 rounded-2xl overflow-hidden">
-            <img src={partnershipPhoto} alt="Zeal Care Team and Esfans Academy administrator in a partnership discussion" loading="lazy" className="w-full h-full object-cover aspect-[4/3]" />
+            <ResponsiveImage
+              picture={partnershipPhoto}
+              alt="Zeal Care Team and Esfans Academy administrator in a partnership discussion"
+              sizes="(min-width: 1024px) 55vw, 90vw"
+              className="block w-full h-full aspect-[4/3]"
+              imgClassName="w-full h-full object-cover"
+            />
           </div>
           <div className="lg:col-span-5">
             <span className="eyebrow">In the field</span>
@@ -135,7 +155,7 @@ export default function WhoWeAre() {
       {/* Beneficiaries */}
       <section id="beneficiaries" className="scroll-mt-32 relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={community} alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover" />
+          <ResponsiveImage picture={community} alt="" sizes="100vw" className="block w-full h-full" imgClassName="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-hero-gradient opacity-95" />
         </div>
         <div className="container-zc relative py-24 md:py-32 text-white grid lg:grid-cols-12 gap-12 items-center">

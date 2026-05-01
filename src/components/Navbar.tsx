@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Mail, Phone, ChevronDown, ChevronRight, MapPin, Heart } from "lucide-react";
+import { Menu, X, Mail, Phone, ChevronDown, ChevronRight, MapPin } from "lucide-react";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { ICON_STROKE } from "@/lib/icon-defaults";
+import ContactChip from "@/components/ContactChip";
+import DonateButton from "@/components/DonateButton";
 
 type Child = { hash: string; label: string };
 type NavItem = {

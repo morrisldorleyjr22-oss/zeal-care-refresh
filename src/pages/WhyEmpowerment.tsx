@@ -44,7 +44,7 @@ export default function WhyEmpowerment() {
       </section>
 
       {/* Social Justice */}
-      <section className="bg-navy text-white py-24 md:py-32">
+      <section id="social-justice" className="scroll-mt-32 bg-navy text-white py-24 md:py-32">
         <div className="container-zc grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="rounded-[2rem] overflow-hidden border border-white/10">
@@ -67,6 +67,36 @@ export default function WhyEmpowerment() {
               long before adulthood begins.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Economic Development */}
+      <section id="economic-development" className="scroll-mt-32 container-zc py-24 md:py-28 grid lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-7">
+          <span className="eyebrow">The Multiplier Effect</span>
+          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Economic Development</h2>
+          <p className="mt-6 text-navy/75 text-lg leading-relaxed">
+            Empowerment is not just a moral act — it is the most cost-effective economic strategy any nation can adopt. Every child we
+            educate becomes an entrepreneur, a teacher, a healthcare worker, or an innovator. That ripple effect lifts entire households
+            out of poverty within a single generation.
+          </p>
+          <p className="mt-4 text-navy/70 leading-relaxed">
+            Our entrepreneurship and STEM programs prepare scholars not only to find jobs, but to create them — building local industries
+            that keep talent and capital inside Liberia.
+          </p>
+        </div>
+        <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+          {[
+            { v: "10×", l: "Return on every $1 invested in girls' education" },
+            { v: "+25%", l: "Lifetime earnings per added year of schooling" },
+            { v: "3×", l: "Faster GDP growth in nations prioritizing education" },
+            { v: "1 gen", l: "Time needed to break the poverty cycle" },
+          ].map((s) => (
+            <div key={s.l} className="bg-white rounded-2xl border border-secondary p-5">
+              <div className="text-3xl font-black text-primary tabular-nums tracking-tighter">{s.v}</div>
+              <div className="mt-2 text-xs font-bold text-navy/60 uppercase tracking-widest leading-tight">{s.l}</div>
+            </div>
+          ))}
         </div>
       </section>
 

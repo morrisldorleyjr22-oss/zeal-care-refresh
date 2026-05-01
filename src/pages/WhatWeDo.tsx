@@ -41,7 +41,7 @@ export default function WhatWeDo() {
       />
 
       {/* How we operate */}
-      <section className="container-zc py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-start">
+      <section id="how" className="scroll-mt-32 container-zc py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-start">
         <div className="lg:col-span-6">
           <span className="eyebrow">Our Approach</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">How We Operate</h2>
@@ -66,8 +66,36 @@ export default function WhatWeDo() {
         </div>
       </section>
 
+      {/* Where We Operate */}
+      <section id="where" className="scroll-mt-32 container-zc pb-8">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-5">
+            <span className="eyebrow">On the Ground</span>
+            <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Where We Operate</h2>
+            <p className="mt-5 text-navy/70 text-lg leading-relaxed">
+              We are rooted in Liberia, focused on the communities where the gap between potential and opportunity is widest.
+              Our hubs sit inside the neighborhoods we serve — never above them.
+            </p>
+          </div>
+          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+            {[
+              { city: "Monrovia", area: "Chicken Soup Factory", note: "Flagship learning hub & STEM lab" },
+              { city: "Monrovia", area: "West Point", note: "Community education center" },
+              { city: "Grand Bassa County", area: "Rural Outreach", note: "3 new digital hubs (2026)" },
+              { city: "Pan-African", area: "Diaspora Network", note: "Donor & mentor partnerships" },
+            ].map((l) => (
+              <div key={l.area} className="bg-white rounded-2xl border border-secondary p-6 hover:shadow-card-lg transition-all">
+                <div className="text-[11px] font-bold text-primary uppercase tracking-widest">{l.city}</div>
+                <div className="mt-1 font-black text-navy text-lg">{l.area}</div>
+                <div className="mt-2 text-sm text-navy/65">{l.note}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Programs */}
-      <section className="bg-soft-gradient py-24 md:py-32">
+      <section id="programs" className="scroll-mt-32 bg-soft-gradient py-24 md:py-32">
         <div className="container-zc">
           <div className="max-w-3xl mx-auto text-center">
             <span className="eyebrow">Our Core Initiatives</span>
@@ -95,19 +123,54 @@ export default function WhatWeDo() {
         </div>
       </section>
 
-      {/* Community Impact band */}
-      <section className="relative overflow-hidden">
+      {/* What Sets Us Apart */}
+      <section id="apart" className="scroll-mt-32 container-zc py-24">
+        <div className="max-w-3xl">
+          <span className="eyebrow">The Zeal Difference</span>
+          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">What Sets Us Apart</h2>
+        </div>
+        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {[
+            { t: "Run by Young People", b: "Our team is made of the next generation, not retired observers." },
+            { t: "100% Local Roots", b: "Every hub sits inside the community it serves." },
+            { t: "STEM-First", b: "We don't just teach — we equip with future-of-work skills." },
+            { t: "Total Transparency", b: "Open books, public reports, traceable impact." },
+          ].map((c) => (
+            <div key={c.t} className="bg-white rounded-3xl border border-secondary p-7 hover:-translate-y-1 hover:shadow-card-lg transition-all">
+              <div className="size-10 rounded-xl bg-accent text-navy flex items-center justify-center font-black">★</div>
+              <h3 className="mt-4 font-black text-navy">{c.t}</h3>
+              <p className="mt-2 text-sm text-navy/70 leading-relaxed">{c.b}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Impact in Numbers */}
+      <section id="impact" className="scroll-mt-32 relative overflow-hidden">
         <div className="absolute inset-0">
           <img src={community} alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-navy/85" />
         </div>
-        <div className="container-zc relative py-20 text-white grid md:grid-cols-3 gap-8 text-center">
-          {[{ v: "850+", l: "Children Empowered" }, { v: "12+", l: "Years of Sustained Care" }, { v: "2+", l: "Communities Impacted" }].map((s) => (
-            <div key={s.l}>
-              <div className="text-5xl md:text-6xl font-black text-accent tabular-nums tracking-tighter">{s.v}</div>
-              <div className="mt-2 text-sm font-bold uppercase tracking-widest text-white/80">{s.l}</div>
-            </div>
-          ))}
+        <div className="container-zc relative py-20 text-white">
+          <div className="max-w-3xl">
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Receipts, Not Promises</span>
+            <h2 className="mt-3 text-4xl md:text-5xl font-black">Impact in Numbers</h2>
+          </div>
+          <div className="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
+            {[
+              { v: "850+", l: "Children Empowered" },
+              { v: "12+", l: "Years of Sustained Care" },
+              { v: "2+", l: "Communities Impacted" },
+              { v: "65%", l: "Female Scholars" },
+              { v: "100%", l: "Enrollment Rate" },
+              { v: "$45K", l: "Grand Bassa Goal" },
+            ].map((s) => (
+              <div key={s.l} className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                <div className="text-5xl font-black text-accent tabular-nums tracking-tighter">{s.v}</div>
+                <div className="mt-2 text-xs font-bold uppercase tracking-widest text-white/80">{s.l}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </>

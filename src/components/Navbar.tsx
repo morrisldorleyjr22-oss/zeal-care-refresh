@@ -1,17 +1,200 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Mail, Phone } from "lucide-react";
+import { Menu, X, Mail, Phone, ChevronDown } from "lucide-react";
 
-const NAV = [
+type NavItem = {
+  to: string;
+  label: string;
+  children?: { to: string; label: string }[];
+};
+
+const NAV: NavItem[] = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/why-empowerment", label: "Why Empowerment" },
-  { to: "/who-we-are", label: "Who We Are" },
-  { to: "/what-we-do", label: "What We Do" },
-  { to: "/ways-to-give", label: "Igniting Potential" },
-  { to: "/media", label: "Media" },
+  {
+    to: "/about",
+    label: "About Us",
+    children: [
+      { to: "/about#mission", label: "Our Mission" },
+      { to: "/about#vision", label: "Our Vision" },
+      { to: "/about#goals", label: "Our Goals" },
+      { to: "/about#values", label: "Our Values" },
+      { to: "/about#belief", label: "Our Belief" },
+      { to: "/about#sdg", label: "SDG Focus" },
+      { to: "/about#characteristics", label: "Characteristics We Develop" },
+    ],
+  },
+  {
+    to: "/why-empowerment",
+    label: "Why Empowerment",
+    children: [
+      { to: "/why-empowerment#social-justice", label: "Social Justice" },
+      { to: "/why-empowerment#economic-development", label: "Economic Development" },
+    ],
+  },
+  {
+    to: "/who-we-are",
+    label: "Who We Are",
+    children: [
+      { to: "/who-we-are#leadership", label: "Our Leadership" },
+      { to: "/who-we-are#board", label: "Board of Advisors" },
+      { to: "/who-we-are#beneficiaries", label: "Our Beneficiaries" },
+      { to: "/who-we-are#partners", label: "Our Partners" },
+      { to: "/who-we-are#history", label: "Our History" },
+      { to: "/who-we-are#awards", label: "Awards & Prizes" },
+      { to: "/who-we-are#safeguarding", label: "Protection & Safeguarding" },
+      { to: "/who-we-are#finance", label: "Finance & Accountability" },
+      { to: "/who-we-are#careers", label: "Work for Us" },
+      { to: "/who-we-are#tenders", label: "Tenders & Opportunities" },
+    ],
+  },
+  {
+    to: "/what-we-do",
+    label: "What We Do",
+    children: [
+      { to: "/what-we-do#how", label: "How We Operate" },
+      { to: "/what-we-do#where", label: "Where We Operate" },
+      { to: "/what-we-do#programs", label: "Our Programs" },
+      { to: "/what-we-do#apart", label: "What Sets Us Apart" },
+      { to: "/what-we-do#impact", label: "Impact in Numbers" },
+    ],
+  },
+  {
+    to: "/ways-to-give",
+    label: "Igniting Potential",
+    children: [
+      { to: "/ways-to-give#ways", label: "Ways to Give" },
+      { to: "/ways-to-give#appeals", label: "Appeals" },
+      { to: "/ways-to-give#partner", label: "Become a Partner" },
+      { to: "/ways-to-give#faq", label: "Giving FAQ" },
+    ],
+  },
+  {
+    to: "/media",
+    label: "Media",
+    children: [
+      { to: "/media#newsroom", label: "Newsroom" },
+      { to: "/media#stories", label: "Success Stories" },
+      { to: "/media#video", label: "Video" },
+      { to: "/media#gallery", label: "Photo Gallery" },
+      { to: "/media#events", label: "Events & Calendar" },
+    ],
+  },
   { to: "/contact", label: "Contact" },
 ];
+
+function DesktopItem({ item }: { item: NavItem }) {
+  const [open, setOpen] = useState(false);
+  const timer = useRef<number | null>(null);
+
+  const show = () => {
+    if (timer.current) window.clearTimeout(timer.current);
+    setOpen(true);
+  };
+  const hide = () => {
+    if (timer.current) window.clearTimeout(timer.current);
+    timer.current = window.setTimeout(() => setOpen(false), 120);
+  };
+
+  if (!item.children) {
+    return (
+      <NavLink
+        to={item.to}
+        end={item.to === "/"}
+        className={({ isActive }) =>
+          `px-3 py-2 text-[13px] font-semibold rounded-full transition-colors ${
+            isActive ? "text-primary bg-secondary" : "text-navy/70 hover:text-primary"
+          }`
+        }
+      >
+        {item.label}
+      </NavLink>
+    );
+  }
+
+  return (
+    <div className="relative" onMouseEnter={show} onMouseLeave={hide}>
+      <NavLink
+        to={item.to}
+        className={({ isActive }) =>
+          `inline-flex items-center gap-1 px-3 py-2 text-[13px] font-semibold rounded-full transition-colors ${
+            isActive ? "text-primary bg-secondary" : "text-navy/70 hover:text-primary"
+          }`
+        }
+      >
+        {item.label}
+        <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`} />
+      </NavLink>
+      {open && (
+        <div className="absolute left-0 top-full pt-3 w-64 z-50">
+          <div className="bg-white rounded-2xl border border-secondary shadow-card-lg overflow-hidden py-2 animate-in fade-in slide-in-from-top-2 duration-150">
+            {item.children.map((child) => (
+              <Link
+                key={child.to}
+                to={child.to}
+                onClick={() => setOpen(false)}
+                className="block px-4 py-2.5 text-[13px] font-semibold text-navy/75 hover:text-primary hover:bg-secondary/60 transition-colors"
+              >
+                {child.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MobileItem({ item, onNavigate }: { item: NavItem; onNavigate: () => void }) {
+  const [open, setOpen] = useState(false);
+  if (!item.children) {
+    return (
+      <NavLink
+        to={item.to}
+        end={item.to === "/"}
+        onClick={onNavigate}
+        className={({ isActive }) =>
+          `block px-3 py-3 text-sm font-semibold rounded-xl ${
+            isActive ? "text-primary bg-secondary" : "text-navy/80"
+          }`
+        }
+      >
+        {item.label}
+      </NavLink>
+    );
+  }
+  return (
+    <div className="border-b border-secondary/60 last:border-0">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="w-full flex items-center justify-between px-3 py-3 text-sm font-semibold text-navy/80"
+      >
+        {item.label}
+        <ChevronDown className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open && (
+        <div className="pb-2 pl-3">
+          <Link
+            to={item.to}
+            onClick={onNavigate}
+            className="block px-3 py-2 text-[13px] font-bold text-primary"
+          >
+            Overview
+          </Link>
+          {item.children.map((c) => (
+            <Link
+              key={c.to}
+              to={c.to}
+              onClick={onNavigate}
+              className="block px-3 py-2 text-[13px] font-medium text-navy/70 hover:text-primary"
+            >
+              {c.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -25,7 +208,9 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-50">
@@ -56,20 +241,9 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-0.5">
             {NAV.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end={item.to === "/"}
-                className={({ isActive }) =>
-                  `px-3 py-2 text-[13px] font-semibold rounded-full transition-colors ${
-                    isActive ? "text-primary bg-secondary" : "text-navy/70 hover:text-primary"
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
+              <DesktopItem key={item.to} item={item} />
             ))}
           </div>
 
@@ -92,24 +266,14 @@ export default function Navbar() {
 
         {/* Mobile drawer */}
         {open && (
-          <div className="lg:hidden border-t border-secondary bg-white">
-            <div className="container-zc py-4 flex flex-col">
+          <div className="lg:hidden border-t border-secondary bg-white max-h-[80vh] overflow-y-auto">
+            <div className="container-zc py-3 flex flex-col">
               {NAV.map((item) => (
-                <NavLink
-                  key={item.to}
-                  to={item.to}
-                  end={item.to === "/"}
-                  className={({ isActive }) =>
-                    `px-3 py-3 text-sm font-semibold rounded-xl ${
-                      isActive ? "text-primary bg-secondary" : "text-navy/80"
-                    }`
-                  }
-                >
-                  {item.label}
-                </NavLink>
+                <MobileItem key={item.to} item={item} onNavigate={() => setOpen(false)} />
               ))}
               <Link
                 to="/ways-to-give"
+                onClick={() => setOpen(false)}
                 className="mt-3 bg-navy text-white px-5 py-3 rounded-full font-bold text-sm text-center"
               >
                 Donate Now

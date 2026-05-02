@@ -114,12 +114,11 @@ export default function Index() {
       <section className="container-zc py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-5 relative">
           <div className="rounded-[2rem] overflow-hidden shadow-card-lg">
-            <ResponsiveImage
-              picture={stemImg}
+            <img
+              src={c.get("img_mission")}
               alt="Children learning together with technology"
-              sizes="(min-width: 1024px) 40vw, 90vw"
-              className="block w-full aspect-[4/5]"
-              imgClassName="w-full h-full object-cover"
+              className="w-full aspect-[4/5] object-cover"
+              loading="lazy"
             />
           </div>
           <div className="absolute -bottom-6 -right-6 bg-accent text-navy rounded-2xl px-6 py-5 shadow-yellow-glow max-w-[16rem] hidden md:block">
@@ -128,17 +127,16 @@ export default function Index() {
           </div>
         </div>
         <div className="lg:col-span-7 lg:pl-8">
-          <span className="eyebrow">Our Institutional Purpose</span>
+          <span className="eyebrow">{c.get("mission_eyebrow")}</span>
           <h2 className="mt-3 text-3xl md:text-4xl font-black tracking-tight text-navy">
-            Our Mission
+            {c.get("mission_title")}
           </h2>
           <p className="mt-5 text-base md:text-lg leading-relaxed text-navy/75 max-w-2xl">
-            At <strong>ZEAL CARE</strong>, we believe every child deserves a chance to thrive, regardless of their background.
-            Our mission is to break the cycle of poverty by providing quality education and mentorship to underserved communities.
+            {c.get("mission_body")}
           </p>
           <blockquote className="mt-7 border-l-4 border-accent bg-secondary/60 rounded-r-2xl p-5 text-navy italic font-medium text-base md:text-lg">
             <Quote className="h-5 w-5 text-accent mb-2" />
-            "Education is the most powerful weapon which you can use to change the world."
+            {c.get("mission_quote")}
           </blockquote>
           <div className="mt-8 flex gap-4">
             <Link to="/about" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">

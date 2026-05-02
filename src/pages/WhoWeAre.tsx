@@ -242,7 +242,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* Safeguarding */}
-      <section id="safeguarding" className="scroll-mt-32 bg-navy text-white py-24">
+      <section id="safeguarding" className="scroll-mt-32 bg-hero-gradient text-white py-24">
         <div className="container-zc grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Our Promise</span>

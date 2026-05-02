@@ -169,7 +169,7 @@ export default function Media() {
       </section>
 
       {/* Cinematics / Video */}
-      <section id="video" className="scroll-mt-32 bg-navy text-white py-16 md:py-20">
+      <section id="video" className="scroll-mt-32 bg-hero-gradient text-white py-16 md:py-20">
         <div className="container-zc">
           <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
             Visual Narratives

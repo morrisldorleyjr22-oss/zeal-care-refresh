@@ -108,7 +108,7 @@ export default function About() {
       </section>
 
       {/* SDG Focus */}
-      <section id="sdg" className="scroll-mt-32 bg-navy text-white py-24">
+      <section id="sdg" className="scroll-mt-32 bg-hero-gradient text-white py-24">
         <div className="container-zc">
           <div className="max-w-3xl">
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Global Alignment</span>

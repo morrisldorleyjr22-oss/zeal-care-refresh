@@ -42,7 +42,7 @@ export default function WhyEmpowerment() {
       </section>
 
       {/* Social Justice */}
-      <section id="social-justice" className="scroll-mt-32 bg-navy text-white py-24 md:py-32">
+      <section id="social-justice" className="scroll-mt-32 bg-hero-gradient text-white py-24 md:py-32">
         <div className="container-zc grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="rounded-[2rem] overflow-hidden border border-white/10">

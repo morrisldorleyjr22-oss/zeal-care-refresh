@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Calendar, Clock, Share2, User } from "lucide-react";
 import { articles, getArticleBySlug } from "@/data/articles";
 import { useReveal } from "@/hooks/useReveal";
-import ResponsiveImage from "@/components/ResponsiveImage";
+import ArticleImage from "@/components/ArticleImage";
 import { toast } from "sonner";
 
 export default function ArticleDetail() {

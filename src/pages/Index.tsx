@@ -46,22 +46,22 @@ export default function Index() {
         <div className="absolute -top-32 -right-32 size-[28rem] bg-accent/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-40 -left-40 size-[32rem] bg-primary-glow/30 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="container-zc relative pt-28 pb-44 md:pt-40 md:pb-56 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="container-zc relative pt-16 pb-24 sm:pt-20 sm:pb-32 md:pt-28 md:pb-40 lg:pt-36 lg:pb-52 grid lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
           {/* Copy */}
-          <div className="lg:col-span-6 flex flex-col gap-7 animate-fade-up">
-            <div className="inline-flex items-center gap-3 bg-white/10 border border-white/20 rounded-full px-5 py-2 w-max">
+          <div className="lg:col-span-6 flex flex-col gap-5 sm:gap-6 lg:gap-7 animate-fade-up text-center lg:text-left items-center lg:items-start">
+            <div className="inline-flex items-center gap-2 sm:gap-3 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 sm:px-5 sm:py-2 w-max">
               <span className="size-2 rounded-full bg-accent animate-pulse" />
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/90">
+              <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.18em] sm:tracking-[0.2em] text-white/90">
                 {hero.eyebrow}
               </span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight text-balance">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.08] sm:leading-[1.05] tracking-tight text-balance">
               {hero.title}
             </h1>
-            <p className="text-base md:text-lg text-white/85 leading-relaxed max-w-[46ch]">
+            <p className="text-sm sm:text-base md:text-lg text-white/85 leading-relaxed max-w-[42ch] sm:max-w-[46ch] mx-auto lg:mx-0">
               {hero.subtitle}
             </p>
-            <div className="flex flex-wrap gap-4 mt-2">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mt-1 sm:mt-2">
               <Link to={hero.cta_primary_url} className="btn-primary">
                 {hero.cta_primary_label}
                 <span className="size-6 bg-navy rounded-full flex items-center justify-center text-accent">

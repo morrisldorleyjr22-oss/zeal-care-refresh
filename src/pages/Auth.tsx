@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 import { Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
+import logo from "@/assets/zealcare-logo.png";
 
 const schema = z.object({
   email: z.string().trim().email("Enter a valid email").max(255),
@@ -71,6 +72,11 @@ export default function Auth() {
       <div className="w-full max-w-md">
         <div className="bg-card border border-border rounded-3xl shadow-xl overflow-hidden">
           <div className="bg-hero-gradient p-6 text-white">
+            <div className="flex items-center justify-center mb-4">
+              <div className="bg-white rounded-2xl p-3 shadow-soft">
+                <img src={logo} alt="Zeal Care" className="h-16 w-auto object-contain" />
+              </div>
+            </div>
             <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-3 py-1">
               <ShieldCheck className="size-3.5 text-accent" />
               <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent">
@@ -80,9 +86,6 @@ export default function Auth() {
             <h1 className="mt-3 text-2xl font-black tracking-tight">
               {mode === "signin" ? "Welcome back" : "Create your account"}
             </h1>
-            <p className="text-sm text-white/75 mt-1">
-              Sign in to edit site content, photos, and settings.
-            </p>
           </div>
           <form onSubmit={onSubmit} className="p-6 space-y-4">
             <div className="space-y-2">

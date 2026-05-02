@@ -15,6 +15,7 @@ import ContactChip from "@/components/ContactChip";
 import DonateButton from "@/components/DonateButton";
 import { ICON_STROKE, ICON_STROKE_LG } from "@/lib/icon-defaults";
 import { useSetting } from "@/hooks/useSiteSettings";
+import logo from "@/assets/zealcare-logo.png";
 
 export default function Footer() {
   const contact = useSetting("contact_info");
@@ -95,13 +96,10 @@ export default function Footer() {
       <div className="relative container-zc pb-14 grid gap-12 md:grid-cols-12">
         {/* Brand */}
         <div className="md:col-span-4 flex flex-col gap-5">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="size-11 bg-accent rounded-2xl flex items-center justify-center shadow-yellow-glow group-hover:rotate-6 transition-transform">
-              <div className="size-3.5 bg-navy rounded-full" />
+          <Link to="/" className="flex items-center gap-3 group" aria-label="Zeal Care home">
+            <div className="bg-white rounded-2xl p-2.5 shadow-yellow-glow group-hover:rotate-3 transition-transform">
+              <img src={logo} alt="Zeal Care" className="h-14 w-auto object-contain" />
             </div>
-            <span className="font-black text-xl tracking-tight text-white uppercase">
-              Zeal Care
-            </span>
           </Link>
           <p className="text-sm text-white/75 leading-relaxed max-w-sm">
             {footer.tagline}

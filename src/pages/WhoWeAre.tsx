@@ -180,6 +180,57 @@ export default function WhoWeAre() {
         </div>
       </section>
 
+      {/* Pictorials of Successful Beneficiaries */}
+      <section id="pictorials" className="scroll-mt-32 relative bg-soft-gradient py-24 md:py-32 overflow-hidden">
+        <div className="absolute -top-24 -right-24 size-72 bg-primary/10 rounded-full blur-3xl" aria-hidden />
+        <div className="absolute -bottom-32 -left-24 size-96 bg-accent/15 rounded-full blur-3xl" aria-hidden />
+
+        <div className="container-zc relative">
+          <div className="max-w-3xl">
+            <span className="eyebrow">Faces of Impact</span>
+            <h2 className="mt-3 text-3xl md:text-5xl font-black text-navy">
+              Pictorials of Successful Beneficiaries
+            </h2>
+            <p className="mt-2 text-primary font-bold text-lg">2024 / 2025 Academic Year — Liberia</p>
+            <p className="mt-4 text-navy/70 text-lg leading-relaxed">
+              Meet some of the scholars whose lives were transformed this academic year through your generosity and our shared commitment to education.
+            </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6">
+            {[
+              { name: "Varsco Harris", url: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/Varsco%20Harris.jpeg" },
+              { name: "Scholar Highlight", url: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/WhatsApp%20Image%202026-05-02%20at%202.08.17%20AM%20(5).jpeg" },
+              { name: "Scholar Highlight", url: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/WhatsApp%20Image%202026-05-02%20at%202.08.17%20AM%20(3).jpeg" },
+              { name: "Elishaka Fofana Donzo", url: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/Elishaka%20Fofana%20Donzo.jpeg" },
+              { name: "Melvin Jarteh", url: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/Melvin%20Jarteh.jpeg" },
+              { name: "Ruth Flomo", url: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/Ruth%20Flomo.jpeg" },
+            ].map((b, i) => (
+              <figure
+                key={b.url}
+                className="group relative overflow-hidden rounded-3xl bg-white border-2 border-primary/15 shadow-[0_12px_30px_-15px_hsl(var(--primary)/0.4)] hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_hsl(var(--primary)/0.55)] transition-all duration-300"
+              >
+                <div className="aspect-[3/4] overflow-hidden bg-secondary">
+                  <img
+                    src={b.url}
+                    alt={`Successful beneficiary — ${b.name}, 2024/2025 academic year, Liberia`}
+                    loading={i < 3 ? "eager" : "lazy"}
+                    decoding="async"
+                    // @ts-expect-error fetchpriority is valid HTML
+                    fetchpriority={i < 3 ? "high" : "low"}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <figcaption className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-navy/90 via-navy/60 to-transparent text-white">
+                  <div className="text-sm font-bold tracking-wide">{b.name}</div>
+                  <div className="text-xs text-white/80 uppercase tracking-widest mt-0.5">Class of 2024/25</div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Partners */}
       <section id="partners" className="scroll-mt-32 container-zc py-24">
         <div className="max-w-3xl">

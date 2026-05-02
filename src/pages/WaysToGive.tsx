@@ -41,6 +41,94 @@ export default function WaysToGive() {
   const [amount, setAmount] = useState(50);
   const c = usePageContent("ways_to_give");
 
+  // --- Mobile Money confirmation flow state ---
+  const [pledgeOpen, setPledgeOpen] = useState(false);
+  const [pledgeProvider, setPledgeProvider] = useState<string>("");
+  const [pledgeStep, setPledgeStep] = useState<"form" | "success">("form");
+  const [submitting, setSubmitting] = useState(false);
+  const [confirmation, setConfirmation] = useState<{
+    id: string;
+    donor_name: string;
+    amount: string;
+    provider: string;
+    reference?: string;
+  } | null>(null);
+  const [form, setForm] = useState({
+    donor_name: "",
+    contact: "",
+    amount: "",
+    reference: "",
+    note: "",
+  });
+
+  function openPledge(provider: string) {
+    setPledgeProvider(provider);
+    setPledgeStep("form");
+    setForm({ donor_name: "", contact: "", amount: "", reference: "", note: "" });
+    setPledgeOpen(true);
+  }
+
+  async function submitPledge(e: React.FormEvent) {
+    e.preventDefault();
+    if (submitting) return;
+    const amt = Number(form.amount);
+    if (!form.donor_name.trim() || !form.contact.trim() || !amt || amt <= 0) {
+      toast.error("Please fill in your name, contact, and a valid amount.");
+      return;
+    }
+    setSubmitting(true);
+    const { data, error } = await supabase
+      .from("mobile_money_pledges")
+      .insert({
+        donor_name: form.donor_name.trim(),
+        contact: form.contact.trim(),
+        amount: amt,
+        provider: pledgeProvider,
+        reference: form.reference.trim() || null,
+        note: form.note.trim() || null,
+      })
+      .select("id, donor_name, amount, provider, reference")
+      .single();
+    setSubmitting(false);
+    if (error) {
+      console.error("[pledge] insert error", error);
+      toast.error("We couldn't record your donation. Please try again.");
+      return;
+    }
+    setConfirmation({
+      id: data.id,
+      donor_name: data.donor_name,
+      amount: String(data.amount),
+      provider: data.provider,
+      reference: data.reference ?? undefined,
+    });
+    setPledgeStep("success");
+    toast.success("Thank you! Your donation is being verified.");
+  }
+
+  function copyReference() {
+    if (!confirmation) return;
+    navigator.clipboard.writeText(confirmation.id).then(
+      () => toast.success("Reference ID copied"),
+      () => toast.error("Unable to copy"),
+    );
+  }
+
+  async function sharePledge() {
+    if (!confirmation) return;
+    const text = `I just supported ZEAL CARE with $${confirmation.amount} via ${confirmation.provider}. Join me — every child deserves a chance.`;
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: "I supported ZEAL CARE", text, url: window.location.href });
+      } catch {
+        /* user cancelled */
+      }
+    } else {
+      navigator.clipboard.writeText(`${text} ${window.location.href}`);
+      toast.success("Share message copied to clipboard");
+    }
+  }
+
   const impact = amount >= 1000 ? "Strategic Hub" : amount >= 500 ? "Full Scholarship" : amount >= 100 ? "Quarterly Sponsorship" : "Monthly Sustainer";
 
   return (

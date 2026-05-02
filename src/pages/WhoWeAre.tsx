@@ -385,7 +385,7 @@ export default function WhoWeAre() {
               { v: "Annual", l: "Independent audit" },
               { v: "Quarterly", l: "Donor reports" },
             ].map((s) => (
-              <div key={s.l} className="bg-soft-gradient rounded-2xl border border-secondary p-6">
+              <div key={s.l} className="animated-border p-6" style={{ borderRadius: "1rem" }}>
                 <div className="text-3xl font-black text-primary tabular-nums tracking-tighter">{s.v}</div>
                 <div className="mt-2 text-xs font-bold text-navy/60 uppercase tracking-widest">{s.l}</div>
               </div>

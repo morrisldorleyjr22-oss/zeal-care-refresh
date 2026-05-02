@@ -225,7 +225,7 @@ function FooterCol({
   links: { to: string; label: string }[];
 }) {
   return (
-    <div className="md:col-span-2 flex flex-col gap-4">
+    <div className="md:col-span-2 flex flex-col gap-4 min-w-0">
       <h4 className="font-bold uppercase text-xs tracking-[0.22em] text-accent inline-flex items-center gap-2">
         <span className="block size-1.5 rounded-full bg-accent" />
         {title}

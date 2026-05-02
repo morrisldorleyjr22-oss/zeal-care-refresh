@@ -29,7 +29,7 @@ export default function ContactChip({
   const isLink = !!href;
 
   const wrapBase =
-    "group inline-flex items-center transition-colors";
+    "group inline-flex items-start max-w-full transition-colors";
   const wrapBySize = size === "sm" ? "gap-2 text-xs" : "gap-3 text-sm";
   const wrapByVariant =
     variant === "dark"
@@ -48,10 +48,10 @@ export default function ContactChip({
 
   const content = (
     <>
-      <span className={`${iconBoxBase} ${iconBoxBySize} ${iconBoxByVariant}`}>
+      <span className={`${iconBoxBase} ${iconBoxBySize} ${iconBoxByVariant} mt-0.5`}>
         <Icon className={`${iconSize} text-accent`} strokeWidth={ICON_STROKE} />
       </span>
-      <span className={size === "sm" ? "font-medium tracking-wide" : "font-medium"}>
+      <span className={`${size === "sm" ? "font-medium tracking-wide" : "font-medium"} min-w-0 break-words`}>
         {label}
       </span>
     </>

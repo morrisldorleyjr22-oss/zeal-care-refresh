@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Globe2, ImagePlus, Sparkles } from "lucide-react";
+import { ArrowRight, Globe2, ImagePlus, Sparkles, UsersRound } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 
 const cards = [
@@ -14,6 +14,12 @@ const cards = [
     icon: ImagePlus,
     title: "Media Library",
     desc: "Upload and manage images used across the site.",
+  },
+  {
+    to: "/admin/users",
+    icon: UsersRound,
+    title: "Admin Users",
+    desc: "List admin accounts and grant or remove admin access.",
   },
 ];
 

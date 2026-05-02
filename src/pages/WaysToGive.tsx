@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import { CalendarClock, Package, Building2, Smartphone, ArrowRight, Heart } from "lucide-react";
 import { ICON_STROKE } from "@/lib/icon-defaults";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { usePageContent } from "@/hooks/usePageContent";
 
 const ways = [
   { icon: CalendarClock, title: "Monthly Sustainer", body: "Provide consistent support allowing for long-term STEM curricula planning and student retention." },
@@ -31,16 +32,17 @@ const faq = [
 
 export default function WaysToGive() {
   const [amount, setAmount] = useState(50);
+  const c = usePageContent("ways_to_give");
 
   const impact = amount >= 1000 ? "Strategic Hub" : amount >= 500 ? "Full Scholarship" : amount >= 100 ? "Quarterly Sponsorship" : "Monthly Sustainer";
 
   return (
     <>
       <PageHero
-        eyebrow="Resource Mobilization"
-        title="Ways to"
-        highlight="Give"
-        description="Investing in human dignity beyond the donation. Every contribution fuels the future of a child in Liberia."
+        eyebrow={c.get("hero_eyebrow")}
+        title={c.get("hero_title")}
+        highlight={c.get("hero_highlight")}
+        description={c.get("hero_description")}
       />
 
       {/* Impact slider */}

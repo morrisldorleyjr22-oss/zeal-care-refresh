@@ -129,9 +129,10 @@ function Editor({ def }: { def: PageDef }) {
     setDraft(saved);
   }
 
-  async function uploadInline(key: string, file: File) {
-    if (file.size > 10 * 1024 * 1024) {
-      toast({ title: "Too large", description: `${file.name} exceeds 10MB`, variant: "destructive" });
+  async function uploadInline(key: string, file: File, kind: "image" | "video" = "image") {
+    const maxMB = kind === "video" ? 200 : 10;
+    if (file.size > maxMB * 1024 * 1024) {
+      toast({ title: "Too large", description: `${file.name} exceeds ${maxMB}MB`, variant: "destructive" });
       return;
     }
     const safe = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
@@ -160,7 +161,7 @@ function Editor({ def }: { def: PageDef }) {
         return {
           page: def.page,
           key: k,
-          type: f.type === "image" ? "image" : "text",
+          type: f.type === "image" ? "image" : f.type === "video" ? "video" : "text",
           value: draft[k] ?? "",
         };
       });

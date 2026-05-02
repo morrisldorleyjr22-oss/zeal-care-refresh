@@ -39,11 +39,23 @@ export default function Index() {
   return (
     <div ref={ref}>
       {/* HERO */}
-      <section className="relative bg-hero-gradient text-white overflow-hidden">
+      <section className="relative text-white overflow-hidden">
+        {/* Background photograph */}
+        <img
+          src={c.get("img_hero_background")}
+          alt="Zeal Care students and team gathered together at a partner school"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+        />
+        {/* Dark blue overlay (65% opacity) preserves brand identity over the photo */}
+        <div className="absolute inset-0 bg-navy/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-transparent to-navy/60" />
+
+        {/* Soft brand glows on top of the overlay */}
         <div className="absolute -top-32 -right-32 size-[28rem] bg-accent/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-40 -left-40 size-[32rem] bg-primary-glow/30 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="container-zc relative pt-16 pb-32 md:pt-24 md:pb-44 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="container-zc relative pt-28 pb-44 md:pt-40 md:pb-56 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Copy */}
           <div className="lg:col-span-6 flex flex-col gap-7 animate-fade-up">
             <div className="inline-flex items-center gap-3 bg-white/10 border border-white/20 rounded-full px-5 py-2 w-max">

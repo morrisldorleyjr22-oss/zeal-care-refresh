@@ -100,7 +100,7 @@ export default function Index() {
 
         {/* Stats card overlap */}
         <div className="container-zc relative -mt-20 pb-2 z-30">
-          <div className="bg-white rounded-3xl p-6 md:p-8 shadow-card-lg border border-secondary grid grid-cols-2 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-secondary">
+          <div className="animated-border p-6 md:p-8 shadow-card-lg grid grid-cols-2 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-secondary" style={{ borderRadius: "1.5rem" }}>
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col items-center justify-center text-center px-4 py-4 md:py-2">
                 <span className="text-2xl md:text-3xl font-black text-primary tabular-nums tracking-tighter">
@@ -161,7 +161,7 @@ export default function Index() {
 
           <div className="mt-14 grid md:grid-cols-3 gap-6 md:gap-8">
             {advantages.map((a, i) => (
-              <div key={a.title} className={`reveal reveal-delay-${i + 1} hover-lift group bg-white rounded-[2rem] p-7 md:p-8 border border-secondary flex flex-col`}>
+              <div key={a.title} className={`reveal reveal-delay-${i + 1} hover-lift group animated-border p-7 md:p-8 flex flex-col`} style={{ borderRadius: "2rem" }}>
                 <div className={`size-14 ${a.color} ${a.rotate} rounded-2xl flex items-center justify-center mb-6 group-hover:-translate-y-1.5 transition-transform`}>
                   <a.icon className="h-6 w-6" strokeWidth={2.5} />
                 </div>
@@ -187,8 +187,7 @@ export default function Index() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {programKeys.map((p, i) => (
-            <article key={p.title} className={`reveal reveal-delay-${i + 1} hover-lift group relative rounded-[2rem] overflow-hidden border-2 border-primary/20 ring-1 ring-inset ring-primary/5 bg-white shadow-[0_12px_30px_-15px_hsl(var(--primary)/0.35)] hover:border-primary/50 hover:shadow-[0_20px_45px_-15px_hsl(var(--primary)/0.5)] transition-all`}>
-              <span className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-primary via-accent to-primary z-10" />
+            <article key={p.title} className={`reveal reveal-delay-${i + 1} hover-lift group relative animated-border overflow-hidden shadow-[0_12px_30px_-15px_hsl(var(--primary)/0.35)] hover:shadow-[0_20px_45px_-15px_hsl(var(--primary)/0.5)] transition-all`} style={{ borderRadius: "2rem" }}>
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={c.get(p.imgKey)}

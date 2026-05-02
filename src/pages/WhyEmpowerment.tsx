@@ -92,8 +92,8 @@ export default function WhyEmpowerment() {
       {/* Stats */}
       <section className="container-zc py-24">
         <div className="grid md:grid-cols-3 gap-6">
-          {stats.map((s) => (
-            <div key={s.label} className="bg-soft-gradient rounded-3xl p-10 border-2 border-primary/70 ring-1 ring-primary/20 text-center shadow-card-lg">
+          {stats.map((s, i) => (
+            <div key={`${s.label}-${i}`} className="bg-soft-gradient rounded-3xl p-10 border-2 border-primary/70 ring-1 ring-primary/20 text-center shadow-card-lg">
               <div className="text-6xl font-black text-primary tabular-nums tracking-tighter">{s.value}</div>
               <div className="mt-3 text-sm font-bold text-navy/70 uppercase tracking-widest">{s.label}</div>
             </div>

@@ -82,7 +82,7 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-feature-settings: 'cv11', 'ss01';
   }
   ::selection {
@@ -90,7 +90,8 @@
     color: hsl(var(--navy));
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-weight: 800;
     letter-spacing: -0.02em;
   }
 }

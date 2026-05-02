@@ -87,8 +87,12 @@ export default function About() {
           </div>
           <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((v) => (
-              <div key={v.title} className="bg-white rounded-3xl p-8 border border-secondary hover:shadow-card-lg transition-all group">
-                <div className="size-14 rounded-2xl bg-secondary text-primary flex items-center justify-center group-hover:bg-accent group-hover:text-navy transition-colors">
+              <div
+                key={v.title}
+                className="relative bg-white rounded-3xl p-8 border-2 border-primary/20 ring-1 ring-inset ring-primary/5 shadow-[0_10px_30px_-15px_hsl(var(--primary)/0.35)] hover:border-primary/50 hover:shadow-[0_18px_40px_-15px_hsl(var(--primary)/0.5)] hover:-translate-y-1 transition-all group overflow-hidden"
+              >
+                <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-accent to-primary rounded-t-3xl" />
+                <div className="size-14 rounded-2xl bg-secondary text-primary flex items-center justify-center ring-1 ring-primary/15 group-hover:bg-accent group-hover:text-navy group-hover:ring-accent/40 transition-colors">
                   <v.icon className="h-6 w-6" strokeWidth={2.5} />
                 </div>
                 <h3 className="mt-5 text-xl font-black text-navy">{v.title}</h3>

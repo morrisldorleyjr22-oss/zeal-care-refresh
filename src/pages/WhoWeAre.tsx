@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import PageHero from "@/components/PageHero";
 import { usePageContent } from "@/hooks/usePageContent";
-import { Handshake, Trophy, ShieldCheck, ArrowRight, Sparkles } from "lucide-react";
+import { Quote, Handshake, Trophy, ShieldCheck, FileBarChart2, Briefcase, FileText, Clock, ArrowRight, Sparkles } from "lucide-react";
+import community from "@/assets/community-wide.jpg?responsive";
+import teamMeeting from "@/assets/team-meeting.jpg?responsive";
+import ResponsiveImage from "@/components/ResponsiveImage";
 import { getIcon } from "@/lib/icon-registry";
 
 function Avatar({ name, photo }: { name: string; photo?: string }) {

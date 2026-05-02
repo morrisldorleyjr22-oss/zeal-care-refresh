@@ -1,6 +1,6 @@
 import PageHero from "@/components/PageHero";
 import { usePageContent } from "@/hooks/usePageContent";
-import { Quote, Handshake, Trophy, ShieldCheck, FileBarChart2, Briefcase, FileText, Clock } from "lucide-react";
+import { Quote, Handshake, Trophy, ShieldCheck, FileBarChart2, Briefcase, FileText, Clock, Sparkles, Building2, Cpu, Users, MapPin, ArrowRight } from "lucide-react";
 import community from "@/assets/community-wide.jpg?responsive";
 import teamMeeting from "@/assets/team-meeting.jpg?responsive";
 import partnershipPhoto from "@/assets/leader-team-classroom.jpg?responsive";
@@ -29,11 +29,11 @@ const partners = [
 ];
 
 const history = [
-  { year: "2013", title: "The Spark", body: "Founded in Monrovia with 15 children and a single after-school program." },
-  { year: "2017", title: "First Hub", body: "Opened our first dedicated learning center in Chicken Soup Factory." },
-  { year: "2021", title: "STEM Lab", body: "Launched Liberia's first community robotics lab for under-served youth." },
-  { year: "2024", title: "850+ Scholars", body: "Crossed the milestone of 850 active beneficiaries across two communities." },
-  { year: "2026", title: "Grand Bassa", body: "Expanding into rural Grand Bassa County with three new digital hubs." },
+  { year: "2013", title: "The Spark", body: "Founded in Monrovia with 15 children and a single after-school program.", icon: Sparkles, stat: "15", statLabel: "First scholars" },
+  { year: "2017", title: "First Hub", body: "Opened our first dedicated learning center in Chicken Soup Factory.", icon: Building2, stat: "1", statLabel: "Learning hub" },
+  { year: "2021", title: "STEM Lab", body: "Launched Liberia's first community robotics lab for under-served youth.", icon: Cpu, stat: "1st", statLabel: "Robotics lab in country" },
+  { year: "2024", title: "850+ Scholars", body: "Crossed the milestone of 850 active beneficiaries across two communities.", icon: Users, stat: "850+", statLabel: "Active scholars" },
+  { year: "2026", title: "Grand Bassa", body: "Expanding into rural Grand Bassa County with three new digital hubs.", icon: MapPin, stat: "3", statLabel: "New hubs" },
 ];
 
 const awards = [
@@ -198,26 +198,71 @@ export default function WhoWeAre() {
       </section>
 
       {/* History */}
-      <section id="history" className="scroll-mt-32 bg-soft-gradient py-24">
-        <div className="container-zc">
+      <section id="history" className="scroll-mt-32 relative bg-soft-gradient py-24 md:py-32 overflow-hidden">
+        <div className="absolute -top-32 -left-32 size-72 bg-primary/10 rounded-full blur-3xl" aria-hidden />
+        <div className="absolute -bottom-40 -right-32 size-96 bg-accent/15 rounded-full blur-3xl" aria-hidden />
+
+        <div className="container-zc relative">
           <div className="max-w-3xl">
             <span className="eyebrow">From Spark to Movement</span>
             <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Our History</h2>
+            <p className="mt-4 text-navy/70 text-lg leading-relaxed">
+              A decade of patient, compounding work — from a single after-school program to a regional movement for child empowerment.
+            </p>
           </div>
-          <div className="mt-12 relative">
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-secondary" aria-hidden="true" />
-            <div className="space-y-8">
-              {history.map((h, i) => (
-                <div key={h.year} className={`relative md:grid md:grid-cols-2 md:gap-12 ${i % 2 === 0 ? "" : "md:[&>*:first-child]:order-2"}`}>
-                  <div className="pl-12 md:pl-0 md:pr-12 md:text-right">
-                    <div className="inline-block bg-accent text-navy font-black text-sm px-3 py-1 rounded-full">{h.year}</div>
-                    <h3 className="mt-3 text-xl font-black text-navy">{h.title}</h3>
-                    <p className="mt-2 text-navy/70">{h.body}</p>
-                  </div>
-                  <div className="hidden md:block" />
-                  <div className="absolute left-4 md:left-1/2 top-1.5 -translate-x-1/2 size-4 rounded-full bg-primary border-4 border-background" />
-                </div>
-              ))}
+
+          <div className="mt-16 relative">
+            {/* Vertical spine */}
+            <div
+              className="absolute left-5 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-1/2 bg-gradient-to-b from-transparent via-primary/30 to-transparent"
+              aria-hidden="true"
+            />
+
+            <ol className="space-y-10 md:space-y-16">
+              {history.map((h, i) => {
+                const isLeft = i % 2 === 0;
+                return (
+                  <li key={h.year} className="relative md:grid md:grid-cols-2 md:gap-12 items-center">
+                    {/* Spine node */}
+                    <div className="absolute left-5 md:left-1/2 top-6 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 z-10">
+                      <span className="block size-4 rounded-full bg-primary ring-4 ring-background shadow-[0_0_0_4px_hsl(var(--primary)/0.15)]" />
+                    </div>
+
+                    {/* Card slot */}
+                    <div className={`pl-12 md:pl-0 ${isLeft ? "md:pr-12 md:text-right" : "md:col-start-2 md:pl-12"}`}>
+                      <article className="group relative bg-white rounded-3xl p-7 md:p-8 border-2 border-primary/15 shadow-[0_12px_30px_-15px_hsl(var(--primary)/0.35)] hover:border-primary/45 hover:shadow-[0_22px_50px_-18px_hsl(var(--primary)/0.55)] hover:-translate-y-1 transition-all">
+                        <div className={`flex items-center gap-3 ${isLeft ? "md:flex-row-reverse md:text-right" : ""}`}>
+                          <div className="size-12 rounded-2xl bg-primary text-white flex items-center justify-center shrink-0 shadow-[0_8px_20px_-8px_hsl(var(--primary)/0.6)]">
+                            <h.icon className="h-5 w-5" strokeWidth={2.4} />
+                          </div>
+                          <div className="inline-flex items-center gap-2 bg-accent text-navy font-black text-xs px-3 py-1.5 rounded-full uppercase tracking-widest">
+                            {h.year}
+                          </div>
+                        </div>
+
+                        <h3 className="mt-5 text-xl md:text-2xl font-black text-navy">{h.title}</h3>
+                        <p className="mt-2 text-navy/70 leading-relaxed">{h.body}</p>
+
+                        <div className={`mt-5 pt-5 border-t border-primary/10 flex items-baseline gap-3 ${isLeft ? "md:justify-end" : ""}`}>
+                          <span className="text-3xl font-black text-primary tabular-nums tracking-tighter">{h.stat}</span>
+                          <span className="text-[11px] font-bold uppercase tracking-widest text-navy/55">{h.statLabel}</span>
+                        </div>
+                      </article>
+                    </div>
+
+                    {/* Empty mirror cell on desktop */}
+                    {isLeft ? <div className="hidden md:block" /> : <div className="hidden md:block md:col-start-1 md:row-start-1" />}
+                  </li>
+                );
+              })}
+            </ol>
+
+            {/* End cap */}
+            <div className="relative mt-12 md:mt-16 flex md:justify-center">
+              <div className="ml-5 md:ml-0 -translate-x-1/2 md:translate-x-0 inline-flex items-center gap-2 bg-navy text-white font-bold text-xs uppercase tracking-widest px-5 py-3 rounded-full shadow-card-lg">
+                The story continues
+                <ArrowRight className="h-4 w-4 text-accent" />
+              </div>
             </div>
           </div>
         </div>

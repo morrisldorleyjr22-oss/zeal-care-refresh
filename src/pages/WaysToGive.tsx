@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import { CalendarClock, Package, Building2, Smartphone, ArrowRight, Heart } from "lucide-react";
 import { ICON_STROKE } from "@/lib/icon-defaults";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { usePageContent } from "@/hooks/usePageContent";
 
 const ways = [
   { icon: CalendarClock, title: "Monthly Sustainer", body: "Provide consistent support allowing for long-term STEM curricula planning and student retention." },
@@ -31,16 +32,17 @@ const faq = [
 
 export default function WaysToGive() {
   const [amount, setAmount] = useState(50);
+  const c = usePageContent("ways_to_give");
 
   const impact = amount >= 1000 ? "Strategic Hub" : amount >= 500 ? "Full Scholarship" : amount >= 100 ? "Quarterly Sponsorship" : "Monthly Sustainer";
 
   return (
     <>
       <PageHero
-        eyebrow="Resource Mobilization"
-        title="Ways to"
-        highlight="Give"
-        description="Investing in human dignity beyond the donation. Every contribution fuels the future of a child in Liberia."
+        eyebrow={c.get("hero_eyebrow")}
+        title={c.get("hero_title")}
+        highlight={c.get("hero_highlight")}
+        description={c.get("hero_description")}
       />
 
       {/* Impact slider */}
@@ -201,10 +203,9 @@ export default function WaysToGive() {
           <div className="absolute -top-20 -right-20 size-80 bg-accent/20 rounded-full blur-3xl" />
           <div className="relative max-w-3xl">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Final Appeal</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black">The Grand Bassa Expansion</h2>
+            <h2 className="mt-3 text-4xl md:text-5xl font-black">{c.get("appeal_title")}</h2>
             <p className="mt-5 text-white/85 text-lg leading-relaxed">
-              We are currently raising <strong className="text-accent">$45,000</strong> to establish three new Digital Hubs in Grand Bassa County by late 2026.
-              This will provide 450 children with their first-ever access to digital learning tools.
+              {c.get("appeal_body")}
             </p>
             <button className="mt-8 btn-primary">Help Us Build <ArrowRight className="h-4 w-4" /></button>
           </div>

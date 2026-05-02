@@ -66,12 +66,7 @@ function Avatar({ name, photo }: { name: string; photo?: { sources: Record<strin
 export default function WhoWeAre() {
   return (
     <>
-      <PageHero
-        eyebrow="Our Identity"
-        title="Who"
-        highlight="We Are"
-        description="The people, partners, and systems behind Zeal Care's mission to transform education in Liberia."
-      />
+      <WhoHero />
 
       {/* Team meeting hero strip */}
       <section className="container-zc pt-16">

@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useReveal } from "@/hooks/useReveal";
+import { usePageContent } from "@/hooks/usePageContent";
 
 const subjects = [
   "General Inquiry",
@@ -60,6 +61,7 @@ const FORM_ENDPOINT = "https://formsubmit.co/ajax/info@zealcare.org";
 
 export default function Contact() {
   const ref = useReveal<HTMLDivElement>();
+  const cms = usePageContent("contact");
   const [submitted, setSubmitted] = useState(false);
 
   const {
@@ -105,10 +107,10 @@ export default function Contact() {
   return (
     <div ref={ref}>
       <PageHero
-        eyebrow="Get in touch"
-        title="Let's"
-        highlight="Connect"
-        description="Open channels for collaboration, support, and institutional inquiries. We're here to answer your questions."
+        eyebrow={cms.get("hero_eyebrow")}
+        title={cms.get("hero_title")}
+        highlight={cms.get("hero_highlight")}
+        description={cms.get("hero_description")}
       />
 
       <section className="container-zc py-16 md:py-20 grid lg:grid-cols-12 gap-10">

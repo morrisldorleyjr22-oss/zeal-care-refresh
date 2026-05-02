@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      page_content: {
+        Row: {
+          created_at: string
+          id: string
+          key: string
+          page: string
+          type: string
+          updated_at: string
+          value: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key: string
+          page: string
+          type: string
+          updated_at?: string
+          value?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key?: string
+          page?: string
+          type?: string
+          updated_at?: string
+          value?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

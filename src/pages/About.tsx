@@ -1,7 +1,6 @@
 import PageHero from "@/components/PageHero";
 import { Heart, Users, Globe2, Eye, Sparkles, HandHeart, Target, BookOpen, Compass, Award, Lightbulb, Shield, Smile, Brain } from "lucide-react";
-import community from "@/assets/community-wide.jpg?responsive";
-import ResponsiveImage from "@/components/ResponsiveImage";
+import { usePageContent } from "@/hooks/usePageContent";
 
 const values = [
   { icon: Heart, title: "Integrity", body: "We fulfill our commitments and conduct ourselves in a way that is true to our identity." },
@@ -41,13 +40,14 @@ const characteristics = [
 ];
 
 export default function About() {
+  const c = usePageContent("about");
   return (
     <>
       <PageHero
-        eyebrow="Our Heritage"
-        title="About"
-        highlight="Zeal Care"
-        description="Our journey of empowerment and the values that drive every decision we make to transform lives in Liberia."
+        eyebrow={c.get("hero_eyebrow")}
+        title={c.get("hero_title")}
+        highlight={c.get("hero_highlight")}
+        description={c.get("hero_description")}
       />
 
       {/* Mission · Vision · Goals */}
@@ -89,21 +89,19 @@ export default function About() {
       <section id="belief" className="scroll-mt-32 container-zc py-24 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7">
           <span className="eyebrow">What We Believe</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Our Belief</h2>
+          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">{c.get("belief_title")}</h2>
           <p className="mt-6 text-navy/75 text-lg leading-relaxed">
-            We believe every child — regardless of where they were born or what their family earns — carries a unique spark of genius.
-            With the right support at the right time, that spark becomes a force capable of transforming families, communities, and nations.
+            {c.get("belief_body_1")}
           </p>
           <p className="mt-4 text-navy/70 leading-relaxed">
-            Education is not a privilege; it is a human right. Empowerment is not charity; it is justice. And dignity, opportunity, and
-            hope are not luxuries — they are the foundation of a fair future.
+            {c.get("belief_body_2")}
           </p>
         </div>
         <div className="lg:col-span-5">
           <div className="bg-yellow-gradient rounded-[2rem] p-10 shadow-yellow-glow">
             <Target className="h-10 w-10 text-navy" />
             <p className="mt-6 text-2xl font-black text-navy leading-snug">
-              "Talent is everywhere. Opportunity is not. We exist to close that gap."
+              {c.get("belief_quote")}
             </p>
           </div>
         </div>
@@ -141,12 +139,12 @@ export default function About() {
           </p>
         </div>
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-          {characteristics.map((c) => (
-            <div key={c.title} className="bg-white rounded-2xl p-6 border border-secondary text-center hover:shadow-card-lg hover:-translate-y-1 transition-all">
+          {characteristics.map((ch) => (
+            <div key={ch.title} className="bg-white rounded-2xl p-6 border border-secondary text-center hover:shadow-card-lg hover:-translate-y-1 transition-all">
               <div className="size-12 mx-auto rounded-2xl bg-accent text-navy flex items-center justify-center">
-                <c.icon className="h-5 w-5" strokeWidth={2.5} />
+                <ch.icon className="h-5 w-5" strokeWidth={2.5} />
               </div>
-              <div className="mt-4 font-black text-navy text-sm">{c.title}</div>
+              <div className="mt-4 font-black text-navy text-sm">{ch.title}</div>
             </div>
           ))}
         </div>
@@ -155,18 +153,17 @@ export default function About() {
       {/* Quote band */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <ResponsiveImage
-            picture={community}
+          <img
+            src={c.get("img_quote_band")}
             alt=""
-            sizes="100vw"
-            className="block w-full h-full"
-            imgClassName="w-full h-full object-cover"
+            className="w-full h-full object-cover"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-navy/85" />
         </div>
         <div className="container-zc relative py-24 md:py-32 text-center text-white">
           <p className="text-3xl md:text-5xl font-black leading-tight tracking-tight max-w-4xl mx-auto text-balance">
-            "Every child is a spark of <span className="text-accent">genius</span> waiting to be ignited."
+            {c.get("quote_band_text")}
           </p>
         </div>
       </section>

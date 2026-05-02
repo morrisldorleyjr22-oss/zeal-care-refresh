@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ShieldCheck, Clock, Sparkles, GraduationCap, Lightbulb, Cpu, Quote, ChevronRight } from "lucide-react";
-import heroImg from "@/assets/hero-children-1.jpg?responsive";
-import portraitImg from "@/assets/hero-children-2.jpg?responsive";
-import stemImg from "@/assets/program-stem.jpg?responsive";
-import leadershipImg from "@/assets/program-leadership.jpg?responsive";
-import educationImg from "@/assets/program-education.jpg?responsive";
-import ResponsiveImage from "@/components/ResponsiveImage";
 import { useReveal } from "@/hooks/useReveal";
 import { useSetting } from "@/hooks/useSiteSettings";
+import { usePageContent } from "@/hooks/usePageContent";
 
 const stats = [
   { value: "850+", label: "Active Scholars" },
@@ -26,12 +21,12 @@ const advantages = [
     body: "Beyond academics, we provide mentorship, tech literacy, and character building to create well-rounded leaders." },
 ];
 
-const programs = [
-  { icon: GraduationCap, title: "Education Sponsorship", img: educationImg,
+const programKeys = [
+  { icon: GraduationCap, title: "Education Sponsorship", imgKey: "img_program_education",
     desc: "Removing financial barriers for the most vulnerable children in Liberia." },
-  { icon: Lightbulb, title: "Leadership Modules", img: leadershipImg,
+  { icon: Lightbulb, title: "Leadership Modules", imgKey: "img_program_leadership",
     desc: "Developing character and ethical leadership through specialized workshops." },
-  { icon: Cpu, title: "STEM Career Labs", img: stemImg,
+  { icon: Cpu, title: "STEM Career Labs", imgKey: "img_program_stem",
     desc: "Bridging the digital divide with coding, robotics, and science equipment." },
 ];
 
@@ -40,6 +35,7 @@ const partners = ["USAID", "Orange", "Ecobank", "UNICEF", "Global Fund", "World 
 export default function Index() {
   const ref = useReveal<HTMLDivElement>();
   const hero = useSetting("hero_home");
+  const c = usePageContent("home");
   return (
     <div ref={ref}>
       {/* HERO */}
@@ -76,23 +72,20 @@ export default function Index() {
           {/* Collage */}
           <div className="lg:col-span-6 relative h-[480px] sm:h-[560px] w-full">
             <div className="absolute top-0 right-0 w-[78%] h-[88%] rounded-[2.5rem] overflow-hidden shadow-card-lg rotate-2 z-20 ring-1 ring-white/20">
-              <ResponsiveImage
-                picture={heroImg}
+              <img
+                src={c.get("img_hero_main")}
                 alt="Joyful Liberian schoolchildren raising their hands in class"
-                sizes="(min-width: 1024px) 45vw, 90vw"
-                className="block w-full h-full"
-                imgClassName="w-full h-full object-cover"
-                eager
+                className="w-full h-full object-cover"
+                loading="eager"
               />
             </div>
             <div className="absolute bottom-0 left-0 w-[55%] h-[58%] bg-accent rounded-[2rem] p-2 shadow-yellow-glow -rotate-3 z-30 animate-float">
               <div className="w-full h-full rounded-[1.5rem] overflow-hidden">
-                <ResponsiveImage
-                  picture={portraitImg}
+                <img
+                  src={c.get("img_hero_portrait")}
                   alt="Smiling young scholar holding her books"
-                  sizes="(min-width: 1024px) 25vw, 50vw"
-                  className="block w-full h-full"
-                  imgClassName="w-full h-full object-cover"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -121,12 +114,11 @@ export default function Index() {
       <section className="container-zc py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-5 relative">
           <div className="rounded-[2rem] overflow-hidden shadow-card-lg">
-            <ResponsiveImage
-              picture={stemImg}
+            <img
+              src={c.get("img_mission")}
               alt="Children learning together with technology"
-              sizes="(min-width: 1024px) 40vw, 90vw"
-              className="block w-full aspect-[4/5]"
-              imgClassName="w-full h-full object-cover"
+              className="w-full aspect-[4/5] object-cover"
+              loading="lazy"
             />
           </div>
           <div className="absolute -bottom-6 -right-6 bg-accent text-navy rounded-2xl px-6 py-5 shadow-yellow-glow max-w-[16rem] hidden md:block">
@@ -135,17 +127,16 @@ export default function Index() {
           </div>
         </div>
         <div className="lg:col-span-7 lg:pl-8">
-          <span className="eyebrow">Our Institutional Purpose</span>
+          <span className="eyebrow">{c.get("mission_eyebrow")}</span>
           <h2 className="mt-3 text-3xl md:text-4xl font-black tracking-tight text-navy">
-            Our Mission
+            {c.get("mission_title")}
           </h2>
           <p className="mt-5 text-base md:text-lg leading-relaxed text-navy/75 max-w-2xl">
-            At <strong>ZEAL CARE</strong>, we believe every child deserves a chance to thrive, regardless of their background.
-            Our mission is to break the cycle of poverty by providing quality education and mentorship to underserved communities.
+            {c.get("mission_body")}
           </p>
           <blockquote className="mt-7 border-l-4 border-accent bg-secondary/60 rounded-r-2xl p-5 text-navy italic font-medium text-base md:text-lg">
             <Quote className="h-5 w-5 text-accent mb-2" />
-            "Education is the most powerful weapon which you can use to change the world."
+            {c.get("mission_quote")}
           </blockquote>
           <div className="mt-8 flex gap-4">
             <Link to="/about" className="inline-flex items-center gap-2 font-bold text-primary hover:text-navy transition-colors">
@@ -192,15 +183,14 @@ export default function Index() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {programs.map((p, i) => (
+          {programKeys.map((p, i) => (
             <article key={p.title} className={`reveal reveal-delay-${i + 1} hover-lift group rounded-[2rem] overflow-hidden border border-secondary bg-white`}>
               <div className="aspect-[4/3] overflow-hidden">
-                <ResponsiveImage
-                  picture={p.img}
+                <img
+                  src={c.get(p.imgKey)}
                   alt={p.title}
-                  sizes="(min-width: 1024px) 32vw, (min-width: 768px) 45vw, 90vw"
-                  className="block w-full h-full"
-                  imgClassName="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
                 />
               </div>
               <div className="p-6">
@@ -226,13 +216,13 @@ export default function Index() {
             <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">Voices of Impact</span>
             <Quote className="h-10 w-10 text-accent mt-5" />
             <p className="mt-5 text-2xl md:text-3xl font-light leading-tight text-balance">
-              "The digital skills I learned here got me my first job at a local tech firm. I am now the breadwinner for my family."
+              {c.get("testimonial_quote")}
             </p>
             <div className="mt-7 flex items-center gap-4">
-              <div className="size-12 rounded-full bg-accent flex items-center justify-center font-black text-navy text-lg">K</div>
+              <div className="size-12 rounded-full bg-accent flex items-center justify-center font-black text-navy text-lg">{c.get("testimonial_name").trim().charAt(0) || "K"}</div>
               <div>
-                <div className="font-bold text-sm">Kelvin M.</div>
-                <div className="text-xs text-white/60">STEM Scholar</div>
+                <div className="font-bold text-sm">{c.get("testimonial_name")}</div>
+                <div className="text-xs text-white/60">{c.get("testimonial_role")}</div>
               </div>
             </div>
           </div>

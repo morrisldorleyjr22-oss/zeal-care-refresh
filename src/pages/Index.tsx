@@ -197,8 +197,8 @@ export default function Index() {
                 />
               </div>
               <div className="p-6">
-                <div className="size-11 -mt-11 mb-3 relative bg-accent rounded-2xl flex items-center justify-center shadow-yellow-glow tilt-hover">
-                  <p.icon className="h-5 w-5 text-navy" strokeWidth={2.5} />
+                <div className={`-mt-12 mb-3 relative program-icon ${i % 2 === 0 ? "program-icon--accent" : ""}`}>
+                  <p.icon />
                 </div>
                 <h3 className="text-lg md:text-xl font-black text-navy">{p.title}</h3>
                 <p className="mt-2 text-sm text-navy/70 font-medium">{p.desc}</p>

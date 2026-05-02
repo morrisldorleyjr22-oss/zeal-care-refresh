@@ -111,9 +111,17 @@ export default function About() {
           <p className="mt-6 text-navy/75 text-lg leading-relaxed">
             {c.get("belief_body_1")}
           </p>
-          <p className="mt-4 text-navy/70 leading-relaxed">
-            {c.get("belief_body_2")}
-          </p>
+          <figure className="mt-8 quote-frame">
+            <span className="quote-mark" aria-hidden="true">
+              <Quote />
+            </span>
+            <blockquote className="text-lg md:text-xl font-semibold text-navy leading-relaxed italic">
+              {c.get("belief_body_2")}
+            </blockquote>
+            <figcaption className="mt-4 text-[11px] font-bold text-primary uppercase tracking-[0.2em]">
+              — Our Belief
+            </figcaption>
+          </figure>
         </div>
         <div className="lg:col-span-5">
           <div className="bg-yellow-gradient rounded-[2rem] p-10 shadow-yellow-glow">

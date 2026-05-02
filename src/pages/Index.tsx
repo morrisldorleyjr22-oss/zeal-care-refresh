@@ -21,12 +21,12 @@ const advantages = [
     body: "Beyond academics, we provide mentorship, tech literacy, and character building to create well-rounded leaders." },
 ];
 
-const programs = [
-  { icon: GraduationCap, title: "Education Sponsorship", img: educationImg,
+const programKeys = [
+  { icon: GraduationCap, title: "Education Sponsorship", imgKey: "img_program_education",
     desc: "Removing financial barriers for the most vulnerable children in Liberia." },
-  { icon: Lightbulb, title: "Leadership Modules", img: leadershipImg,
+  { icon: Lightbulb, title: "Leadership Modules", imgKey: "img_program_leadership",
     desc: "Developing character and ethical leadership through specialized workshops." },
-  { icon: Cpu, title: "STEM Career Labs", img: stemImg,
+  { icon: Cpu, title: "STEM Career Labs", imgKey: "img_program_stem",
     desc: "Bridging the digital divide with coding, robotics, and science equipment." },
 ];
 
@@ -35,6 +35,7 @@ const partners = ["USAID", "Orange", "Ecobank", "UNICEF", "Global Fund", "World 
 export default function Index() {
   const ref = useReveal<HTMLDivElement>();
   const hero = useSetting("hero_home");
+  const c = usePageContent("home");
   return (
     <div ref={ref}>
       {/* HERO */}
@@ -71,23 +72,20 @@ export default function Index() {
           {/* Collage */}
           <div className="lg:col-span-6 relative h-[480px] sm:h-[560px] w-full">
             <div className="absolute top-0 right-0 w-[78%] h-[88%] rounded-[2.5rem] overflow-hidden shadow-card-lg rotate-2 z-20 ring-1 ring-white/20">
-              <ResponsiveImage
-                picture={heroImg}
+              <img
+                src={c.get("img_hero_main")}
                 alt="Joyful Liberian schoolchildren raising their hands in class"
-                sizes="(min-width: 1024px) 45vw, 90vw"
-                className="block w-full h-full"
-                imgClassName="w-full h-full object-cover"
-                eager
+                className="w-full h-full object-cover"
+                loading="eager"
               />
             </div>
             <div className="absolute bottom-0 left-0 w-[55%] h-[58%] bg-accent rounded-[2rem] p-2 shadow-yellow-glow -rotate-3 z-30 animate-float">
               <div className="w-full h-full rounded-[1.5rem] overflow-hidden">
-                <ResponsiveImage
-                  picture={portraitImg}
+                <img
+                  src={c.get("img_hero_portrait")}
                   alt="Smiling young scholar holding her books"
-                  sizes="(min-width: 1024px) 25vw, 50vw"
-                  className="block w-full h-full"
-                  imgClassName="w-full h-full object-cover"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </div>
             </div>

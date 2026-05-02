@@ -108,25 +108,47 @@
   .shadow-yellow-glow { box-shadow: var(--shadow-yellow); }
   .shadow-card-lg { box-shadow: var(--shadow-card); }
 
+  /* Responsive content container.
+     Smaller side padding on phones, scales up at tablet+. */
   .container-zc {
-    @apply max-w-7xl mx-auto px-6 md:px-10;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 md:px-10;
+  }
+
+  /* Standard vertical rhythm for full-width sections.
+     Use this instead of bespoke py-24/py-32 to keep mobile breathable. */
+  .section-y {
+    @apply py-14 sm:py-20 md:py-24 lg:py-28;
+  }
+  .section-y-tight {
+    @apply py-10 sm:py-14 md:py-20;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-accent text-navy font-bold uppercase tracking-wide px-7 py-4 rounded-full text-sm shadow-yellow-glow hover:scale-[1.03] active:scale-100 transition-transform duration-300;
+    @apply inline-flex items-center justify-center gap-2 bg-accent text-navy font-bold uppercase tracking-wide
+           px-6 sm:px-7 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm
+           shadow-yellow-glow hover:scale-[1.03] active:scale-100 transition-transform duration-300;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white/25 backdrop-blur-sm font-semibold uppercase tracking-wide px-7 py-4 rounded-full text-sm hover:bg-white/20 transition-colors;
+    @apply inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white/25 backdrop-blur-sm
+           font-semibold uppercase tracking-wide
+           px-6 sm:px-7 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm
+           hover:bg-white/20 transition-colors;
   }
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 bg-white text-navy border-2 border-navy/15 font-semibold uppercase tracking-wide px-7 py-4 rounded-full text-sm hover:border-navy/40 transition-colors;
+    @apply inline-flex items-center justify-center gap-2 bg-white text-navy border-2 border-navy/15
+           font-semibold uppercase tracking-wide
+           px-6 sm:px-7 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm
+           hover:border-navy/40 transition-colors;
   }
   .eyebrow {
     @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary;
   }
 }
+
+/* Prevent horizontal scroll caused by decorative full-width pieces. */
+html, body { overflow-x: hidden; }
 
 @keyframes float-slow {
   0%, 100% { transform: translateY(0px); }

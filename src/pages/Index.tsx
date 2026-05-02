@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ShieldCheck, Clock, Sparkles, GraduationCap, Lightbulb, Cpu, Quote, ChevronRight } from "lucide-react";
+import { ArrowRight, ShieldCheck, Clock, Sparkles, GraduationCap, Lightbulb, Cpu, Quote, ChevronRight, BookOpenCheck, Compass, FlaskConical } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 import { useSetting } from "@/hooks/useSiteSettings";
 import { usePageContent } from "@/hooks/usePageContent";

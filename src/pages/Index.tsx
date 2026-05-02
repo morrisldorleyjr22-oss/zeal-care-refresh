@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ShieldCheck, Clock, Sparkles, GraduationCap, Lightbulb, Cpu, Quote, ChevronRight } from "lucide-react";
+import { ArrowRight, ShieldCheck, Clock, Sparkles, GraduationCap, Lightbulb, Cpu, Quote, ChevronRight, BookOpenCheck, Compass, FlaskConical } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 import { useSetting } from "@/hooks/useSiteSettings";
 import { usePageContent } from "@/hooks/usePageContent";
@@ -22,11 +22,11 @@ const advantages = [
 ];
 
 const programKeys = [
-  { icon: GraduationCap, title: "Education Sponsorship", imgKey: "img_program_education",
+  { icon: BookOpenCheck, title: "Education Sponsorship", imgKey: "img_program_education",
     desc: "Removing financial barriers for the most vulnerable children in Liberia." },
-  { icon: Lightbulb, title: "Leadership Modules", imgKey: "img_program_leadership",
+  { icon: Compass, title: "Leadership Modules", imgKey: "img_program_leadership",
     desc: "Developing character and ethical leadership through specialized workshops." },
-  { icon: Cpu, title: "STEM Career Labs", imgKey: "img_program_stem",
+  { icon: FlaskConical, title: "STEM Career Labs", imgKey: "img_program_stem",
     desc: "Bridging the digital divide with coding, robotics, and science equipment." },
 ];
 

@@ -67,12 +67,8 @@ export default function WhatWeDo() {
               </div>
             ))}
           </div>
-                <div className="text-[11px] font-bold text-primary uppercase tracking-widest">{l.city}</div>
-                <div className="mt-1 font-black text-navy text-lg">{l.area}</div>
-                <div className="mt-2 text-sm text-navy/65">{l.note}</div>
-              </div>
-            ))}
-          </div>
+        </div>
+      </section>
         </div>
       </section>
 

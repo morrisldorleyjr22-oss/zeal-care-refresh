@@ -21,6 +21,7 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminGlobalSettings from "./pages/admin/AdminGlobalSettings";
 import AdminMedia from "./pages/admin/AdminMedia";
+import AdminUsers from "./pages/admin/AdminUsers";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => (
               <Route index element={<AdminDashboard />} />
               <Route path="global" element={<AdminGlobalSettings />} />
               <Route path="media" element={<AdminMedia />} />
+              <Route path="users" element={<AdminUsers />} />
             </Route>
 
             <Route

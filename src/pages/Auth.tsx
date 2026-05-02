@@ -11,7 +11,7 @@ import { Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
 
 const schema = z.object({
   email: z.string().trim().email("Enter a valid email").max(255),
-  password: z.string().min(8, "At least 8 characters").max(128),
+  password: z.string().min(6, "At least 6 characters").max(128),
 });
 
 export default function Auth() {
@@ -112,7 +112,7 @@ export default function Auth() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   autoComplete={mode === "signin" ? "current-password" : "new-password"}
-                  minLength={8}
+                  minLength={6}
                 />
               </div>
             </div>

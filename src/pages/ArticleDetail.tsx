@@ -1,14 +1,21 @@
+import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Calendar, Clock, Share2, User } from "lucide-react";
-import { articles, getArticleBySlug } from "@/data/articles";
 import { useReveal } from "@/hooks/useReveal";
+import { usePageContent } from "@/hooks/usePageContent";
+import { rowsToArticles, type CmsArticleRow } from "@/lib/cms-articles";
 import ArticleImage from "@/components/ArticleImage";
 import { toast } from "sonner";
 
 export default function ArticleDetail() {
   const ref = useReveal<HTMLDivElement>();
   const { slug } = useParams<{ slug: string }>();
-  const article = getArticleBySlug(slug);
+  const cms = usePageContent("media");
+  const articles = useMemo(
+    () => rowsToArticles(cms.list<CmsArticleRow>("news_articles")),
+    [cms],
+  );
+  const article = articles.find((a) => a.slug === slug);
 
   if (!article) {
     return (

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
-import { CalendarClock, Package, Building2, Smartphone, ArrowRight, Heart, CheckCircle2, Copy, Share2, Loader2 } from "lucide-react";
+import { CalendarClock, Smartphone, ArrowRight, Heart, CheckCircle2, Copy, Share2, Loader2 } from "lucide-react";
 import { ICON_STROKE } from "@/lib/icon-defaults";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { usePageContent } from "@/hooks/usePageContent";
+import { getIcon } from "@/lib/icon-registry";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,34 +13,19 @@ import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
-const ways = [
-  { icon: CalendarClock, title: "Monthly Sustainer", body: "Provide consistent support allowing for long-term STEM curricula planning and student retention.", to: "#appeals" },
-  { icon: Package, title: "In-Kind Donations", body: "Deploy tangible assets like laptops, STEM kits, and laboratory equipment to our rural hubs.", to: "/contact" },
-  { icon: Building2, title: "Corporate Partner", body: "Align your brand with social impact through grants, professional mentorship, or tech sponsorship.", to: "#partner" },
-];
-
-const allocation = [
-  { label: "Core Programs", value: 80, sub: "Education, STEM, Leadership, Entrepreneurship", color: "bg-primary" },
-  { label: "Outreach & Advocacy", value: 15, sub: "Community engagement and systemic change", color: "bg-navy" },
-  { label: "Accountability", value: 5, sub: "Monitoring, evaluation, and reporting", color: "bg-accent" },
-];
-
-const mobile = [
-  { name: "MTN Mobile Money", code: "*156*3*0887071690#", account: "Account Name: ZEAL CARE" },
-  { name: "Orange Money", code: "*144#", account: "Account Name: ZEAL CARE" },
-  { name: "Sendwave Transfer", code: "Direct App Access", account: "Account Name: ZEAL CARE" },
-];
-
-const faq = [
-  { q: "Is my donation tax-deductible?", a: "We are a registered nonprofit; eligibility depends on your jurisdiction. Reach out to our team for documentation." },
-  { q: "Can I sponsor a specific child?", a: "Yes. Our sponsorship program pairs you with a scholar and shares quarterly progress reports." },
-  { q: "How do I know my donation is making a difference?", a: "Every donor receives transparent annual impact reports including financials and outcome metrics." },
-  { q: "Do you accept hardware donations?", a: "Absolutely — laptops, tablets, and STEM kits are deployed directly to our digital hubs." },
-];
+type WayItem = { title: string; body: string; icon: string; to: string };
+type AllocationItem = { label: string; sub: string; value: string; color: string };
+type MobileProvider = { name: string; code: string; account: string };
+type FaqItem = { q: string; a: string };
 
 export default function WaysToGive() {
   const [amount, setAmount] = useState(50);
   const c = usePageContent("ways_to_give");
+
+  const ways = c.list<WayItem>("ways");
+  const allocation = c.list<AllocationItem>("allocation");
+  const mobile = c.list<MobileProvider>("mobile_providers");
+  const faq = c.list<FaqItem>("faq");
 
   // --- Mobile Money confirmation flow state ---
   const [pledgeOpen, setPledgeOpen] = useState(false);
@@ -189,12 +175,14 @@ export default function WaysToGive() {
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">How You Can Help</h2>
         </div>
         <div className="mt-14 grid md:grid-cols-3 gap-6">
-          {ways.map((w) => {
-            const isHash = w.to.startsWith("#");
+          {ways.map((w, i) => {
+            const Icon = getIcon(w.icon, CalendarClock);
+            const target = w.to || "/contact";
+            const isHash = target.startsWith("#");
             const inner = (
               <>
                 <div className="size-14 rounded-2xl bg-primary text-white flex items-center justify-center">
-                  <w.icon className="h-6 w-6" strokeWidth={2.5} />
+                  <Icon className="h-6 w-6" strokeWidth={2.5} />
                 </div>
                 <h3 className="mt-5 text-xl font-black text-navy">{w.title}</h3>
                 <p className="mt-3 text-navy/70 font-medium">{w.body}</p>
@@ -205,9 +193,9 @@ export default function WaysToGive() {
             );
             const cls = "group block bg-white rounded-3xl p-8 border border-secondary hover:shadow-card-lg hover:border-primary transition-all";
             return isHash ? (
-              <a key={w.title} href={w.to} className={cls}>{inner}</a>
+              <a key={`${w.title}-${i}`} href={target} className={cls}>{inner}</a>
             ) : (
-              <Link key={w.title} to={w.to} className={cls}>{inner}</Link>
+              <Link key={`${w.title}-${i}`} to={target} className={cls}>{inner}</Link>
             );
           })}
         </div>

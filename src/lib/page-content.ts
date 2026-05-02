@@ -73,6 +73,21 @@ export const PAGE_REGISTRY: PageDef[] = [
       { key: "testimonial_quote", label: "Testimonial · Quote", type: "textarea", default: '"The digital skills I learned here got me my first job at a local tech firm. I am now the breadwinner for my family."' },
       { key: "testimonial_name", label: "Testimonial · Name", type: "text", default: "Kelvin M." },
       { key: "testimonial_role", label: "Testimonial · Role", type: "text", default: "STEM Scholar" },
+      {
+        key: "programs", label: "Home · Core Programs cards", type: "repeater", itemNoun: "program",
+        columns: [
+          { key: "title", label: "Title", type: "text" },
+          { key: "desc", label: "Description", type: "textarea" },
+          { key: "icon", label: "Icon", type: "icon", iconChoices: "BookOpenCheck,Compass,FlaskConical,GraduationCap,Lightbulb,Rocket,Cpu,Briefcase" },
+          { key: "image", label: "Image (optional)", type: "image" },
+          { key: "to", label: "Link target", type: "text" },
+        ],
+        default: j([
+          { title: "Education Sponsorship", desc: "Removing financial barriers for the most vulnerable children in Liberia.", icon: "BookOpenCheck", image: "", to: "/what-we-do" },
+          { title: "Leadership Modules", desc: "Developing character and ethical leadership through specialized workshops.", icon: "Compass", image: "", to: "/what-we-do" },
+          { title: "STEM Career Labs", desc: "Bridging the digital divide with coding, robotics, and science equipment.", icon: "FlaskConical", image: "", to: "/what-we-do" },
+        ]),
+      },
     ],
   },
   {
@@ -419,6 +434,42 @@ export const PAGE_REGISTRY: PageDef[] = [
     title: "Media (Impact Hub)",
     route: "/media",
     fields: [
+      {
+        key: "news_articles", label: "Newsroom · Articles", type: "repeater", itemNoun: "article",
+        columns: [
+          { key: "slug", label: "Slug (URL)", type: "text" },
+          { key: "title", label: "Title", type: "text" },
+          { key: "tag", label: "Category tag", type: "text" },
+          { key: "date", label: "Date label (e.g. Mar 2026)", type: "text" },
+          { key: "iso", label: "ISO date (YYYY-MM-DD)", type: "text" },
+          { key: "readTime", label: "Read time", type: "text" },
+          { key: "author", label: "Author", type: "text" },
+          { key: "excerpt", label: "Excerpt", type: "textarea" },
+          { key: "body", label: "Body (paragraphs separated by blank line)", type: "textarea" },
+          { key: "img", label: "Cover image", type: "image" },
+        ],
+        default: j([
+          { slug: "school-supplies-west-point", title: "Zeal Care delivers school supplies to 200 children in West Point", tag: "Field Story", date: "Mar 2026", iso: "2026-03-12", readTime: "4 min read", author: "Zeal Care Field Team", excerpt: "A coordinated distribution effort brought backpacks, notebooks, and uniforms to one of Monrovia's most under-resourced communities.", body: "Early on Saturday morning, our field team converged on the West Point community with three vans of school supplies — backpacks, notebooks, pens, geometry sets, and a full set of uniforms for every enrolled scholar.\n\nFor many of the families we work with, the start of a new school term is one of the most financially stressful moments of the year. By absorbing this cost directly, we remove one of the largest barriers that keeps children from returning to the classroom.\n\nWe are deeply grateful to our volunteer corps and to the local school administrators who helped us coordinate the distribution.", img: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/In%20the%20field.jpeg" },
+          { slug: "first-robotics-cohort", title: "First robotics cohort completes inaugural curriculum in Monrovia", tag: "STEM Lab", date: "Feb 2026", iso: "2026-02-22", readTime: "5 min read", author: "Director of STEM Programs", excerpt: "Twenty-four scholars graduated from our pilot robotics program, presenting working prototypes to families and partners.", body: "Our inaugural robotics cohort wrapped up a 12-week intensive that combined micro-controller fundamentals, basic mechanical design, and team-based problem solving.\n\nOn graduation day, students presented six working prototypes — including a low-cost line-following robot designed to deliver medication between rural clinics.\n\nWe're now scaling the curriculum to two additional sites and onboarding a second cohort of forty scholars in April.", img: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/hero.jpeg" },
+          { slug: "youth-leadership-summit", title: "Annual Youth Leadership Summit gathers scholars across Liberia", tag: "Leadership", date: "Jan 2026", iso: "2026-01-18", readTime: "3 min read", author: "Leadership Programs Team", excerpt: "More than 180 scholars from six counties met for three days of workshops on civic engagement, public speaking, and ethics.", body: "The 2026 Youth Leadership Summit brought together 180 scholars from across Liberia for three intensive days of workshops, mentorship sessions, and peer-led debates.\n\nHighlights included a keynote from a former parliamentarian on ethical public service, breakout sessions on community-based problem solving, and a closing ceremony where each scholar committed to a 90-day community project.", img: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/Our%20Mission.jpeg" },
+          { slug: "entrepreneurship-bootcamp-2025", title: "Entrepreneurship bootcamp launches 12 new student-led ventures", tag: "Workshop", date: "Dec 2025", iso: "2025-12-04", readTime: "4 min read", author: "Entrepreneurship Faculty", excerpt: "Our year-end bootcamp culminated in a pitch night where students secured seed grants for twelve community-focused businesses.", body: "Forty scholars spent six weekends learning the fundamentals of business modelling, customer interviews, and small-business finance.\n\nOn pitch night, twelve teams secured micro-grants ranging from $150 to $500 to launch ventures spanning agriculture, repair services, and digital content creation.", img: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/Our%20Philosophy.jpeg" },
+          { slug: "christmas-2025-chicken-soup-factory", title: "Zeal Care celebrates 2025 Christmas with kids in Chicken Soup Factory", tag: "Christmas", date: "Dec 2025", iso: "2025-12-25", readTime: "3 min read", author: "Community Engagement Team", excerpt: "An afternoon of music, meals, and gifts brought joy to over 300 children in the Chicken Soup Factory community.", body: "Our annual Christmas celebration returned to the Chicken Soup Factory community for the third year running. Volunteers cooked and served meals for over 300 children and their guardians.\n\nEach child received a gift bag with school supplies and a storybook — a small but meaningful gesture as families head into the new year.", img: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/home%20hero%20page.jpeg" },
+          { slug: "inclusive-education-roundtable", title: "Inclusive education roundtable convenes community leaders", tag: "Advocacy", date: "Nov 2025", iso: "2025-11-09", readTime: "4 min read", author: "Policy & Advocacy", excerpt: "We hosted a half-day convening on access to quality education for children with disabilities and out-of-school youth.", body: "Twenty-five community leaders, educators, and parents joined us for a half-day roundtable focused on practical pathways to inclusive education.\n\nThe session produced a working agenda of three short-term commitments that we will report on each quarter.", img: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/Social%20Justice.jpeg" },
+        ]),
+      },
+      {
+        key: "events", label: "Events · Calendar", type: "repeater", itemNoun: "event",
+        columns: [
+          { key: "date", label: "Date label", type: "text" },
+          { key: "title", label: "Title", type: "text" },
+          { key: "place", label: "Location", type: "text" },
+        ],
+        default: j([
+          { date: "May 18, 2026", title: "Annual Donor Gala", place: "Monrovia, Liberia" },
+          { date: "Jun 04, 2026", title: "STEM Open House", place: "West Point Hub" },
+          { date: "Jul 22, 2026", title: "Sponsor Field Visit", place: "Grand Bassa County" },
+        ]),
+      },
       { key: "hero_eyebrow", label: "Hero · Eyebrow", type: "text", default: "News & stories" },
       { key: "hero_title", label: "Hero · Title", type: "text", default: "The" },
       { key: "hero_highlight", label: "Hero · Highlight", type: "text", default: "Impact Hub" },

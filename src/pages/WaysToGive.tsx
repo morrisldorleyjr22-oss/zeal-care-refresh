@@ -174,7 +174,7 @@ export default function WaysToGive() {
           <span className="eyebrow">Engagement Pathways</span>
           <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">How You Can Help</h2>
         </div>
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
+        <div className="mt-14 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {ways.map((w, i) => {
             const Icon = getIcon(w.icon, CalendarClock);
             const target = w.to || "/contact";
@@ -239,7 +239,7 @@ export default function WaysToGive() {
         <p className="mt-4 text-center max-w-2xl mx-auto text-navy/65">
           Send your contribution using the dial code below, then tap <span className="font-bold text-navy">"I've sent my donation"</span> so we can confirm it and send your impact receipt.
         </p>
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
+        <div className="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {mobile.map((m) => (
             <div key={m.name} className="flex flex-col bg-primary text-white rounded-3xl p-8 border border-primary/40 shadow-[0_18px_40px_-15px_hsl(var(--primary)/0.55)] hover:shadow-[0_28px_55px_-15px_hsl(var(--primary)/0.7)] hover:-translate-y-1 transition-all">
               <Smartphone className="h-7 w-7 text-accent" />

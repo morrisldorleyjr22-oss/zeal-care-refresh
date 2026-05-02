@@ -166,7 +166,7 @@ export default function WhatWeDo() {
           <div className="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
             {impactStats.map((s, i) => (
               <div key={`${s.label}-${i}`} className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                <div className="text-5xl font-black text-accent tabular-nums tracking-tighter">{s.value}</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-accent tabular-nums tracking-tighter">{s.value}</div>
                 <div className="mt-2 text-xs font-bold uppercase tracking-widest text-white/80">{s.label}</div>
               </div>
             ))}

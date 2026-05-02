@@ -52,8 +52,8 @@ export default function Footer() {
       <div className="relative h-1 bg-gradient-to-r from-transparent via-accent/80 to-transparent" />
 
       {/* CTA strip */}
-      <div className="relative container-zc pt-16 md:pt-20 pb-14">
-        <div className="rounded-[2rem] bg-white/8 backdrop-blur-md border border-white/15 p-8 md:p-12 grid lg:grid-cols-12 gap-8 items-center relative overflow-hidden">
+      <div className="relative container-zc pt-12 sm:pt-16 md:pt-20 pb-10 sm:pb-14">
+        <div className="rounded-[1.5rem] sm:rounded-[2rem] bg-white/8 backdrop-blur-md border border-white/15 p-6 sm:p-8 md:p-12 grid lg:grid-cols-12 gap-6 sm:gap-8 items-center relative overflow-hidden">
           {/* Yellow corner accent */}
           <div
             aria-hidden="true"
@@ -71,7 +71,7 @@ export default function Footer() {
                 Get Involved
               </span>
             </div>
-            <h2 className="mt-4 text-2xl md:text-4xl font-black leading-tight tracking-tight text-balance">
+            <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-tight text-balance">
               Ready to <span className="text-accent">make an impact?</span>
             </h2>
             <p className="mt-3 text-white/75 text-sm md:text-base max-w-2xl leading-relaxed">
@@ -79,23 +79,23 @@ export default function Footer() {
               underprivileged children in Liberia.
             </p>
           </div>
-          <div className="lg:col-span-5 flex flex-wrap gap-3 lg:justify-end relative">
+          <div className="lg:col-span-5 flex flex-col sm:flex-row flex-wrap gap-3 lg:justify-end relative w-full">
             <DonateButton label={donate.label || "Become a Donor"} to={donate.url} size="lg" />
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white/25 font-semibold px-7 py-4 rounded-full uppercase tracking-wide text-sm hover:bg-white/20 hover:border-white/40 transition-colors backdrop-blur-sm"
+              className="inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white/25 font-semibold px-6 sm:px-7 py-3.5 sm:py-4 rounded-full uppercase tracking-wide text-xs sm:text-sm hover:bg-white/20 hover:border-white/40 transition-colors backdrop-blur-sm"
             >
               Volunteer Now
-              <ArrowUpRight className="h-4 w-4" strokeWidth={ICON_STROKE} />
+              <ArrowUpRight className="h-4 w-4 shrink-0" strokeWidth={ICON_STROKE} />
             </Link>
           </div>
         </div>
       </div>
 
       {/* Main footer */}
-      <div className="relative container-zc pb-14 grid gap-12 md:grid-cols-12">
+      <div className="relative container-zc pb-12 sm:pb-14 grid gap-10 sm:gap-12 sm:grid-cols-2 md:grid-cols-12">
         {/* Brand */}
-        <div className="md:col-span-4 flex flex-col gap-5">
+        <div className="sm:col-span-2 md:col-span-4 flex flex-col gap-5">
           <Link to="/" className="flex items-center gap-3 group" aria-label="Zeal Care home">
             <div className="bg-white rounded-2xl p-2.5 shadow-yellow-glow group-hover:rotate-3 transition-transform">
               <img src={logo} alt="Zeal Care" className="h-14 w-auto object-contain" />
@@ -149,7 +149,7 @@ export default function Footer() {
         />
 
         {/* Contact */}
-        <div className="md:col-span-3 flex flex-col gap-4">
+        <div className="sm:col-span-2 md:col-span-3 flex flex-col gap-4 min-w-0">
           <h4 className="font-bold uppercase text-xs tracking-[0.22em] text-accent inline-flex items-center gap-2">
             <span className="block size-1.5 rounded-full bg-accent" />
             Get in Touch
@@ -195,8 +195,8 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="relative border-t border-white/10 bg-navy/30 backdrop-blur-sm">
-        <div className="container-zc py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/60">
-          <p className="inline-flex items-center gap-2">
+        <div className="container-zc py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/60 text-center md:text-left">
+          <p className="inline-flex items-center gap-2 flex-wrap justify-center">
             {footer.copyright}
             <Link
               to="/auth"
@@ -205,7 +205,7 @@ export default function Footer() {
               className="inline-block size-1.5 rounded-full bg-white/20 hover:bg-accent transition-colors"
             />
           </p>
-          <div className="flex items-center gap-2 font-semibold uppercase tracking-[0.22em]">
+          <div className="flex items-center gap-2 font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em] flex-wrap justify-center text-[10px] sm:text-xs">
             <span className="size-1 rounded-full bg-accent" />
             Igniting Potential
             <span className="text-accent">·</span>
@@ -225,7 +225,7 @@ function FooterCol({
   links: { to: string; label: string }[];
 }) {
   return (
-    <div className="md:col-span-2 flex flex-col gap-4">
+    <div className="md:col-span-2 flex flex-col gap-4 min-w-0">
       <h4 className="font-bold uppercase text-xs tracking-[0.22em] text-accent inline-flex items-center gap-2">
         <span className="block size-1.5 rounded-full bg-accent" />
         {title}

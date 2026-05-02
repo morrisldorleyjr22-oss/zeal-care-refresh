@@ -205,10 +205,10 @@ export default function WhoWeAre() {
           <p className="mt-4 text-navy/70 text-lg">A network of institutions, companies, and community leaders who multiply our impact.</p>
         </div>
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-          {partners.map((p) => (
-            <div key={p} className="bg-white rounded-2xl border border-secondary p-6 text-center hover:shadow-soft transition-all">
+          {partners.map((p, idx) => (
+            <div key={`${p.name}-${idx}`} className="bg-white rounded-2xl border border-secondary p-6 text-center hover:shadow-soft transition-all">
               <Handshake className="h-6 w-6 text-primary mx-auto" />
-              <div className="mt-3 font-bold text-navy text-sm">{p}</div>
+              <div className="mt-3 font-bold text-navy text-sm">{p.name}</div>
             </div>
           ))}
         </div>
@@ -238,8 +238,9 @@ export default function WhoWeAre() {
             <ol className="space-y-10 md:space-y-16">
               {history.map((h, i) => {
                 const isLeft = i % 2 === 0;
+                const HIcon = getIcon(h.icon, Sparkles);
                 return (
-                  <li key={h.year} className="relative md:grid md:grid-cols-2 md:gap-12 items-center">
+                  <li key={`${h.year}-${i}`} className="relative md:grid md:grid-cols-2 md:gap-12 items-center">
                     {/* Spine node */}
                     <div className="absolute left-5 md:left-1/2 top-6 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 z-10">
                       <span className="block size-4 rounded-full bg-primary ring-4 ring-background shadow-[0_0_0_4px_hsl(var(--primary)/0.15)]" />
@@ -250,7 +251,7 @@ export default function WhoWeAre() {
                       <article className="group relative bg-white rounded-3xl p-7 md:p-8 border-2 border-primary/15 shadow-[0_12px_30px_-15px_hsl(var(--primary)/0.35)] hover:border-primary/45 hover:shadow-[0_22px_50px_-18px_hsl(var(--primary)/0.55)] hover:-translate-y-1 transition-all">
                         <div className={`flex items-center gap-3 ${isLeft ? "md:flex-row-reverse md:text-right" : ""}`}>
                           <div className="size-12 rounded-2xl bg-primary text-white flex items-center justify-center shrink-0 shadow-[0_8px_20px_-8px_hsl(var(--primary)/0.6)]">
-                            <h.icon className="h-5 w-5" strokeWidth={2.4} />
+                            <HIcon className="h-5 w-5" strokeWidth={2.4} />
                           </div>
                           <div className="inline-flex items-center gap-2 bg-accent text-navy font-black text-xs px-3 py-1.5 rounded-full uppercase tracking-widest">
                             {h.year}

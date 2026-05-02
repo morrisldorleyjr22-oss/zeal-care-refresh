@@ -238,3 +238,86 @@ export default function Media() {
     </div>
   );
 }
+
+type CmsHelper = { get: (key: string) => string };
+
+function getYouTubeEmbed(url: string): string | null {
+  const yt = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+  if (yt) return `https://www.youtube.com/embed/${yt[1]}`;
+  const vimeo = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}`;
+  return null;
+}
+
+function CinematicVideo({ src, title, poster }: { src: string; title: string; poster: string }) {
+  const embed = getYouTubeEmbed(src);
+  return (
+    <div className="group relative aspect-video rounded-[1.5rem] overflow-hidden bg-navy/60 shadow-soft">
+      {embed ? (
+        <iframe
+          src={embed}
+          title={title || "Cinematic"}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full border-0"
+        />
+      ) : (
+        <video
+          src={src}
+          poster={poster || undefined}
+          controls
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-cover bg-black"
+        />
+      )}
+      {title && (
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent p-4 pointer-events-none">
+          <div className="text-white text-sm font-bold">{title}</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CinematicsSection({ cms }: { cms: CmsHelper }) {
+  const slots = [1, 2, 3].map((n) => ({
+    src: cms.get(`video_cinematic_${n}`),
+    title: cms.get(`video_cinematic_${n}_title`),
+    poster: cms.get(`video_cinematic_${n}_poster`),
+  }));
+  const videos = slots.filter((s) => s.src && s.src.trim().length > 0);
+  const eyebrow = cms.get("cinematic_section_eyebrow");
+  const title = cms.get("cinematic_section_title");
+  const emptyMsg = cms.get("cinematic_empty_message");
+
+  return (
+    <section id="video" className="scroll-mt-32 bg-hero-gradient text-white py-16 md:py-20">
+      <div className="container-zc">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
+          {eyebrow}
+        </span>
+        <h2 className="mt-2 text-3xl md:text-4xl font-black">{title}</h2>
+
+        {videos.length === 0 ? (
+          <div className="mt-10 rounded-[1.5rem] border border-white/15 bg-white/5 backdrop-blur-sm p-10 md:p-14 text-center">
+            <div className="mx-auto size-14 rounded-full bg-accent/20 grid place-items-center">
+              <Play className="h-6 w-6 text-accent" />
+            </div>
+            <p className="mt-4 text-white/80 max-w-md mx-auto text-sm md:text-base">
+              {emptyMsg}
+            </p>
+          </div>
+        ) : (
+          <div className="mt-10 grid lg:grid-cols-3 gap-6">
+            {videos.map((v, i) => (
+              <div key={i} className={`reveal reveal-delay-${i + 1}`}>
+                <CinematicVideo src={v.src} title={v.title} poster={v.poster} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}

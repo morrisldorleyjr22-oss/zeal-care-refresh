@@ -158,10 +158,15 @@ function Editor({ def }: { def: PageDef }) {
     try {
       const rows = dirtyKeys.map((k) => {
         const f = def.fields.find((x) => x.key === k)!;
+        const type =
+          f.type === "image" ? "image" :
+          f.type === "video" ? "video" :
+          f.type === "repeater" ? "repeater" :
+          "text";
         return {
           page: def.page,
           key: k,
-          type: f.type === "image" ? "image" : f.type === "video" ? "video" : "text",
+          type,
           value: draft[k] ?? "",
         };
       });

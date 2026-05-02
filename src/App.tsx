@@ -45,6 +45,8 @@ const App = () => (
             >
               <Route index element={<AdminDashboard />} />
               <Route path="global" element={<AdminGlobalSettings />} />
+              <Route path="content" element={<AdminContent />} />
+              <Route path="content/:page" element={<AdminContent />} />
               <Route path="media" element={<AdminMedia />} />
               <Route path="users" element={<AdminUsers />} />
             </Route>

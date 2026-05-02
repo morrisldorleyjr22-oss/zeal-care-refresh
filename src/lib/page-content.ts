@@ -49,6 +49,7 @@ export const PAGE_REGISTRY: PageDef[] = [
       { key: "mission_body", label: "Mission · Body", type: "textarea", default: "At ZEAL CARE, we believe every child deserves a chance to thrive, regardless of their background. Our mission is to break the cycle of poverty by providing quality education and mentorship to underserved communities." },
       { key: "mission_quote", label: "Mission · Quote", type: "textarea", default: '"Education is the most powerful weapon which you can use to change the world."' },
       { key: "img_hero_main", label: "Hero · Main image", type: "image", default: hero1 },
+      { key: "img_hero_background", label: "Hero · Background photo", type: "image", default: heroBg, help: "Full-bleed photograph behind the hero. A dark blue overlay is applied automatically." },
       { key: "img_hero_portrait", label: "Hero · Portrait image", type: "image", default: hero2 },
       { key: "img_mission", label: "Mission · Image", type: "image", default: progStem },
       { key: "img_program_education", label: "Program · Education image", type: "image", default: progEdu },

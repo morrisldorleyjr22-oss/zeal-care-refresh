@@ -59,7 +59,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* Leadership */}
-      <section className="container-zc py-24 md:py-32 scroll-mt-32" id="leadership">
+      <section className="container-zc py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-32 scroll-mt-32" id="leadership">
         <div className="max-w-3xl">
           <span className="eyebrow">Institutional Force</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Our Leadership</h2>
@@ -100,7 +100,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* Board */}
-      <section id="board" className="scroll-mt-32 bg-soft-gradient py-24">
+      <section id="board" className="scroll-mt-32 bg-soft-gradient py-14 sm:py-20 md:py-24">
         <div className="container-zc">
           <div className="max-w-3xl">
             <span className="eyebrow">Strategic Governance</span>
@@ -126,7 +126,7 @@ export default function WhoWeAre() {
           <ResponsiveImage picture={community} alt="" sizes="100vw" className="block w-full h-full" imgClassName="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-hero-gradient opacity-95" />
         </div>
-        <div className="container-zc relative py-24 md:py-32 text-white grid lg:grid-cols-12 gap-12 items-center">
+        <div className="container-zc relative py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-32 text-white grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Heart of the Mission</span>
             <h2 className="mt-3 text-4xl md:text-5xl font-black">Our Beneficiaries</h2>
@@ -147,7 +147,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* Pictorials of Successful Beneficiaries */}
-      <section id="pictorials" className="scroll-mt-32 relative bg-soft-gradient py-24 md:py-32 overflow-hidden">
+      <section id="pictorials" className="scroll-mt-32 relative bg-soft-gradient py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute -top-24 -right-24 size-72 bg-primary/10 rounded-full blur-3xl" aria-hidden />
         <div className="absolute -bottom-32 -left-24 size-96 bg-accent/15 rounded-full blur-3xl" aria-hidden />
 
@@ -198,7 +198,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* Partners */}
-      <section id="partners" className="scroll-mt-32 container-zc py-24">
+      <section id="partners" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="max-w-3xl">
           <span className="eyebrow">Coalition of Care</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Our Partners</h2>
@@ -215,7 +215,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* History */}
-      <section id="history" className="scroll-mt-32 relative bg-soft-gradient py-24 md:py-32 overflow-hidden">
+      <section id="history" className="scroll-mt-32 relative bg-soft-gradient py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute -top-32 -left-32 size-72 bg-primary/10 rounded-full blur-3xl" aria-hidden />
         <div className="absolute -bottom-40 -right-32 size-96 bg-accent/15 rounded-full blur-3xl" aria-hidden />
 
@@ -290,7 +290,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* Awards */}
-      <section id="awards" className="scroll-mt-32 container-zc py-24">
+      <section id="awards" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="max-w-3xl">
           <span className="eyebrow">Recognition</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Awards & Prizes</h2>
@@ -308,7 +308,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* Safeguarding */}
-      <section id="safeguarding" className="scroll-mt-32 bg-hero-gradient text-white py-24">
+      <section id="safeguarding" className="scroll-mt-32 bg-hero-gradient text-white py-14 sm:py-20 md:py-24">
         <div className="container-zc grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Our Promise</span>
@@ -335,7 +335,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* Finance & Accountability */}
-      <section id="finance" className="scroll-mt-32 container-zc py-24">
+      <section id="finance" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
             <span className="eyebrow">Open Books</span>
@@ -365,7 +365,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* Work for Us */}
-      <section id="careers" className="scroll-mt-32 bg-soft-gradient py-24">
+      <section id="careers" className="scroll-mt-32 bg-soft-gradient py-14 sm:py-20 md:py-24">
         <div className="container-zc grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
             <span className="eyebrow">Careers</span>
@@ -387,7 +387,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* Tenders */}
-      <section id="tenders" className="scroll-mt-32 container-zc py-24">
+      <section id="tenders" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="max-w-3xl">
           <span className="eyebrow">Procurement</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Tenders & Opportunities</h2>
@@ -403,7 +403,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* Voice */}
-      <section className="container-zc py-24">
+      <section className="container-zc py-14 sm:py-20 md:py-24">
         <div className="max-w-4xl mx-auto bg-white rounded-[2rem] border border-secondary p-10 md:p-14 shadow-card-lg">
           <Quote className="h-10 w-10 text-accent" />
           <p className="mt-5 text-2xl md:text-3xl font-light leading-snug text-navy text-balance">

@@ -109,7 +109,7 @@ export default function Index() {
       </section>
 
       {/* MISSION */}
-      <section className="container-zc py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
+      <section className="container-zc py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-32 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-5 relative">
           <div className="rounded-[2rem] overflow-hidden shadow-card-lg">
             <img
@@ -145,7 +145,7 @@ export default function Index() {
       </section>
 
       {/* WHAT SETS US APART */}
-      <section className="bg-soft-gradient py-24 md:py-32">
+      <section className="bg-soft-gradient py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-32">
         <div className="container-zc">
           <div className="text-center max-w-3xl mx-auto reveal">
             <span className="eyebrow">The Zeal Advantage</span>
@@ -169,7 +169,7 @@ export default function Index() {
       </section>
 
       {/* PROGRAMS */}
-      <section className="container-zc py-24 md:py-32">
+      <section className="container-zc py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-32">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <span className="eyebrow">Our Impact Areas</span>
@@ -209,7 +209,7 @@ export default function Index() {
       </section>
 
       {/* TESTIMONIAL */}
-      <section className="bg-hero-gradient text-white py-24 md:py-32 relative overflow-hidden">
+      <section className="bg-hero-gradient text-white py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden">
         <div className="absolute -top-40 -right-40 size-[28rem] bg-accent/15 rounded-full blur-3xl" />
         <div className="container-zc relative">
           <div className="max-w-4xl">

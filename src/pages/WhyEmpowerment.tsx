@@ -16,7 +16,7 @@ export default function WhyEmpowerment() {
       />
 
       {/* Philosophy */}
-      <section className="container-zc py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
+      <section className="container-zc py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-32 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7">
           <span className="eyebrow">Our Philosophy</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">{c.get("philosophy_title")}</h2>
@@ -38,7 +38,7 @@ export default function WhyEmpowerment() {
       </section>
 
       {/* Social Justice */}
-      <section id="social-justice" className="scroll-mt-32 bg-hero-gradient text-white py-24 md:py-32">
+      <section id="social-justice" className="scroll-mt-32 bg-hero-gradient text-white py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-32">
         <div className="container-zc grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="rounded-[2rem] overflow-hidden border border-white/10">
@@ -65,7 +65,7 @@ export default function WhyEmpowerment() {
       </section>
 
       {/* Economic Development */}
-      <section id="economic-development" className="scroll-mt-32 container-zc py-24 md:py-28 grid lg:grid-cols-12 gap-12 items-center">
+      <section id="economic-development" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-28 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7">
           <span className="eyebrow">The Multiplier Effect</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Economic Development</h2>
@@ -90,7 +90,7 @@ export default function WhyEmpowerment() {
       </section>
 
       {/* Stats */}
-      <section className="container-zc py-24">
+      <section className="container-zc py-14 sm:py-20 md:py-24">
         <div className="grid md:grid-cols-3 gap-6">
           {stats.map((s, i) => (
             <div key={`${s.label}-${i}`} className="bg-soft-gradient rounded-3xl p-10 border-2 border-primary/70 ring-1 ring-primary/20 text-center shadow-card-lg">

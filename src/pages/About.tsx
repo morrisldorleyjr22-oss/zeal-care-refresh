@@ -51,7 +51,7 @@ export default function About() {
       />
 
       {/* Mission · Vision · Goals */}
-      <section className="container-zc py-20 md:py-28 grid md:grid-cols-3 gap-6">
+      <section className="container-zc py-14 sm:py-18 md:py-14 sm:py-20 md:py-24 lg:py-28 grid md:grid-cols-3 gap-6">
         {cards.map((card, i) => {
           const isVision = i === 1;
           return (
@@ -78,7 +78,7 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section id="values" className="scroll-mt-32 bg-soft-gradient py-24">
+      <section id="values" className="scroll-mt-32 bg-soft-gradient py-14 sm:py-20 md:py-24">
         <div className="container-zc">
           <div className="max-w-3xl">
             <span className="eyebrow">The Zeal Compass</span>
@@ -104,7 +104,7 @@ export default function About() {
       </section>
 
       {/* Belief */}
-      <section id="belief" className="scroll-mt-32 container-zc py-24 grid lg:grid-cols-12 gap-12 items-center">
+      <section id="belief" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7">
           <span className="eyebrow">What We Believe</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">{c.get("belief_title")}</h2>
@@ -134,7 +134,7 @@ export default function About() {
       </section>
 
       {/* SDG Focus */}
-      <section id="sdg" className="scroll-mt-32 bg-hero-gradient text-white py-24">
+      <section id="sdg" className="scroll-mt-32 bg-hero-gradient text-white py-14 sm:py-20 md:py-24">
         <div className="container-zc">
           <div className="max-w-3xl">
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Global Alignment</span>
@@ -156,7 +156,7 @@ export default function About() {
       </section>
 
       {/* Characteristics We Develop */}
-      <section id="characteristics" className="scroll-mt-32 container-zc py-24">
+      <section id="characteristics" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="max-w-3xl">
           <span className="eyebrow">The Zeal Profile</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Characteristics We Develop</h2>
@@ -187,7 +187,7 @@ export default function About() {
           />
           <div className="absolute inset-0 bg-navy/85" />
         </div>
-        <div className="container-zc relative py-24 md:py-32 text-center text-white">
+        <div className="container-zc relative py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-32 text-center text-white">
           <p className="text-3xl md:text-5xl font-black leading-tight tracking-tight max-w-4xl mx-auto text-balance">
             {c.get("quote_band_text")}
           </p>

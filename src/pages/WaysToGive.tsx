@@ -202,7 +202,7 @@ export default function WaysToGive() {
       </section>
 
       {/* Allocation */}
-      <section className="bg-soft-gradient py-24">
+      <section className="bg-soft-gradient py-14 sm:py-20 md:py-24">
         <div className="container-zc grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5">
             <span className="eyebrow">Transparency</span>
@@ -231,7 +231,7 @@ export default function WaysToGive() {
       </section>
 
       {/* Mobile money */}
-      <section className="container-zc py-24">
+      <section className="container-zc py-14 sm:py-20 md:py-24">
         <div className="text-center max-w-3xl mx-auto">
           <span className="eyebrow">Local Giving</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Mobile Money Options</h2>
@@ -285,7 +285,7 @@ export default function WaysToGive() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="scroll-mt-32 bg-soft-gradient py-24">
+      <section id="faq" className="scroll-mt-32 bg-soft-gradient py-14 sm:py-20 md:py-24">
         <div className="container-zc max-w-3xl mx-auto">
           <span className="eyebrow">Common Questions</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Giving FAQ</h2>
@@ -301,7 +301,7 @@ export default function WaysToGive() {
       </section>
 
       {/* Final appeal */}
-      <section id="appeals" className="scroll-mt-32 container-zc py-24">
+      <section id="appeals" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="bg-hero-gradient rounded-[2.5rem] p-10 md:p-16 text-white relative overflow-hidden">
           <div className="absolute -top-20 -right-20 size-80 bg-accent/20 rounded-full blur-3xl" />
           <div className="relative max-w-3xl">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
-import { Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
+import { ArrowLeft, Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
 import logo from "@/assets/zealcare-logo.png";
 
 const schema = z.object({
@@ -70,6 +70,13 @@ export default function Auth() {
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-16 bg-gradient-to-br from-background via-muted/30 to-background">
       <div className="w-full max-w-md">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary mb-4 transition-colors"
+        >
+          <ArrowLeft className="size-4" />
+          Back to site
+        </Link>
         <div className="bg-card border border-border rounded-3xl shadow-xl overflow-hidden">
           <div className="bg-hero-gradient p-6 text-white">
             <div className="flex items-center justify-center mb-4">

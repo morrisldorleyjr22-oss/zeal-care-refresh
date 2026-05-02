@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PageHero from "@/components/PageHero";
 import { usePageContent } from "@/hooks/usePageContent";
 import { Quote, Handshake, Trophy, ShieldCheck, FileBarChart2, Briefcase, FileText, Clock, Sparkles, Building2, Cpu, Users, MapPin, ArrowRight } from "lucide-react";
@@ -310,10 +311,13 @@ export default function WhoWeAre() {
 
             {/* End cap */}
             <div className="relative mt-12 md:mt-16 flex md:justify-center">
-              <div className="ml-5 md:ml-0 -translate-x-1/2 md:translate-x-0 inline-flex items-center gap-2 bg-navy text-white font-bold text-xs uppercase tracking-widest px-5 py-3 rounded-full shadow-card-lg">
+              <Link
+                to="/media"
+                className="ml-5 md:ml-0 -translate-x-1/2 md:translate-x-0 inline-flex items-center gap-2 bg-navy text-white font-bold text-xs uppercase tracking-widest px-5 py-3 rounded-full shadow-card-lg hover:bg-primary transition-colors"
+              >
                 The story continues
                 <ArrowRight className="h-4 w-4 text-accent" />
-              </div>
+              </Link>
             </div>
           </div>
         </div>

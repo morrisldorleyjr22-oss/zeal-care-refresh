@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Calendar, Clock, Share2, User } from "lucide-react";
 import { articles, getArticleBySlug } from "@/data/articles";
 import { useReveal } from "@/hooks/useReveal";
-import ResponsiveImage from "@/components/ResponsiveImage";
+import ArticleImage from "@/components/ArticleImage";
 import { toast } from "sonner";
 
 export default function ArticleDetail() {
@@ -49,7 +49,7 @@ export default function ArticleDetail() {
       {/* Hero image */}
       <section className="relative">
         <div className="aspect-[16/8] md:aspect-[21/9] w-full overflow-hidden bg-navy">
-          <ResponsiveImage
+          <ArticleImage
             picture={article.img}
             alt={article.title}
             sizes="100vw"
@@ -155,7 +155,7 @@ export default function ArticleDetail() {
               className={`reveal reveal-delay-${i + 1} hover-lift group rounded-3xl overflow-hidden border border-secondary bg-white block`}
             >
               <div className="aspect-[16/10] overflow-hidden">
-                <ResponsiveImage
+                <ArticleImage
                   picture={r.img}
                   alt={r.title}
                   sizes="(min-width: 1024px) 32vw, (min-width: 768px) 45vw, 90vw"

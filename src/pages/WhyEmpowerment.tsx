@@ -90,7 +90,7 @@ export default function WhyEmpowerment() {
             { v: "3×", l: "Faster GDP growth in nations prioritizing education" },
             { v: "1 gen", l: "Time needed to break the poverty cycle" },
           ].map((s) => (
-            <div key={s.l} className="animated-border p-5" style={{ borderRadius: "1rem" }}>
+            <div key={s.l} tabIndex={0} className="animated-border stat-card">
               <div className="text-3xl font-black text-primary tabular-nums tracking-tighter">{s.v}</div>
               <div className="mt-2 text-xs font-bold text-navy/60 uppercase tracking-widest leading-tight">{s.l}</div>
             </div>
@@ -102,7 +102,7 @@ export default function WhyEmpowerment() {
       <section className="container-zc py-24">
         <div className="grid md:grid-cols-3 gap-6">
           {stats.map((s) => (
-            <div key={s.label} className="animated-border p-10 text-center">
+            <div key={s.label} tabIndex={0} className="animated-border stat-card text-center">
               <div className="text-6xl font-black text-primary tabular-nums tracking-tighter">{s.value}</div>
               <div className="mt-3 text-sm font-bold text-navy/70 uppercase tracking-widest">{s.label}</div>
             </div>

@@ -12,6 +12,7 @@ import galleryMaterials from "@/assets/project-materials-row.jpg?responsive";
 import galleryFeePayment from "@/assets/project-feepayment.jpg?responsive";
 import galleryTeam from "@/assets/team-meeting.jpg?responsive";
 import ResponsiveImage from "@/components/ResponsiveImage";
+import ArticleImage from "@/components/ArticleImage";
 
 const events = [
   { date: "May 18, 2026", title: "Annual Donor Gala", place: "Monrovia, Liberia" },
@@ -106,7 +107,7 @@ export default function Media() {
               >
                 <Link to={`/media/${n.slug}`} className="block">
                   <div className="aspect-[16/10] overflow-hidden relative">
-                    <ResponsiveImage
+                    <ArticleImage
                       picture={n.img}
                       alt={n.title}
                       sizes="(min-width: 1024px) 32vw, (min-width: 768px) 45vw, 90vw"

@@ -147,8 +147,8 @@ export default function WhatWeDo() {
                 </div>
                 <div className="p-8">
                   <div className="flex items-center gap-3">
-                    <div className={`size-12 rounded-2xl ring-1 ${i % 2 === 0 ? "bg-accent text-navy ring-accent/40" : "bg-primary text-white ring-primary/40"} flex items-center justify-center`}>
-                      <p.icon className="h-5 w-5" strokeWidth={2.5} />
+                    <div className={`program-icon ${i % 2 === 0 ? "program-icon--accent" : ""}`}>
+                      <p.icon />
                     </div>
                     <h3 className="text-xl md:text-2xl font-black text-navy">{p.title}</h3>
                   </div>
@@ -203,7 +203,7 @@ export default function WhatWeDo() {
               { v: "100%", l: "Enrollment Rate" },
               { v: "$45K", l: "Grand Bassa Goal" },
             ].map((s) => (
-              <div key={s.l} className="animated-border-ghost bg-white/5 p-6" style={{ borderRadius: "1rem" }}>
+              <div key={s.l} tabIndex={0} className="animated-border-ghost stat-card-dark bg-white/5">
                 <div className="text-5xl font-black text-accent tabular-nums tracking-tighter">{s.v}</div>
                 <div className="mt-2 text-xs font-bold uppercase tracking-widest text-white/80">{s.l}</div>
               </div>

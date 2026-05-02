@@ -250,3 +250,104 @@
   .animated-border::before,
   .animated-border-ghost::before { animation: none; }
 }
+
+/* ============================================================
+   Standardized stat-card sizing + hover/focus interactions.
+   Pair with .animated-border or .animated-border-ghost.
+   ============================================================ */
+.stat-card {
+  padding: 1.5rem;          /* p-6 */
+  border-radius: 1.25rem;   /* rounded-[1.25rem] */
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  outline: none;
+}
+@media (min-width: 768px) {
+  .stat-card { padding: 1.75rem; } /* md:p-7 */
+}
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 18px 40px -18px hsl(var(--primary) / 0.45),
+    0 0 0 1px hsl(var(--primary) / 0.12);
+}
+.stat-card:focus-visible {
+  box-shadow:
+    0 0 0 3px hsl(var(--background)),
+    0 0 0 6px hsl(var(--primary) / 0.55);
+}
+/* Dark-surface variant — glow uses accent instead of primary */
+.stat-card-dark { padding: 1.5rem; border-radius: 1.25rem;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  outline: none;
+}
+@media (min-width: 768px) { .stat-card-dark { padding: 1.75rem; } }
+.stat-card-dark:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 18px 40px -18px hsl(var(--accent) / 0.55),
+    0 0 0 1px hsl(var(--accent) / 0.25);
+}
+.stat-card-dark:focus-visible {
+  box-shadow:
+    0 0 0 3px hsl(var(--navy)),
+    0 0 0 6px hsl(var(--accent) / 0.7);
+}
+@media (prefers-reduced-motion: reduce) {
+  .stat-card, .stat-card-dark { transition: none; }
+  .stat-card:hover, .stat-card-dark:hover { transform: none; }
+}
+
+/* ============================================================
+   Standardized program icon container.
+   Used on program cards across Index / WhatWeDo / etc.
+   ============================================================ */
+.program-icon {
+  width: 3.25rem;          /* 52px */
+  height: 3.25rem;
+  border-radius: 1rem;     /* rounded-2xl */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+  color: hsl(var(--primary-foreground));
+  box-shadow:
+    0 8px 22px -10px hsl(var(--primary) / 0.55),
+    inset 0 0 0 1px hsl(0 0% 100% / 0.18);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.program-icon > svg {
+  width: 1.5rem;           /* 24px */
+  height: 1.5rem;
+  stroke-width: 2.25;
+}
+.group:hover .program-icon,
+.program-icon:hover {
+  transform: rotate(-4deg) scale(1.06) translateY(-2px);
+  box-shadow:
+    0 14px 30px -10px hsl(var(--primary) / 0.7),
+    inset 0 0 0 1px hsl(0 0% 100% / 0.25);
+}
+/* Accent variant for alternating cards */
+.program-icon--accent {
+  background: linear-gradient(135deg, hsl(var(--accent)), hsl(47 92% 62%));
+  color: hsl(var(--navy));
+  box-shadow:
+    0 8px 22px -10px hsl(var(--accent) / 0.7),
+    inset 0 0 0 1px hsl(0 0% 100% / 0.4);
+}
+.group:hover .program-icon--accent,
+.program-icon--accent:hover {
+  box-shadow:
+    0 14px 30px -10px hsl(var(--accent) / 0.85),
+    inset 0 0 0 1px hsl(0 0% 100% / 0.5);
+}
+@media (prefers-reduced-motion: reduce) {
+  .program-icon { transition: none; }
+  .group:hover .program-icon,
+  .program-icon:hover { transform: none; }
+}

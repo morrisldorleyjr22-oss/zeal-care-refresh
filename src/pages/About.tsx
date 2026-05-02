@@ -146,7 +146,7 @@ export default function About() {
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {sdgs.map((s) => (
               <div key={s.n} className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
-                <div className="text-4xl font-black text-accent tabular-nums tracking-tighter">{s.n}</div>
+                <div className="text-3xl sm:text-4xl font-black text-accent tabular-nums tracking-tighter">{s.n}</div>
                 <div className="mt-3 font-black text-white">{s.title}</div>
                 <p className="mt-2 text-sm text-white/70 leading-relaxed">{s.desc}</p>
               </div>

@@ -33,14 +33,17 @@ export default function WhatWeDo() {
           </p>
         </div>
         <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-          {supports.map((s) => (
-            <div key={s.label} className="bg-white rounded-2xl p-5 border border-secondary flex items-center gap-3 hover:shadow-soft transition-all">
-              <div className="size-11 rounded-xl bg-accent flex items-center justify-center shrink-0">
-                <s.icon className="h-5 w-5 text-navy" />
+          {supports.map((s, i) => {
+            const Icon = getIcon(s.icon);
+            return (
+              <div key={`${s.label}-${i}`} className="bg-white rounded-2xl p-5 border border-secondary flex items-center gap-3 hover:shadow-soft transition-all">
+                <div className="size-11 rounded-xl bg-accent flex items-center justify-center shrink-0">
+                  <Icon className="h-5 w-5 text-navy" />
+                </div>
+                <span className="text-sm font-bold text-navy">{s.label}</span>
               </div>
-              <span className="text-sm font-bold text-navy">{s.label}</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -56,13 +59,14 @@ export default function WhatWeDo() {
             </p>
           </div>
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
-            {[
-              { city: "Monrovia", area: "Chicken Soup Factory", note: "Flagship learning hub & STEM lab" },
-              { city: "Monrovia", area: "West Point", note: "Community education center" },
-              { city: "Grand Bassa County", area: "Rural Outreach", note: "3 new digital hubs (2026)" },
-              { city: "Pan-African", area: "Diaspora Network", note: "Donor & mentor partnerships" },
-            ].map((l) => (
-              <div key={l.area} className="bg-white rounded-2xl border border-secondary p-6 hover:shadow-card-lg transition-all">
+            {locations.map((l, i) => (
+              <div key={`${l.area}-${i}`} className="bg-white rounded-2xl border border-secondary p-6 hover:shadow-card-lg transition-all">
+                <div className="text-[11px] font-bold text-primary uppercase tracking-widest">{l.city}</div>
+                <div className="mt-1 font-black text-navy text-lg">{l.area}</div>
+                <div className="mt-2 text-sm text-navy/65">{l.note}</div>
+              </div>
+            ))}
+          </div>
                 <div className="text-[11px] font-bold text-primary uppercase tracking-widest">{l.city}</div>
                 <div className="mt-1 font-black text-navy text-lg">{l.area}</div>
                 <div className="mt-2 text-sm text-navy/65">{l.note}</div>

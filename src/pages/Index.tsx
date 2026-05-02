@@ -181,26 +181,30 @@ export default function Index() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {programKeys.map((p, i) => (
-            <article key={p.title} className={`reveal reveal-delay-${i + 1} group relative rounded-[2rem] overflow-hidden border-2 border-primary/20 ring-1 ring-inset ring-primary/5 bg-white shadow-[0_12px_35px_-15px_hsl(var(--primary)/0.4)] hover:border-primary/50 hover:shadow-[0_22px_50px_-15px_hsl(var(--primary)/0.55)] hover:-translate-y-1 transition-all`}>
-              <span className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-primary via-accent to-primary z-10" />
-              <div
-                className={`program-hero ${i % 2 === 0 ? "program-hero--accent" : ""}`}
-                role="img"
-                aria-label={`${p.title} — program illustration`}
-                title={`${p.title} — program illustration`}
-              >
-                <p.icon aria-hidden="true" focusable="false" />
-              </div>
-              <div className="p-7">
-                <h3 className="text-xl md:text-2xl font-black text-navy">{p.title}</h3>
-                <p className="mt-4 text-navy/70 leading-relaxed">{p.desc}</p>
-                <Link to="/what-we-do" className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-primary group-hover:text-navy transition-colors">
-                  View details <ChevronRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </article>
-          ))}
+          {homePrograms.map((p, i) => {
+            const Icon = getIcon(p.icon);
+            const to = p.to && p.to.length > 0 ? p.to : "/what-we-do";
+            return (
+              <article key={`${p.title}-${i}`} className={`reveal reveal-delay-${i + 1} group relative rounded-[2rem] overflow-hidden border-2 border-primary/20 ring-1 ring-inset ring-primary/5 bg-white shadow-[0_12px_35px_-15px_hsl(var(--primary)/0.4)] hover:border-primary/50 hover:shadow-[0_22px_50px_-15px_hsl(var(--primary)/0.55)] hover:-translate-y-1 transition-all`}>
+                <span className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-primary via-accent to-primary z-10" />
+                <div
+                  className={`program-hero ${i % 2 === 0 ? "program-hero--accent" : ""}`}
+                  role="img"
+                  aria-label={`${p.title} — program illustration`}
+                  title={`${p.title} — program illustration`}
+                >
+                  <Icon aria-hidden="true" focusable="false" />
+                </div>
+                <div className="p-7">
+                  <h3 className="text-xl md:text-2xl font-black text-navy">{p.title}</h3>
+                  <p className="mt-4 text-navy/70 leading-relaxed">{p.desc}</p>
+                  <Link to={to} className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-primary group-hover:text-navy transition-colors">
+                    View details <ChevronRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 

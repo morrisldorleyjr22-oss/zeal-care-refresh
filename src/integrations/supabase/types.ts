@@ -14,6 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
+      mobile_money_pledges: {
+        Row: {
+          amount: number
+          contact: string
+          created_at: string
+          donor_name: string
+          id: string
+          note: string | null
+          provider: string
+          reference: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          amount: number
+          contact: string
+          created_at?: string
+          donor_name: string
+          id?: string
+          note?: string | null
+          provider: string
+          reference?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          amount?: number
+          contact?: string
+          created_at?: string
+          donor_name?: string
+          id?: string
+          note?: string | null
+          provider?: string
+          reference?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       page_content: {
         Row: {
           created_at: string

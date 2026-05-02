@@ -216,7 +216,7 @@ export default function WaysToGive() {
           </div>
           <div className="lg:col-span-7 space-y-5">
             {allocation.map((a) => (
-              <div key={a.label} tabIndex={0} className="animated-border stat-card">
+              <div key={a.label} className="bg-white rounded-2xl p-6 border border-secondary">
                 <div className="flex justify-between items-baseline">
                   <div>
                     <div className="font-black text-navy">{a.label}</div>

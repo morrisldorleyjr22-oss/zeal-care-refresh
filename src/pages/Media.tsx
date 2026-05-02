@@ -107,7 +107,7 @@ export default function Media() {
               >
                 <Link to={`/media/${n.slug}`} className="block">
                   <div className="aspect-[16/10] overflow-hidden relative">
-                    <ResponsiveImage
+                    <ArticleImage
                       picture={n.img}
                       alt={n.title}
                       sizes="(min-width: 1024px) 32vw, (min-width: 768px) 45vw, 90vw"

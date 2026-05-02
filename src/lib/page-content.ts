@@ -73,6 +73,21 @@ export const PAGE_REGISTRY: PageDef[] = [
       { key: "testimonial_quote", label: "Testimonial · Quote", type: "textarea", default: '"The digital skills I learned here got me my first job at a local tech firm. I am now the breadwinner for my family."' },
       { key: "testimonial_name", label: "Testimonial · Name", type: "text", default: "Kelvin M." },
       { key: "testimonial_role", label: "Testimonial · Role", type: "text", default: "STEM Scholar" },
+      {
+        key: "programs", label: "Home · Core Programs cards", type: "repeater", itemNoun: "program",
+        columns: [
+          { key: "title", label: "Title", type: "text" },
+          { key: "desc", label: "Description", type: "textarea" },
+          { key: "icon", label: "Icon", type: "icon", iconChoices: "BookOpenCheck,Compass,FlaskConical,GraduationCap,Lightbulb,Rocket,Cpu,Briefcase" },
+          { key: "image", label: "Image (optional)", type: "image" },
+          { key: "to", label: "Link target", type: "text" },
+        ],
+        default: j([
+          { title: "Education Sponsorship", desc: "Removing financial barriers for the most vulnerable children in Liberia.", icon: "BookOpenCheck", image: "", to: "/what-we-do" },
+          { title: "Leadership Modules", desc: "Developing character and ethical leadership through specialized workshops.", icon: "Compass", image: "", to: "/what-we-do" },
+          { title: "STEM Career Labs", desc: "Bridging the digital divide with coding, robotics, and science equipment.", icon: "FlaskConical", image: "", to: "/what-we-do" },
+        ]),
+      },
     ],
   },
   {

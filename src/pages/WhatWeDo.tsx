@@ -147,8 +147,8 @@ export default function WhatWeDo() {
                 </div>
                 <div className="p-8">
                   <div className="flex items-center gap-3">
-                    <div className={`size-12 rounded-2xl ring-1 ${i % 2 === 0 ? "bg-accent text-navy ring-accent/40" : "bg-primary text-white ring-primary/40"} flex items-center justify-center`}>
-                      <p.icon className="h-5 w-5" strokeWidth={2.5} />
+                    <div className={`program-icon ${i % 2 === 0 ? "program-icon--accent" : ""}`}>
+                      <p.icon />
                     </div>
                     <h3 className="text-xl md:text-2xl font-black text-navy">{p.title}</h3>
                   </div>

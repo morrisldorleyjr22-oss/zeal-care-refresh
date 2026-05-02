@@ -100,7 +100,7 @@ export default function Index() {
 
         {/* Stats card overlap */}
         <div className="container-zc relative -mt-20 pb-2 z-30">
-          <div className="animated-border p-6 md:p-8 shadow-card-lg grid grid-cols-2 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-secondary" style={{ borderRadius: "1.5rem" }}>
+          <div className="bg-white rounded-3xl p-6 md:p-8 shadow-card-lg border border-secondary grid grid-cols-2 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-secondary">
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col items-center justify-center text-center px-4 py-4 md:py-2">
                 <span className="text-2xl md:text-3xl font-black text-primary tabular-nums tracking-tighter">

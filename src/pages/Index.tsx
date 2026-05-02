@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ShieldCheck, Clock, Sparkles, GraduationCap, Lightbulb, Cpu, Quote, ChevronRight, BookOpenCheck, Compass, FlaskConical } from "lucide-react";
+import { ArrowRight, ShieldCheck, Clock, Sparkles, Quote, ChevronRight } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 import { useSetting } from "@/hooks/useSiteSettings";
 import { usePageContent } from "@/hooks/usePageContent";
+import { getIcon } from "@/lib/icon-registry";
 
 const stats = [
   { value: "850+", label: "Active Scholars" },
@@ -21,14 +22,7 @@ const advantages = [
     body: "Beyond academics, we provide mentorship, tech literacy, and character building to create well-rounded leaders." },
 ];
 
-const programKeys = [
-  { icon: BookOpenCheck, title: "Education Sponsorship", imgKey: "img_program_education",
-    desc: "Removing financial barriers for the most vulnerable children in Liberia." },
-  { icon: Compass, title: "Leadership Modules", imgKey: "img_program_leadership",
-    desc: "Developing character and ethical leadership through specialized workshops." },
-  { icon: FlaskConical, title: "STEM Career Labs", imgKey: "img_program_stem",
-    desc: "Bridging the digital divide with coding, robotics, and science equipment." },
-];
+type HomeProgram = { title: string; desc: string; icon: string; image?: string; to?: string };
 
 const partners = ["USAID", "Orange", "Ecobank", "UNICEF", "Global Fund", "World Vision"];
 

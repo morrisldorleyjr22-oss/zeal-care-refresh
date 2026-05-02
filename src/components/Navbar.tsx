@@ -6,6 +6,7 @@ import { ICON_STROKE } from "@/lib/icon-defaults";
 import ContactChip from "@/components/ContactChip";
 import DonateButton from "@/components/DonateButton";
 import { useSetting } from "@/hooks/useSiteSettings";
+import logo from "@/assets/zealcare-logo.png";
 
 type Child = { hash: string; label: string };
 type NavItem = {
@@ -413,13 +414,8 @@ export default function Navbar() {
         }`}
       >
         <div className="container-zc h-20 flex items-center justify-between gap-4">
-          <Link to="/" className="flex items-center gap-3 shrink-0">
-            <div className="size-10 bg-accent rounded-2xl flex items-center justify-center shadow-soft">
-              <div className="size-3.5 bg-navy rounded-full" />
-            </div>
-            <span className="font-black text-xl md:text-2xl tracking-tight text-primary uppercase leading-none mt-1">
-              Zeal Care
-            </span>
+          <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Zeal Care home">
+            <img src={logo} alt="Zeal Care" className="h-12 md:h-14 w-auto object-contain" />
           </Link>
 
           <div className="hidden lg:flex items-center gap-0.5">

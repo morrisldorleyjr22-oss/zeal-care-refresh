@@ -131,7 +131,7 @@ export const PAGE_REGISTRY: PageDef[] = [
       { key: "philosophy_title", label: "Philosophy · Title", type: "text", default: "Closing the Gaps Early" },
       { key: "philosophy_body_1", label: "Philosophy · Paragraph 1", type: "textarea", default: "For children ages 4 to 17 from low or no-income families, opportunity is often limited not by ability, but by circumstance. In many underserved communities in Liberia, children lack access to quality learning support, digital tools, mentorship, and safe spaces to grow." },
       { key: "philosophy_body_2", label: "Philosophy · Paragraph 2", type: "textarea", default: "To Zeal Care, empowerment means closing those gaps early — strengthening foundational literacy, introducing digital awareness, providing mentorship and life skills, and creating safe, inclusive environments where confidence can grow." },
-      { key: "img_philosophy", label: "Philosophy · Image", type: "image", default: progEdu },
+      { key: "img_philosophy", label: "Philosophy · Image", type: "image", default: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/Our%20Philosophy.jpeg" },
       { key: "img_social_justice", label: "Social Justice · Image", type: "image", default: progLead },
       { key: "promise_text", label: "Promise · Text", type: "textarea", default: "When the right support reaches the right child at the right time, transformation becomes possible — not just for that child, but for entire communities." },
     ],

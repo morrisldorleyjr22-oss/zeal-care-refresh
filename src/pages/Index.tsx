@@ -39,7 +39,7 @@ export default function Index() {
   return (
     <div ref={ref}>
       {/* HERO */}
-      <section className="relative text-white overflow-hidden bg-navy">
+      <section className="relative text-white overflow-hidden bg-hero-gradient">
 
         <div className="container-zc relative pt-16 pb-24 sm:pt-20 sm:pb-32 md:pt-28 md:pb-40 lg:pt-36 lg:pb-52 grid lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
           {/* Copy */}
@@ -207,7 +207,7 @@ export default function Index() {
       </section>
 
       {/* TESTIMONIAL */}
-      <section className="bg-navy text-white py-24 md:py-32 relative overflow-hidden">
+      <section className="bg-hero-gradient text-white py-24 md:py-32 relative overflow-hidden">
         <div className="absolute -top-40 -right-40 size-[28rem] bg-accent/15 rounded-full blur-3xl" />
         <div className="container-zc relative">
           <div className="max-w-4xl">

@@ -40,11 +40,6 @@ export default function Index() {
     <div ref={ref}>
       {/* HERO */}
       <section className="relative text-white overflow-hidden bg-navy">
-        <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy to-navy/90" />
-
-        {/* Soft brand glows on top of the overlay */}
-        <div className="absolute -top-32 -right-32 size-[28rem] bg-accent/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-40 -left-40 size-[32rem] bg-primary-glow/30 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container-zc relative pt-16 pb-24 sm:pt-20 sm:pb-32 md:pt-28 md:pb-40 lg:pt-36 lg:pb-52 grid lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
           {/* Copy */}

@@ -140,9 +140,10 @@ export default function WhatWeDo() {
                 <div
                   className={`program-hero ${i % 2 === 0 ? "program-hero--accent" : ""}`}
                   role="img"
-                  aria-label={`${p.title} program icon`}
+                  aria-label={`${p.title} — program illustration`}
+                  title={`${p.title} — program illustration`}
                 >
-                  <p.icon aria-hidden="true" />
+                  <p.icon aria-hidden="true" focusable="false" />
                 </div>
                 <div className="p-7">
                   <h3 className="text-xl md:text-2xl font-black text-navy">{p.title}</h3>

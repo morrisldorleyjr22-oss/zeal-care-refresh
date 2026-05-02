@@ -66,7 +66,12 @@ function Avatar({ name, photo }: { name: string; photo?: { sources: Record<strin
 export default function WhoWeAre() {
   return (
     <>
-      <WhoHero />
+      <PageHero
+        eyebrow="Who We Are"
+        title="A youth-led movement for"
+        highlight="education and empowerment"
+        description="Run entirely by young people passionate about creating positive change in Liberia and across Africa."
+      />
 
       {/* Team meeting hero strip */}
       <section className="container-zc pt-16">

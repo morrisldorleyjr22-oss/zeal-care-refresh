@@ -169,37 +169,7 @@ export default function Media() {
       </section>
 
       {/* Cinematics / Video */}
-      <section id="video" className="scroll-mt-32 bg-hero-gradient text-white py-16 md:py-20">
-        <div className="container-zc">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
-            Visual Narratives
-          </span>
-          <h2 className="mt-2 text-3xl md:text-4xl font-black">Cinematics</h2>
-
-          <div className="mt-10 grid lg:grid-cols-3 gap-6">
-            {[comm, stem, lead].map((img, i) => (
-              <div
-                key={i}
-                className={`reveal reveal-delay-${i + 1} group relative aspect-video rounded-[1.5rem] overflow-hidden cursor-pointer`}
-              >
-                <ResponsiveImage
-                  picture={img}
-                  alt="Featured film"
-                  sizes="(min-width: 1024px) 32vw, 90vw"
-                  className="block w-full h-full"
-                  imgClassName="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-navy/40 group-hover:bg-navy/20 transition-colors" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="size-14 rounded-full bg-accent text-navy flex items-center justify-center shadow-yellow-glow group-hover:scale-110 transition-transform">
-                    <Play className="h-5 w-5 ml-0.5" fill="currentColor" />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CinematicsSection cms={cms} />
 
       {/* Photo Gallery */}
       <section id="gallery" className="scroll-mt-32 container-zc py-16 md:py-20">

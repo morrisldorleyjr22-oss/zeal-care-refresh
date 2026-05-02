@@ -19,7 +19,7 @@ export default function WhyEmpowerment() {
       <section className="container-zc py-14 sm:py-20 md:py-24 lg:py-32 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7">
           <span className="eyebrow">Our Philosophy</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">{c.get("philosophy_title")}</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">{c.get("philosophy_title")}</h2>
           <p className="mt-6 text-navy/75 text-lg leading-relaxed">
             {c.get("philosophy_body_1")}
           </p>
@@ -50,7 +50,7 @@ export default function WhyEmpowerment() {
               <Scale className="h-3.5 w-3.5 text-accent" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/85">The Ethical Imperative</span>
             </div>
-            <h2 className="mt-4 text-4xl md:text-5xl font-black">Social Justice</h2>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black">Social Justice</h2>
             <p className="mt-5 text-white/80 text-lg leading-relaxed">
               No child should be disadvantaged because of their family's income. Empowerment is not charity — it is justice.
               Every child deserves access to educational opportunity and the tools to build a meaningful future.
@@ -68,7 +68,7 @@ export default function WhyEmpowerment() {
       <section id="economic-development" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24 lg:py-28 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7">
           <span className="eyebrow">The Multiplier Effect</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Economic Development</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Economic Development</h2>
           <p className="mt-6 text-navy/75 text-lg leading-relaxed">
             Empowerment is not just a moral act — it is the most cost-effective economic strategy any nation can adopt. Every child we
             educate becomes an entrepreneur, a teacher, a healthcare worker, or an innovator. That ripple effect lifts entire households
@@ -94,7 +94,7 @@ export default function WhyEmpowerment() {
         <div className="grid md:grid-cols-3 gap-6">
           {stats.map((s, i) => (
             <div key={`${s.label}-${i}`} className="bg-soft-gradient rounded-3xl p-10 border-2 border-primary/70 ring-1 ring-primary/20 text-center shadow-card-lg">
-              <div className="text-6xl font-black text-primary tabular-nums tracking-tighter">{s.value}</div>
+              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-primary tabular-nums tracking-tighter">{s.value}</div>
               <div className="mt-3 text-sm font-bold text-navy/70 uppercase tracking-widest">{s.label}</div>
             </div>
           ))}

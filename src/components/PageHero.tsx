@@ -96,7 +96,7 @@ export default function PageHero({
               </span>
             </div>
 
-            <h1 className="mt-5 text-4xl md:text-5xl lg:text-6xl font-black leading-[1.04] tracking-tight text-balance">
+            <h1 className="mt-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.04] tracking-tight text-balance">
               {title}{" "}
               {highlight && (
                 <span className="relative inline-block">

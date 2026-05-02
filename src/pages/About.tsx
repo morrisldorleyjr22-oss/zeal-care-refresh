@@ -82,7 +82,7 @@ export default function About() {
         <div className="container-zc">
           <div className="max-w-3xl">
             <span className="eyebrow">The Zeal Compass</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Our Core Values</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Our Core Values</h2>
             <p className="mt-4 text-navy/70 text-lg">Six principles that anchor every decision, partnership, and program we run.</p>
           </div>
           <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -107,7 +107,7 @@ export default function About() {
       <section id="belief" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7">
           <span className="eyebrow">What We Believe</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">{c.get("belief_title")}</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">{c.get("belief_title")}</h2>
           <p className="mt-6 text-navy/75 text-lg leading-relaxed">
             {c.get("belief_body_1")}
           </p>
@@ -138,7 +138,7 @@ export default function About() {
         <div className="container-zc">
           <div className="max-w-3xl">
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Global Alignment</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black">SDG Focus</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black">SDG Focus</h2>
             <p className="mt-4 text-white/75 text-lg">
               Our work is anchored in the United Nations Sustainable Development Goals — five priority areas where Zeal Care drives measurable impact.
             </p>
@@ -159,7 +159,7 @@ export default function About() {
       <section id="characteristics" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="max-w-3xl">
           <span className="eyebrow">The Zeal Profile</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Characteristics We Develop</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Characteristics We Develop</h2>
           <p className="mt-4 text-navy/70 text-lg">
             Every child in our program leaves with more than knowledge — they leave with the eight traits of a confident, capable changemaker.
           </p>

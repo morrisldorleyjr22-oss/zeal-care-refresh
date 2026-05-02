@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ShieldCheck, Clock, Sparkles, GraduationCap, Lightbulb, Cpu, Quote, ChevronRight } from "lucide-react";
-import heroImg from "@/assets/hero-children-1.jpg?responsive";
-import portraitImg from "@/assets/hero-children-2.jpg?responsive";
-import stemImg from "@/assets/program-stem.jpg?responsive";
-import leadershipImg from "@/assets/program-leadership.jpg?responsive";
-import educationImg from "@/assets/program-education.jpg?responsive";
-import ResponsiveImage from "@/components/ResponsiveImage";
 import { useReveal } from "@/hooks/useReveal";
 import { useSetting } from "@/hooks/useSiteSettings";
+import { usePageContent } from "@/hooks/usePageContent";
 
 const stats = [
   { value: "850+", label: "Active Scholars" },

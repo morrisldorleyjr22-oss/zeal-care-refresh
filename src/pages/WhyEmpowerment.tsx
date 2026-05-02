@@ -80,13 +80,8 @@ export default function WhyEmpowerment() {
           </p>
         </div>
         <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-          {[
-            { v: "10×", l: "Return on every $1 invested in girls' education" },
-            { v: "+25%", l: "Lifetime earnings per added year of schooling" },
-            { v: "3×", l: "Faster GDP growth in nations prioritizing education" },
-            { v: "1 gen", l: "Time needed to break the poverty cycle" },
-          ].map((s) => (
-            <div key={s.l} className="bg-white rounded-2xl border border-secondary p-5">
+          {econStats.map((s, i) => (
+            <div key={`${s.l}-${i}`} className="bg-white rounded-2xl border border-secondary p-5">
               <div className="text-3xl font-black text-primary tabular-nums tracking-tighter">{s.v}</div>
               <div className="mt-2 text-xs font-bold text-navy/60 uppercase tracking-widest leading-tight">{s.l}</div>
             </div>

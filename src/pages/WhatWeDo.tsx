@@ -203,7 +203,7 @@ export default function WhatWeDo() {
               { v: "100%", l: "Enrollment Rate" },
               { v: "$45K", l: "Grand Bassa Goal" },
             ].map((s) => (
-              <div key={s.l} tabIndex={0} className="animated-border-ghost stat-card-dark bg-white/5">
+              <div key={s.l} className="bg-white/5 border border-white/10 rounded-2xl p-6">
                 <div className="text-5xl font-black text-accent tabular-nums tracking-tighter">{s.v}</div>
                 <div className="mt-2 text-xs font-bold uppercase tracking-widest text-white/80">{s.l}</div>
               </div>

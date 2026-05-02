@@ -161,7 +161,7 @@ export default function Index() {
 
           <div className="mt-14 grid md:grid-cols-3 gap-6 md:gap-8">
             {advantages.map((a, i) => (
-              <div key={a.title} className={`reveal reveal-delay-${i + 1} hover-lift group animated-border p-7 md:p-8 flex flex-col`} style={{ borderRadius: "2rem" }}>
+              <div key={a.title} className={`reveal reveal-delay-${i + 1} hover-lift group bg-white rounded-[2rem] p-7 md:p-8 border border-secondary flex flex-col`}>
                 <div className={`size-14 ${a.color} ${a.rotate} rounded-2xl flex items-center justify-center mb-6 group-hover:-translate-y-1.5 transition-transform`}>
                   <a.icon className="h-6 w-6" strokeWidth={2.5} />
                 </div>

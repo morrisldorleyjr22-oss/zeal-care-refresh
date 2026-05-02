@@ -1,9 +1,16 @@
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
-import { CalendarClock, Package, Building2, Smartphone, ArrowRight, Heart } from "lucide-react";
+import { CalendarClock, Package, Building2, Smartphone, ArrowRight, Heart, CheckCircle2, Copy, Share2, Loader2 } from "lucide-react";
 import { ICON_STROKE } from "@/lib/icon-defaults";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { usePageContent } from "@/hooks/usePageContent";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Link } from "react-router-dom";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const ways = [
   { icon: CalendarClock, title: "Monthly Sustainer", body: "Provide consistent support allowing for long-term STEM curricula planning and student retention." },

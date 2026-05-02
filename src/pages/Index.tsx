@@ -245,8 +245,8 @@ export default function Index() {
         </div>
       </section>
 
-      {/* INTEGRITY */}
-      <section className="container-zc pb-24 md:pb-32">
+      {/* INTEGRITY / ACCOUNTABILITY */}
+      <section className="container-zc pb-20 md:pb-24">
         <div className="bg-soft-gradient rounded-[2.5rem] border border-secondary p-8 md:p-14 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-5">
             <span className="eyebrow">Accountability Standard</span>

@@ -22,11 +22,11 @@ const advantages = [
 ];
 
 const programKeys = [
-  { icon: GraduationCap, title: "Education Sponsorship", imgKey: "img_program_education",
+  { icon: BookOpenCheck, title: "Education Sponsorship", imgKey: "img_program_education",
     desc: "Removing financial barriers for the most vulnerable children in Liberia." },
-  { icon: Lightbulb, title: "Leadership Modules", imgKey: "img_program_leadership",
+  { icon: Compass, title: "Leadership Modules", imgKey: "img_program_leadership",
     desc: "Developing character and ethical leadership through specialized workshops." },
-  { icon: Cpu, title: "STEM Career Labs", imgKey: "img_program_stem",
+  { icon: FlaskConical, title: "STEM Career Labs", imgKey: "img_program_stem",
     desc: "Bridging the digital divide with coding, robotics, and science equipment." },
 ];
 

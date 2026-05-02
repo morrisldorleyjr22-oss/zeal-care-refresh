@@ -78,6 +78,8 @@ export default function Index() {
                 alt="Joyful Liberian schoolchildren raising their hands in class"
                 className="w-full h-full object-cover"
                 loading="eager"
+                fetchPriority="high"
+                decoding="async"
               />
             </div>
             <div className="absolute bottom-0 left-0 w-[55%] h-[58%] bg-accent rounded-[2rem] p-2 shadow-yellow-glow -rotate-3 z-30 animate-float">

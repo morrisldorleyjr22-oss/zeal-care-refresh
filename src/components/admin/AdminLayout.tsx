@@ -1,10 +1,11 @@
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
-import { Globe2, LogOut, LayoutDashboard, Settings2, ImagePlus, UsersRound } from "lucide-react";
+import { Globe2, LogOut, LayoutDashboard, Settings2, ImagePlus, UsersRound, FileEdit } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 
 const items = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
+  { to: "/admin/content/who_we_are", label: "Page Content", icon: FileEdit },
   { to: "/admin/global", label: "Global Settings", icon: Globe2 },
   { to: "/admin/media", label: "Media Library", icon: ImagePlus },
   { to: "/admin/users", label: "Admin Users", icon: UsersRound },

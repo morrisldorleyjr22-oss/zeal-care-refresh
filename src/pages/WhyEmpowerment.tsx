@@ -2,14 +2,10 @@ import PageHero from "@/components/PageHero";
 import { Scale, Sprout, Shield } from "lucide-react";
 import { usePageContent } from "@/hooks/usePageContent";
 
-const stats = [
-  { value: "73%", label: "Children without digital learning devices" },
-  { value: "57%", label: "Drop-out rate due to financial constraints" },
-  { value: "4-17", label: "Age range of children we serve" },
-];
-
 export default function WhyEmpowerment() {
   const c = usePageContent("why");
+  const stats = c.list<{ value: string; label: string }>("stats");
+  const econStats = c.list<{ v: string; l: string }>("econ_stats");
   return (
     <>
       <PageHero

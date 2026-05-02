@@ -39,17 +39,8 @@ export default function Index() {
   return (
     <div ref={ref}>
       {/* HERO */}
-      <section className="relative text-white overflow-hidden">
-        {/* Background photograph */}
-        <img
-          src={c.get("img_hero_background")}
-          alt="Zeal Care students and team gathered together at a partner school"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
-        />
-        {/* Dark blue overlay (65% opacity) preserves brand identity over the photo */}
-        <div className="absolute inset-0 bg-navy/70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-transparent to-navy/60" />
+      <section className="relative text-white overflow-hidden bg-navy">
+        <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy to-navy/90" />
 
         {/* Soft brand glows on top of the overlay */}
         <div className="absolute -top-32 -right-32 size-[28rem] bg-accent/20 rounded-full blur-3xl pointer-events-none" />

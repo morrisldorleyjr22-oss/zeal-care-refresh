@@ -132,7 +132,11 @@ export default function WhatWeDo() {
           </div>
           <div className="mt-16 grid md:grid-cols-2 gap-8">
             {programKeys.map((p, i) => (
-              <article key={p.title} className="bg-white rounded-[2rem] overflow-hidden border border-secondary hover:shadow-card-lg transition-all">
+              <article
+                key={p.title}
+                className="relative bg-white rounded-[2rem] overflow-hidden border-2 border-primary/20 ring-1 ring-inset ring-primary/5 shadow-[0_12px_35px_-15px_hsl(var(--primary)/0.4)] hover:border-primary/50 hover:shadow-[0_22px_50px_-15px_hsl(var(--primary)/0.55)] hover:-translate-y-1 transition-all"
+              >
+                <span className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-primary via-accent to-primary z-10" />
                 <div className="aspect-[16/9] overflow-hidden">
                   <img
                     src={c.get(p.imgKey)}
@@ -143,7 +147,7 @@ export default function WhatWeDo() {
                 </div>
                 <div className="p-8">
                   <div className="flex items-center gap-3">
-                    <div className={`size-12 rounded-2xl ${i % 2 === 0 ? "bg-accent text-navy" : "bg-primary text-white"} flex items-center justify-center`}>
+                    <div className={`size-12 rounded-2xl ring-1 ${i % 2 === 0 ? "bg-accent text-navy ring-accent/40" : "bg-primary text-white ring-primary/40"} flex items-center justify-center`}>
                       <p.icon className="h-5 w-5" strokeWidth={2.5} />
                     </div>
                     <h3 className="text-xl md:text-2xl font-black text-navy">{p.title}</h3>

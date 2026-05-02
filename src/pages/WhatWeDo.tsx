@@ -69,8 +69,6 @@ export default function WhatWeDo() {
           </div>
         </div>
       </section>
-        </div>
-      </section>
 
       {/* Project in Action */}
       <section id="in-action" className="scroll-mt-32 container-zc pt-16 pb-8">
@@ -83,16 +81,11 @@ export default function WhatWeDo() {
           </p>
         </div>
         <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[
-            { imgKey: "img_proj_survey", label: "Digital Survey", note: "Door-to-door community mapping in Bloc D, Monrovia." },
-            { imgKey: "img_proj_interviews", label: "Candidate Interviews", note: "Shortlisted children meet our team with parents & bloc leaders." },
-            { imgKey: "img_proj_materials", label: "Procuring Materials", note: "Uniforms, shoes, books, pens — sourced and verified." },
-            { imgKey: "img_proj_fee", label: "School Fee Payment", note: "Paid directly to schools in the presence of bloc leadership." },
-          ].map((s) => (
-            <figure key={s.label} className="rounded-2xl overflow-hidden border border-secondary bg-white hover:shadow-card-lg transition-all group">
+          {projectSteps.map((s, i) => (
+            <figure key={`${s.label}-${i}`} className="rounded-2xl overflow-hidden border border-secondary bg-white hover:shadow-card-lg transition-all group">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src={c.get(s.imgKey)}
+                  src={s.image}
                   alt={s.label}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"

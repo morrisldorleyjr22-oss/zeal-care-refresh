@@ -239,13 +239,24 @@ export default function WaysToGive() {
           <span className="eyebrow">Local Giving</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Mobile Money Options</h2>
         </div>
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
+        <p className="mt-4 text-center max-w-2xl mx-auto text-navy/65">
+          Send your contribution using the dial code below, then tap <span className="font-bold text-navy">"I've sent my donation"</span> so we can confirm it and send your impact receipt.
+        </p>
+        <div className="mt-12 grid md:grid-cols-3 gap-6">
           {mobile.map((m) => (
-            <div key={m.name} className="bg-primary text-white rounded-3xl p-8 border border-primary/40 shadow-[0_18px_40px_-15px_hsl(var(--primary)/0.55)] hover:shadow-[0_28px_55px_-15px_hsl(var(--primary)/0.7)] hover:-translate-y-1 transition-all">
+            <div key={m.name} className="flex flex-col bg-primary text-white rounded-3xl p-8 border border-primary/40 shadow-[0_18px_40px_-15px_hsl(var(--primary)/0.55)] hover:shadow-[0_28px_55px_-15px_hsl(var(--primary)/0.7)] hover:-translate-y-1 transition-all">
               <Smartphone className="h-7 w-7 text-accent" />
               <h3 className="mt-4 text-xl font-black">{m.name}</h3>
-              <div className="mt-4 font-mono text-2xl text-accent tracking-tight">{m.code}</div>
+              <div className="mt-4 font-mono text-2xl text-accent tracking-tight break-all">{m.code}</div>
               <p className="mt-3 text-sm text-white/80">{m.account}</p>
+              <button
+                type="button"
+                onClick={() => openPledge(m.name)}
+                className="mt-6 inline-flex items-center justify-center gap-2 bg-accent text-navy font-bold text-sm rounded-full px-5 py-3 hover:bg-white transition-colors w-full"
+              >
+                I've sent my donation
+                <ArrowRight className="h-4 w-4" />
+              </button>
             </div>
           ))}
         </div>

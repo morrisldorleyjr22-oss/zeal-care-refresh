@@ -39,14 +39,28 @@ export default function AdminUsers() {
   const { data = [], isLoading } = useQuery({
     queryKey: ADMIN_USERS_QUERY,
     queryFn: async (): Promise<AdminRole[]> => {
-      const { data, error } = await supabase
+      const { data: roles, error } = await supabase
         .from("user_roles")
-        .select("id, user_id, created_at, profiles(email, full_name)")
+        .select("id, user_id, created_at")
         .eq("role", "admin")
         .order("created_at", { ascending: false });
 
       if (error) throw error;
-      return (data ?? []) as unknown as AdminRole[];
+      const ids = (roles ?? []).map((role) => role.user_id);
+      if (ids.length === 0) return [];
+
+      const { data: profiles, error: profilesError } = await supabase
+        .from("profiles")
+        .select("id, email, full_name")
+        .in("id", ids);
+
+      if (profilesError) throw profilesError;
+      const profileById = new Map((profiles ?? []).map((profile) => [profile.id, profile]));
+
+      return (roles ?? []).map((role) => ({
+        ...role,
+        profiles: profileById.get(role.user_id) ?? null,
+      }));
     },
   });
 

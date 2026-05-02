@@ -1,5 +1,5 @@
 import PageHero from "@/components/PageHero";
-import { Heart, Users, Globe2, Eye, Sparkles, HandHeart, Target, BookOpen, Compass, Award, Lightbulb, Shield, Smile, Brain } from "lucide-react";
+import { Heart, Users, Globe2, Eye, Sparkles, HandHeart, Target, BookOpen, Compass, Award, Lightbulb, Shield, Smile, Brain, Quote } from "lucide-react";
 import { usePageContent } from "@/hooks/usePageContent";
 
 const values = [

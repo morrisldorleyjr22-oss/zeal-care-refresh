@@ -21,10 +21,10 @@ export default function WhatWeDo() {
       />
 
       {/* How we operate */}
-      <section id="how" className="scroll-mt-32 container-zc py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-start">
+      <section id="how" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24 lg:py-32 grid lg:grid-cols-12 gap-12 items-start">
         <div className="lg:col-span-6">
           <span className="eyebrow">Our Approach</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">{c.get("approach_title")}</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">{c.get("approach_title")}</h2>
           <p className="mt-6 text-navy/75 text-lg leading-relaxed">
             {c.get("approach_body_1")}
           </p>
@@ -52,7 +52,7 @@ export default function WhatWeDo() {
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5">
             <span className="eyebrow">On the Ground</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Where We Operate</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Where We Operate</h2>
             <p className="mt-5 text-navy/70 text-lg leading-relaxed">
               We are rooted in Liberia, focused on the communities where the gap between potential and opportunity is widest.
               Our hubs sit inside the neighborhoods we serve — never above them.
@@ -100,11 +100,11 @@ export default function WhatWeDo() {
         </div>
       </section>
 
-      <section id="programs" className="scroll-mt-32 bg-soft-gradient py-24 md:py-32">
+      <section id="programs" className="scroll-mt-32 bg-soft-gradient py-14 sm:py-20 md:py-24 lg:py-32">
         <div className="container-zc">
           <div className="max-w-3xl mx-auto text-center">
             <span className="eyebrow">Our Core Initiatives</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Strategic Programs</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Strategic Programs</h2>
           </div>
           <div className="mt-16 grid md:grid-cols-2 gap-8">
             {programs.map((p, i) => {
@@ -136,10 +136,10 @@ export default function WhatWeDo() {
       </section>
 
       {/* What Sets Us Apart */}
-      <section id="apart" className="scroll-mt-32 container-zc py-24">
+      <section id="apart" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="max-w-3xl">
           <span className="eyebrow">The Zeal Difference</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">What Sets Us Apart</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">What Sets Us Apart</h2>
         </div>
         <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {differentiators.map((card, i) => (
@@ -161,7 +161,7 @@ export default function WhatWeDo() {
         <div className="container-zc relative py-20 text-white">
           <div className="max-w-3xl">
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Receipts, Not Promises</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black">Impact in Numbers</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black">Impact in Numbers</h2>
           </div>
           <div className="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
             {impactStats.map((s, i) => (

@@ -59,10 +59,10 @@ export default function WhoWeAre() {
       </section>
 
       {/* Leadership */}
-      <section className="container-zc py-24 md:py-32 scroll-mt-32" id="leadership">
+      <section className="container-zc py-14 sm:py-20 md:py-24 lg:py-32 scroll-mt-32" id="leadership">
         <div className="max-w-3xl">
           <span className="eyebrow">Institutional Force</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Our Leadership</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Our Leadership</h2>
           <p className="mt-4 text-navy/70 text-lg">Run entirely by young people passionate about creating positive change.</p>
         </div>
 
@@ -100,11 +100,11 @@ export default function WhoWeAre() {
       </section>
 
       {/* Board */}
-      <section id="board" className="scroll-mt-32 bg-soft-gradient py-24">
+      <section id="board" className="scroll-mt-32 bg-soft-gradient py-14 sm:py-20 md:py-24">
         <div className="container-zc">
           <div className="max-w-3xl">
             <span className="eyebrow">Strategic Governance</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Board of Advisors</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Board of Advisors</h2>
           </div>
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {board.map((b) => (
@@ -126,10 +126,10 @@ export default function WhoWeAre() {
           <ResponsiveImage picture={community} alt="" sizes="100vw" className="block w-full h-full" imgClassName="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-hero-gradient opacity-95" />
         </div>
-        <div className="container-zc relative py-24 md:py-32 text-white grid lg:grid-cols-12 gap-12 items-center">
+        <div className="container-zc relative py-14 sm:py-20 md:py-24 lg:py-32 text-white grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Heart of the Mission</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black">Our Beneficiaries</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black">Our Beneficiaries</h2>
             <p className="mt-5 text-white/85 text-lg leading-relaxed max-w-2xl">
               We serve over 850 children across Liberia who demonstrate exceptional grit but lack financial access to modern education.
               Our beneficiaries are chosen not just based on need, but on their desire to lead and transform their communities.
@@ -147,7 +147,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* Pictorials of Successful Beneficiaries */}
-      <section id="pictorials" className="scroll-mt-32 relative bg-soft-gradient py-24 md:py-32 overflow-hidden">
+      <section id="pictorials" className="scroll-mt-32 relative bg-soft-gradient py-14 sm:py-20 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute -top-24 -right-24 size-72 bg-primary/10 rounded-full blur-3xl" aria-hidden />
         <div className="absolute -bottom-32 -left-24 size-96 bg-accent/15 rounded-full blur-3xl" aria-hidden />
 
@@ -198,10 +198,10 @@ export default function WhoWeAre() {
       </section>
 
       {/* Partners */}
-      <section id="partners" className="scroll-mt-32 container-zc py-24">
+      <section id="partners" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="max-w-3xl">
           <span className="eyebrow">Coalition of Care</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Our Partners</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Our Partners</h2>
           <p className="mt-4 text-navy/70 text-lg">A network of institutions, companies, and community leaders who multiply our impact.</p>
         </div>
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -215,14 +215,14 @@ export default function WhoWeAre() {
       </section>
 
       {/* History */}
-      <section id="history" className="scroll-mt-32 relative bg-soft-gradient py-24 md:py-32 overflow-hidden">
+      <section id="history" className="scroll-mt-32 relative bg-soft-gradient py-14 sm:py-20 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute -top-32 -left-32 size-72 bg-primary/10 rounded-full blur-3xl" aria-hidden />
         <div className="absolute -bottom-40 -right-32 size-96 bg-accent/15 rounded-full blur-3xl" aria-hidden />
 
         <div className="container-zc relative">
           <div className="max-w-3xl">
             <span className="eyebrow">From Spark to Movement</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Our History</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Our History</h2>
             <p className="mt-4 text-navy/70 text-lg leading-relaxed">
               A decade of patient, compounding work — from a single after-school program to a regional movement for child empowerment.
             </p>
@@ -290,10 +290,10 @@ export default function WhoWeAre() {
       </section>
 
       {/* Awards */}
-      <section id="awards" className="scroll-mt-32 container-zc py-24">
+      <section id="awards" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="max-w-3xl">
           <span className="eyebrow">Recognition</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Awards & Prizes</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Awards & Prizes</h2>
         </div>
         <div className="mt-12 grid md:grid-cols-3 gap-6">
           {awards.map((a) => (
@@ -308,11 +308,11 @@ export default function WhoWeAre() {
       </section>
 
       {/* Safeguarding */}
-      <section id="safeguarding" className="scroll-mt-32 bg-hero-gradient text-white py-24">
+      <section id="safeguarding" className="scroll-mt-32 bg-hero-gradient text-white py-14 sm:py-20 md:py-24">
         <div className="container-zc grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Our Promise</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black">Protection & Safeguarding</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black">Protection & Safeguarding</h2>
             <p className="mt-5 text-white/80 text-lg leading-relaxed">
               The safety and dignity of every child in our programs is non-negotiable. We maintain rigorous safeguarding policies,
               background-checked staff, mandatory child protection training, and confidential reporting channels for any concern.
@@ -335,11 +335,11 @@ export default function WhoWeAre() {
       </section>
 
       {/* Finance & Accountability */}
-      <section id="finance" className="scroll-mt-32 container-zc py-24">
+      <section id="finance" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
             <span className="eyebrow">Open Books</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Finance & Accountability</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Finance & Accountability</h2>
             <p className="mt-5 text-navy/75 text-lg leading-relaxed">
               We publish annual audited financials and hold ourselves to the highest standard of transparency. Donors, partners, and the
               communities we serve all deserve to see exactly where every dollar goes.
@@ -365,11 +365,11 @@ export default function WhoWeAre() {
       </section>
 
       {/* Work for Us */}
-      <section id="careers" className="scroll-mt-32 bg-soft-gradient py-24">
+      <section id="careers" className="scroll-mt-32 bg-soft-gradient py-14 sm:py-20 md:py-24">
         <div className="container-zc grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
             <span className="eyebrow">Careers</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Work for Us</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Work for Us</h2>
             <p className="mt-5 text-navy/70 text-lg leading-relaxed">
               Join a team of young, mission-driven changemakers building the future of education in Liberia. We're always looking for
               educators, program officers, designers, and operations talent who share our vision.
@@ -387,10 +387,10 @@ export default function WhoWeAre() {
       </section>
 
       {/* Tenders */}
-      <section id="tenders" className="scroll-mt-32 container-zc py-24">
+      <section id="tenders" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="max-w-3xl">
           <span className="eyebrow">Procurement</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Tenders & Opportunities</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Tenders & Opportunities</h2>
           <p className="mt-4 text-navy/70 text-lg">
             We publish all open tenders, RFPs, and supplier opportunities here. Bids are evaluated transparently against published criteria.
           </p>
@@ -403,7 +403,7 @@ export default function WhoWeAre() {
       </section>
 
       {/* Voice */}
-      <section className="container-zc py-24">
+      <section className="container-zc py-14 sm:py-20 md:py-24">
         <div className="max-w-4xl mx-auto bg-white rounded-[2rem] border border-secondary p-10 md:p-14 shadow-card-lg">
           <Quote className="h-10 w-10 text-accent" />
           <p className="mt-5 text-2xl md:text-3xl font-light leading-snug text-navy text-balance">

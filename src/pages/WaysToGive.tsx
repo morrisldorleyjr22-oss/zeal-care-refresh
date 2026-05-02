@@ -127,11 +127,11 @@ export default function WaysToGive() {
       />
 
       {/* Impact slider */}
-      <section className="container-zc py-20">
-        <div className="bg-white rounded-[2.5rem] border border-secondary shadow-card-lg p-8 md:p-14 grid lg:grid-cols-12 gap-12">
+      <section className="container-zc py-14 sm:py-20">
+        <div className="bg-white rounded-3xl sm:rounded-[2.5rem] border border-secondary shadow-card-lg p-6 sm:p-8 md:p-14 grid lg:grid-cols-12 gap-8 sm:gap-12">
           <div className="lg:col-span-6">
             <span className="eyebrow">Impact Meter</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">See Your Impact</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">See Your Impact</h2>
             <p className="mt-4 text-navy/70 text-lg">Slide to discover how your contribution transforms a child's future.</p>
 
             <div className="mt-8">
@@ -145,7 +145,7 @@ export default function WaysToGive() {
                 aria-label="Donation amount"
               />
               <div className="mt-6 flex flex-wrap items-baseline gap-4">
-                <div className="text-6xl font-black text-primary tabular-nums tracking-tighter">${amount}</div>
+                <div className="text-4xl sm:text-5xl md:text-6xl font-black text-primary tabular-nums tracking-tighter">${amount}</div>
                 <div className="text-sm font-bold text-navy/60 uppercase tracking-widest">Pledge Impact</div>
               </div>
             </div>
@@ -172,7 +172,7 @@ export default function WaysToGive() {
       <section id="ways" className="scroll-mt-32 container-zc pb-24">
         <div className="text-center max-w-3xl mx-auto">
           <span className="eyebrow">Engagement Pathways</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">How You Can Help</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">How You Can Help</h2>
         </div>
         <div className="mt-14 grid md:grid-cols-3 gap-6">
           {ways.map((w, i) => {
@@ -202,11 +202,11 @@ export default function WaysToGive() {
       </section>
 
       {/* Allocation */}
-      <section className="bg-soft-gradient py-24">
+      <section className="bg-soft-gradient py-14 sm:py-20 md:py-24">
         <div className="container-zc grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5">
             <span className="eyebrow">Transparency</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">How We Use Your Donation</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">How We Use Your Donation</h2>
             <p className="mt-5 text-navy/70 text-lg leading-relaxed">
               We ensure that 100% of public donations go directly to our core programs. Administrative costs are covered by separate institutional grants and major donors.
             </p>
@@ -231,10 +231,10 @@ export default function WaysToGive() {
       </section>
 
       {/* Mobile money */}
-      <section className="container-zc py-24">
+      <section className="container-zc py-14 sm:py-20 md:py-24">
         <div className="text-center max-w-3xl mx-auto">
           <span className="eyebrow">Local Giving</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Mobile Money Options</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Mobile Money Options</h2>
         </div>
         <p className="mt-4 text-center max-w-2xl mx-auto text-navy/65">
           Send your contribution using the dial code below, then tap <span className="font-bold text-navy">"I've sent my donation"</span> so we can confirm it and send your impact receipt.
@@ -264,7 +264,7 @@ export default function WaysToGive() {
         <div className="bg-hero-gradient text-white rounded-[2.5rem] p-10 md:p-14 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7">
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Corporate & Institutional</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black">Become a Partner</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black">Become a Partner</h2>
             <p className="mt-5 text-white/80 text-lg leading-relaxed">
               Align your brand, foundation, or institution with measurable child-focused impact. Partnership tracks include flagship
               sponsorship, STEM lab co-branding, scholarship endowments, and employee mentorship programs.
@@ -285,10 +285,10 @@ export default function WaysToGive() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="scroll-mt-32 bg-soft-gradient py-24">
+      <section id="faq" className="scroll-mt-32 bg-soft-gradient py-14 sm:py-20 md:py-24">
         <div className="container-zc max-w-3xl mx-auto">
           <span className="eyebrow">Common Questions</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Giving FAQ</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Giving FAQ</h2>
           <Accordion type="single" collapsible className="mt-10 space-y-3">
             {faq.map((f, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="bg-white rounded-2xl border border-secondary px-6">
@@ -301,12 +301,12 @@ export default function WaysToGive() {
       </section>
 
       {/* Final appeal */}
-      <section id="appeals" className="scroll-mt-32 container-zc py-24">
+      <section id="appeals" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="bg-hero-gradient rounded-[2.5rem] p-10 md:p-16 text-white relative overflow-hidden">
           <div className="absolute -top-20 -right-20 size-80 bg-accent/20 rounded-full blur-3xl" />
           <div className="relative max-w-3xl">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Final Appeal</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black">{c.get("appeal_title")}</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black">{c.get("appeal_title")}</h2>
             <p className="mt-5 text-white/85 text-lg leading-relaxed">
               {c.get("appeal_body")}
             </p>

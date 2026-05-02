@@ -171,7 +171,7 @@ export default function WhoWeAre() {
           </div>
           <div className="lg:col-span-5 grid grid-cols-2 gap-4">
             {[{ v: "850+", l: "Children Served" }, { v: "65%", l: "Female Scholars" }, { v: "100%", l: "Enrollment Rate" }, { v: "12yr", l: "Commitment" }].map((s) => (
-              <div key={s.l} tabIndex={0} className="animated-border-ghost stat-card-dark bg-white/10 backdrop-blur-sm">
+              <div key={s.l} className="rounded-2xl bg-white/10 border border-white/20 backdrop-blur-sm p-6">
                 <div className="text-4xl font-black text-accent tabular-nums tracking-tighter">{s.v}</div>
                 <div className="text-xs font-bold uppercase tracking-widest text-white/85 mt-1">{s.l}</div>
               </div>

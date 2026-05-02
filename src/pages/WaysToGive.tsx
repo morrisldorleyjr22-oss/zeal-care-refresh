@@ -13,9 +13,9 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
 const ways = [
-  { icon: CalendarClock, title: "Monthly Sustainer", body: "Provide consistent support allowing for long-term STEM curricula planning and student retention." },
-  { icon: Package, title: "In-Kind Donations", body: "Deploy tangible assets like laptops, STEM kits, and laboratory equipment to our rural hubs." },
-  { icon: Building2, title: "Corporate Partner", body: "Align your brand with social impact through grants, professional mentorship, or tech sponsorship." },
+  { icon: CalendarClock, title: "Monthly Sustainer", body: "Provide consistent support allowing for long-term STEM curricula planning and student retention.", to: "#appeals" },
+  { icon: Package, title: "In-Kind Donations", body: "Deploy tangible assets like laptops, STEM kits, and laboratory equipment to our rural hubs.", to: "/contact" },
+  { icon: Building2, title: "Corporate Partner", body: "Align your brand with social impact through grants, professional mentorship, or tech sponsorship.", to: "#partner" },
 ];
 
 const allocation = [
@@ -189,18 +189,27 @@ export default function WaysToGive() {
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">How You Can Help</h2>
         </div>
         <div className="mt-14 grid md:grid-cols-3 gap-6">
-          {ways.map((w) => (
-            <article key={w.title} className="bg-white rounded-3xl p-8 border border-secondary hover:shadow-card-lg transition-all">
-              <div className="size-14 rounded-2xl bg-primary text-white flex items-center justify-center">
-                <w.icon className="h-6 w-6" strokeWidth={2.5} />
-              </div>
-              <h3 className="mt-5 text-xl font-black text-navy">{w.title}</h3>
-              <p className="mt-3 text-navy/70 font-medium">{w.body}</p>
-              <button className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-navy">
-                Initiate Impact <ArrowRight className="h-4 w-4" />
-              </button>
-            </article>
-          ))}
+          {ways.map((w) => {
+            const isHash = w.to.startsWith("#");
+            const inner = (
+              <>
+                <div className="size-14 rounded-2xl bg-primary text-white flex items-center justify-center">
+                  <w.icon className="h-6 w-6" strokeWidth={2.5} />
+                </div>
+                <h3 className="mt-5 text-xl font-black text-navy">{w.title}</h3>
+                <p className="mt-3 text-navy/70 font-medium">{w.body}</p>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-primary group-hover:text-navy transition-colors">
+                  Initiate Impact <ArrowRight className="h-4 w-4" />
+                </span>
+              </>
+            );
+            const cls = "group block bg-white rounded-3xl p-8 border border-secondary hover:shadow-card-lg hover:border-primary transition-all";
+            return isHash ? (
+              <a key={w.title} href={w.to} className={cls}>{inner}</a>
+            ) : (
+              <Link key={w.title} to={w.to} className={cls}>{inner}</Link>
+            );
+          })}
         </div>
       </section>
 

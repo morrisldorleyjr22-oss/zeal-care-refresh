@@ -1,59 +1,18 @@
+import { Link } from "react-router-dom";
 import PageHero from "@/components/PageHero";
 import { usePageContent } from "@/hooks/usePageContent";
-import { Quote, Handshake, Trophy, ShieldCheck, FileBarChart2, Briefcase, FileText, Clock, Sparkles, Building2, Cpu, Users, MapPin, ArrowRight } from "lucide-react";
+import { Quote, Handshake, Trophy, ShieldCheck, FileBarChart2, Briefcase, FileText, Clock, ArrowRight, Sparkles } from "lucide-react";
 import community from "@/assets/community-wide.jpg?responsive";
 import teamMeeting from "@/assets/team-meeting.jpg?responsive";
-import partnershipPhoto from "@/assets/leader-team-classroom.jpg?responsive";
-import portraitTitus from "@/assets/leader-titus.jpg?responsive";
-import portraitMohammed from "@/assets/leader-mohammed.jpg?responsive";
-import portraitBeverley from "@/assets/leader-beverley.jpg?responsive";
 import ResponsiveImage from "@/components/ResponsiveImage";
+import { getIcon } from "@/lib/icon-registry";
 
-const leadership = [
-  { name: "Titus S. Foko", role: "Founder & Executive Director", bio: "Strategic vision and program architect leading Zeal Care's mission across Liberia.", photo: portraitTitus },
-  { name: "Mohammed Soko Kamara", role: "ED, Marketing & Communications", bio: "Champions Zeal Care's voice, partnerships, and storytelling across Africa and beyond.", photo: portraitMohammed },
-  { name: "Beverley Chelsea Saungweme", role: "ED, International Affairs", bio: "Former Project Team Lead for phase one. Drives Zeal Care's global partnerships and diaspora engagement.", photo: portraitBeverley },
-  { name: "William Mammie", role: "Graphic & Media Officer", bio: "Designs the operational backbone and visual narrative that scales our work across new communities." },
-];
-
-const board = [
-  { name: "Jluedoe M. Bornor", role: "Acting Board Chairperson" },
-  { name: "Yewande Olaiya-Oni", role: "Project Advisor" },
-  { name: "Mambiyea W. Kapee", role: "Children Education Impact Advisor" },
-  { name: "Sonay Knakay Monger Mason", role: "Strategy Partnership Advisor" },
-];
-
-const partners = [
-  "Ministry of Education", "UNICEF Liberia", "MTN Foundation", "Orange Liberia",
-  "Local Schools Network", "Diaspora Donors", "Tech for Africa", "Sendwave",
-];
-
-const history = [
-  { year: "2013", title: "The Spark", body: "Founded in Monrovia with 15 children and a single after-school program.", icon: Sparkles, stat: "15", statLabel: "First scholars" },
-  { year: "2017", title: "First Hub", body: "Opened our first dedicated learning center in Chicken Soup Factory.", icon: Building2, stat: "1", statLabel: "Learning hub" },
-  { year: "2021", title: "STEM Lab", body: "Launched Liberia's first community robotics lab for under-served youth.", icon: Cpu, stat: "1st", statLabel: "Robotics lab in country" },
-  { year: "2024", title: "850+ Scholars", body: "Crossed the milestone of 850 active beneficiaries across two communities.", icon: Users, stat: "850+", statLabel: "Active scholars" },
-  { year: "2026", title: "Grand Bassa", body: "Expanding into rural Grand Bassa County with three new digital hubs.", icon: MapPin, stat: "3", statLabel: "New hubs" },
-];
-
-const awards = [
-  { year: "2024", title: "Liberia Youth Impact Award", body: "Recognized for innovation in community-led education." },
-  { year: "2023", title: "Africa Changemaker Honor", body: "Pan-African recognition for STEM access in low-income communities." },
-  { year: "2022", title: "Civic Excellence Citation", body: "Awarded by the Monrovia City Corporation for community service." },
-];
-
-function Avatar({ name, photo }: { name: string; photo?: { sources: Record<string, string>; img: { src: string; w: number; h: number } } }) {
+function Avatar({ name, photo }: { name: string; photo?: string }) {
   const initials = name.split(" ").map((n) => n[0]).slice(0, 2).join("");
   if (photo) {
     return (
       <div className="size-20 rounded-2xl overflow-hidden ring-2 ring-accent/60 shadow-yellow-glow">
-        <ResponsiveImage
-          picture={photo}
-          alt={name}
-          sizes="80px"
-          className="block w-full h-full"
-          imgClassName="w-full h-full object-cover"
-        />
+        <img src={photo} alt={name} className="w-full h-full object-cover" loading="lazy" />
       </div>
     );
   }
@@ -66,6 +25,13 @@ function Avatar({ name, photo }: { name: string; photo?: { sources: Record<strin
 
 export default function WhoWeAre() {
   const c = usePageContent("who_we_are");
+  const leadership = c.list<{ name: string; role: string; bio: string; photo: string }>("leadership");
+  const board = c.list<{ name: string; role: string }>("board");
+  const partners = c.list<{ name: string }>("partners");
+  const history = c.list<{ year: string; title: string; body: string; stat: string; statLabel: string; icon: string }>("history");
+  const awards = c.list<{ year: string; title: string; body: string }>("awards");
+  const pictorials = c.list<{ name: string; url: string }>("pictorials");
+  const beneficiaryStats = c.list<{ value: string; label: string }>("beneficiary_stats");
   return (
     <>
       <PageHero
@@ -239,10 +205,10 @@ export default function WhoWeAre() {
           <p className="mt-4 text-navy/70 text-lg">A network of institutions, companies, and community leaders who multiply our impact.</p>
         </div>
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-          {partners.map((p) => (
-            <div key={p} className="bg-white rounded-2xl border border-secondary p-6 text-center hover:shadow-soft transition-all">
+          {partners.map((p, idx) => (
+            <div key={`${p.name}-${idx}`} className="bg-white rounded-2xl border border-secondary p-6 text-center hover:shadow-soft transition-all">
               <Handshake className="h-6 w-6 text-primary mx-auto" />
-              <div className="mt-3 font-bold text-navy text-sm">{p}</div>
+              <div className="mt-3 font-bold text-navy text-sm">{p.name}</div>
             </div>
           ))}
         </div>
@@ -272,8 +238,9 @@ export default function WhoWeAre() {
             <ol className="space-y-10 md:space-y-16">
               {history.map((h, i) => {
                 const isLeft = i % 2 === 0;
+                const HIcon = getIcon(h.icon, Sparkles);
                 return (
-                  <li key={h.year} className="relative md:grid md:grid-cols-2 md:gap-12 items-center">
+                  <li key={`${h.year}-${i}`} className="relative md:grid md:grid-cols-2 md:gap-12 items-center">
                     {/* Spine node */}
                     <div className="absolute left-5 md:left-1/2 top-6 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 z-10">
                       <span className="block size-4 rounded-full bg-primary ring-4 ring-background shadow-[0_0_0_4px_hsl(var(--primary)/0.15)]" />
@@ -284,7 +251,7 @@ export default function WhoWeAre() {
                       <article className="group relative bg-white rounded-3xl p-7 md:p-8 border-2 border-primary/15 shadow-[0_12px_30px_-15px_hsl(var(--primary)/0.35)] hover:border-primary/45 hover:shadow-[0_22px_50px_-18px_hsl(var(--primary)/0.55)] hover:-translate-y-1 transition-all">
                         <div className={`flex items-center gap-3 ${isLeft ? "md:flex-row-reverse md:text-right" : ""}`}>
                           <div className="size-12 rounded-2xl bg-primary text-white flex items-center justify-center shrink-0 shadow-[0_8px_20px_-8px_hsl(var(--primary)/0.6)]">
-                            <h.icon className="h-5 w-5" strokeWidth={2.4} />
+                            <HIcon className="h-5 w-5" strokeWidth={2.4} />
                           </div>
                           <div className="inline-flex items-center gap-2 bg-accent text-navy font-black text-xs px-3 py-1.5 rounded-full uppercase tracking-widest">
                             {h.year}
@@ -310,10 +277,13 @@ export default function WhoWeAre() {
 
             {/* End cap */}
             <div className="relative mt-12 md:mt-16 flex md:justify-center">
-              <div className="ml-5 md:ml-0 -translate-x-1/2 md:translate-x-0 inline-flex items-center gap-2 bg-navy text-white font-bold text-xs uppercase tracking-widest px-5 py-3 rounded-full shadow-card-lg">
+              <Link
+                to="/media"
+                className="ml-5 md:ml-0 -translate-x-1/2 md:translate-x-0 inline-flex items-center gap-2 bg-navy text-white font-bold text-xs uppercase tracking-widest px-5 py-3 rounded-full shadow-card-lg hover:bg-primary transition-colors"
+              >
                 The story continues
                 <ArrowRight className="h-4 w-4 text-accent" />
-              </div>
+              </Link>
             </div>
           </div>
         </div>

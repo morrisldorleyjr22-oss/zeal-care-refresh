@@ -158,10 +158,15 @@ function Editor({ def }: { def: PageDef }) {
     try {
       const rows = dirtyKeys.map((k) => {
         const f = def.fields.find((x) => x.key === k)!;
+        const type =
+          f.type === "image" ? "image" :
+          f.type === "video" ? "video" :
+          f.type === "repeater" ? "repeater" :
+          "text";
         return {
           page: def.page,
           key: k,
-          type: f.type === "image" ? "image" : f.type === "video" ? "video" : "text",
+          type,
           value: draft[k] ?? "",
         };
       });
@@ -454,7 +459,195 @@ function FieldEditor({
         </div>
       )}
 
+      {field.type === "repeater" && (
+        <RepeaterEditor field={field} value={value} onChange={onChange} />
+      )}
+
       {field.help && <p className="text-[11px] text-muted-foreground">{field.help}</p>}
+    </div>
+  );
+}
+
+function RepeaterEditor({
+  field,
+  value,
+  onChange,
+}: {
+  field: FieldDef;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  const cols = field.columns ?? [];
+  const noun = field.itemNoun ?? "item";
+
+  const items: Record<string, string>[] = (() => {
+    try {
+      const parsed = JSON.parse(value || field.default || "[]");
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  })();
+
+  function commit(next: Record<string, string>[]) {
+    onChange(JSON.stringify(next));
+  }
+  function update(i: number, key: string, v: string) {
+    const next = items.map((row, idx) => (idx === i ? { ...row, [key]: v } : row));
+    commit(next);
+  }
+  function add() {
+    const blank: Record<string, string> = {};
+    for (const col of cols) blank[col.key] = "";
+    commit([...items, blank]);
+  }
+  function remove(i: number) {
+    commit(items.filter((_, idx) => idx !== i));
+  }
+  function move(i: number, dir: -1 | 1) {
+    const j = i + dir;
+    if (j < 0 || j >= items.length) return;
+    const next = items.slice();
+    [next[i], next[j]] = [next[j], next[i]];
+    commit(next);
+  }
+
+  async function uploadInRow(i: number, key: string, file: File) {
+    if (file.size > 10 * 1024 * 1024) {
+      toast({ title: "Too large", description: "Image exceeds 10MB", variant: "destructive" });
+      return;
+    }
+    const safe = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+    const path = `${Date.now()}-${safe}`;
+    const { error } = await supabase.storage.from("site-media").upload(path, file, {
+      cacheControl: "31536000",
+      upsert: false,
+      contentType: file.type,
+    });
+    if (error) {
+      toast({ title: "Upload failed", description: error.message, variant: "destructive" });
+      return;
+    }
+    const { data: pub } = supabase.storage.from("site-media").getPublicUrl(path);
+    update(i, key, pub.publicUrl);
+  }
+
+  return (
+    <div className="space-y-3">
+      <div className="space-y-3">
+        {items.map((row, i) => (
+          <div key={i} className="rounded-lg border border-border bg-muted/30 p-3 space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                {noun} #{i + 1}
+              </span>
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => move(i, -1)}
+                  disabled={i === 0}
+                  className="text-[10px] px-2 py-0.5 rounded border border-border hover:bg-background disabled:opacity-30"
+                >
+                  ↑
+                </button>
+                <button
+                  type="button"
+                  onClick={() => move(i, 1)}
+                  disabled={i === items.length - 1}
+                  className="text-[10px] px-2 py-0.5 rounded border border-border hover:bg-background disabled:opacity-30"
+                >
+                  ↓
+                </button>
+                <button
+                  type="button"
+                  onClick={() => remove(i)}
+                  className="text-[10px] px-2 py-0.5 rounded border border-destructive/30 text-destructive hover:bg-destructive/10"
+                >
+                  remove
+                </button>
+              </div>
+            </div>
+
+            {cols.map((col) => {
+              const v = row[col.key] ?? "";
+              if (col.type === "textarea") {
+                return (
+                  <div key={col.key}>
+                    <label className="text-[10px] uppercase font-bold text-muted-foreground">{col.label}</label>
+                    <Textarea value={v} onChange={(e) => update(i, col.key, e.target.value)} rows={3} />
+                  </div>
+                );
+              }
+              if (col.type === "image") {
+                return (
+                  <div key={col.key}>
+                    <label className="text-[10px] uppercase font-bold text-muted-foreground">{col.label}</label>
+                    <div className="flex gap-2 items-center mt-1">
+                      <div className="size-14 rounded-md border border-border bg-background overflow-hidden grid place-items-center shrink-0">
+                        {v ? (
+                          <img src={v} alt="" className="w-full h-full object-cover" />
+                        ) : (
+                          <ImageIcon className="size-5 text-muted-foreground" />
+                        )}
+                      </div>
+                      <div className="flex-1 space-y-1">
+                        <Input
+                          value={v}
+                          onChange={(e) => update(i, col.key, e.target.value)}
+                          placeholder="Image URL"
+                          className="text-xs"
+                        />
+                        <label className="cursor-pointer inline-block">
+                          <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={(e) => {
+                              const f = e.target.files?.[0];
+                              if (f) uploadInRow(i, col.key, f);
+                              e.target.value = "";
+                            }}
+                          />
+                          <span className="inline-flex items-center text-[10px] px-2 py-1 rounded-md bg-primary text-primary-foreground hover:opacity-90">
+                            Upload
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              if (col.type === "icon") {
+                const choices = (col.iconChoices ?? "").split(",").map((s) => s.trim()).filter(Boolean);
+                return (
+                  <div key={col.key}>
+                    <label className="text-[10px] uppercase font-bold text-muted-foreground">{col.label}</label>
+                    <select
+                      value={v}
+                      onChange={(e) => update(i, col.key, e.target.value)}
+                      className="w-full text-xs border border-border rounded-md bg-background px-2 py-1.5"
+                    >
+                      <option value="">— none —</option>
+                      {choices.map((c) => (
+                        <option key={c} value={c}>{c}</option>
+                      ))}
+                    </select>
+                  </div>
+                );
+              }
+              return (
+                <div key={col.key}>
+                  <label className="text-[10px] uppercase font-bold text-muted-foreground">{col.label}</label>
+                  <Input value={v} onChange={(e) => update(i, col.key, e.target.value)} className="text-xs" />
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+      <Button type="button" size="sm" variant="outline" onClick={add} className="w-full">
+        + Add {noun}
+      </Button>
     </div>
   );
 }

@@ -2,14 +2,10 @@ import PageHero from "@/components/PageHero";
 import { Scale, Sprout, Shield } from "lucide-react";
 import { usePageContent } from "@/hooks/usePageContent";
 
-const stats = [
-  { value: "73%", label: "Children without digital learning devices" },
-  { value: "57%", label: "Drop-out rate due to financial constraints" },
-  { value: "4-17", label: "Age range of children we serve" },
-];
-
 export default function WhyEmpowerment() {
   const c = usePageContent("why");
+  const stats = c.list<{ value: string; label: string }>("stats");
+  const econStats = c.list<{ v: string; l: string }>("econ_stats");
   return (
     <>
       <PageHero
@@ -32,7 +28,7 @@ export default function WhyEmpowerment() {
           </p>
         </div>
         <div className="lg:col-span-5 relative">
-          <div className="rounded-[2rem] overflow-hidden shadow-card-lg">
+          <div className="rounded-[2rem] overflow-hidden shadow-card-lg ring-4 ring-accent ring-offset-4 ring-offset-background">
             <img src={c.get("img_philosophy")} alt="Children receiving books" className="w-full aspect-[4/5] object-cover" loading="lazy" />
           </div>
           <div className="absolute -bottom-6 -left-6 bg-accent rounded-2xl p-5 shadow-yellow-glow rotate-[-4deg]">
@@ -84,13 +80,8 @@ export default function WhyEmpowerment() {
           </p>
         </div>
         <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-          {[
-            { v: "10×", l: "Return on every $1 invested in girls' education" },
-            { v: "+25%", l: "Lifetime earnings per added year of schooling" },
-            { v: "3×", l: "Faster GDP growth in nations prioritizing education" },
-            { v: "1 gen", l: "Time needed to break the poverty cycle" },
-          ].map((s) => (
-            <div key={s.l} className="bg-white rounded-2xl border border-secondary p-5">
+          {econStats.map((s, i) => (
+            <div key={`${s.l}-${i}`} className="bg-white rounded-2xl border border-secondary p-5">
               <div className="text-3xl font-black text-primary tabular-nums tracking-tighter">{s.v}</div>
               <div className="mt-2 text-xs font-bold text-navy/60 uppercase tracking-widest leading-tight">{s.l}</div>
             </div>
@@ -101,8 +92,8 @@ export default function WhyEmpowerment() {
       {/* Stats */}
       <section className="container-zc py-24">
         <div className="grid md:grid-cols-3 gap-6">
-          {stats.map((s) => (
-            <div key={s.label} className="bg-soft-gradient rounded-3xl p-10 border border-secondary text-center">
+          {stats.map((s, i) => (
+            <div key={`${s.label}-${i}`} className="bg-soft-gradient rounded-3xl p-10 border-2 border-primary/70 ring-1 ring-primary/20 text-center shadow-card-lg">
               <div className="text-6xl font-black text-primary tabular-nums tracking-tighter">{s.value}</div>
               <div className="mt-3 text-sm font-bold text-navy/70 uppercase tracking-widest">{s.label}</div>
             </div>

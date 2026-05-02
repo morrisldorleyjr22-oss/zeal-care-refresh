@@ -1,33 +1,16 @@
 import PageHero from "@/components/PageHero";
-import { GraduationCap, Lightbulb, Briefcase, Cpu, Smartphone, HeartHandshake, BookOpen, Shield, BookOpenCheck, Compass, Rocket, FlaskConical } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { usePageContent } from "@/hooks/usePageContent";
-
-const supports = [
-  { label: "School Fees & Tuition", icon: GraduationCap },
-  { label: "Uniforms & Books", icon: BookOpen },
-  { label: "Shoes & Supplies", icon: Shield },
-  { label: "Mentorship & Training", icon: HeartHandshake },
-  { label: "Inclusive Advocacy", icon: Lightbulb },
-  { label: "Digital Exposure", icon: Smartphone },
-];
-
-const programKeys = [
-  { icon: BookOpenCheck, imgKey: "img_program_education", title: "Education Sponsorship & Advocacy",
-    desc: "Tailored for children aged 4–17 in slums and rural communities. We provide tuition, supplies, and advocate for inclusive education.",
-    quote: '"The best way to fight poverty is to empower people through access to quality education." — John Legend' },
-  { icon: Compass, imgKey: "img_program_leadership", title: "Leadership Development",
-    desc: "Structured initiatives focusing on personal development, mentorship, coaching, and problem-solving through summits and seminars.",
-    quote: '"If your actions inspire others to dream more, learn more, do more, and become more, you are a leader." — John Quincy Adams' },
-  { icon: Rocket, imgKey: "img_program_entrepreneurship", title: "Entrepreneurship Programs",
-    desc: "Equipping youth with the knowledge and mindset to identify business opportunities and manage growth.",
-    quote: '"It\'s not about ideas. It\'s about making ideas happen." — Scott Belsky' },
-  { icon: FlaskConical, imgKey: "img_program_stem", title: "Career Paths in STEM",
-    desc: "Hands-on labs in coding, robotics, and applied science that bridge the digital divide for the next generation of African innovators.",
-    quote: '"Science is a way of thinking much more than it is a body of knowledge." — Carl Sagan' },
-];
+import { getIcon } from "@/lib/icon-registry";
 
 export default function WhatWeDo() {
   const c = usePageContent("what_we_do");
+  const supports = c.list<{ label: string; icon: string }>("supports");
+  const locations = c.list<{ city: string; area: string; note: string }>("locations");
+  const projectSteps = c.list<{ image: string; label: string; note: string }>("project_steps");
+  const programs = c.list<{ title: string; desc: string; quote: string; icon: string }>("programs");
+  const differentiators = c.list<{ title: string; body: string }>("differentiators");
+  const impactStats = c.list<{ value: string; label: string }>("impact_stats");
   return (
     <>
       <PageHero
@@ -50,14 +33,17 @@ export default function WhatWeDo() {
           </p>
         </div>
         <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-          {supports.map((s) => (
-            <div key={s.label} className="bg-white rounded-2xl p-5 border border-secondary flex items-center gap-3 hover:shadow-soft transition-all">
-              <div className="size-11 rounded-xl bg-accent flex items-center justify-center shrink-0">
-                <s.icon className="h-5 w-5 text-navy" />
+          {supports.map((s, i) => {
+            const Icon = getIcon(s.icon);
+            return (
+              <div key={`${s.label}-${i}`} className="bg-white rounded-2xl p-5 border border-secondary flex items-center gap-3 hover:shadow-soft transition-all">
+                <div className="size-11 rounded-xl bg-accent flex items-center justify-center shrink-0">
+                  <Icon className="h-5 w-5 text-navy" />
+                </div>
+                <span className="text-sm font-bold text-navy">{s.label}</span>
               </div>
-              <span className="text-sm font-bold text-navy">{s.label}</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -73,13 +59,8 @@ export default function WhatWeDo() {
             </p>
           </div>
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
-            {[
-              { city: "Monrovia", area: "Chicken Soup Factory", note: "Flagship learning hub & STEM lab" },
-              { city: "Monrovia", area: "West Point", note: "Community education center" },
-              { city: "Grand Bassa County", area: "Rural Outreach", note: "3 new digital hubs (2026)" },
-              { city: "Pan-African", area: "Diaspora Network", note: "Donor & mentor partnerships" },
-            ].map((l) => (
-              <div key={l.area} className="bg-white rounded-2xl border border-secondary p-6 hover:shadow-card-lg transition-all">
+            {locations.map((l, i) => (
+              <div key={`${l.area}-${i}`} className="bg-white rounded-2xl border border-secondary p-6 hover:shadow-card-lg transition-all">
                 <div className="text-[11px] font-bold text-primary uppercase tracking-widest">{l.city}</div>
                 <div className="mt-1 font-black text-navy text-lg">{l.area}</div>
                 <div className="mt-2 text-sm text-navy/65">{l.note}</div>
@@ -100,16 +81,11 @@ export default function WhatWeDo() {
           </p>
         </div>
         <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[
-            { imgKey: "img_proj_survey", label: "Digital Survey", note: "Door-to-door community mapping in Bloc D, Monrovia." },
-            { imgKey: "img_proj_interviews", label: "Candidate Interviews", note: "Shortlisted children meet our team with parents & bloc leaders." },
-            { imgKey: "img_proj_materials", label: "Procuring Materials", note: "Uniforms, shoes, books, pens — sourced and verified." },
-            { imgKey: "img_proj_fee", label: "School Fee Payment", note: "Paid directly to schools in the presence of bloc leadership." },
-          ].map((s) => (
-            <figure key={s.label} className="rounded-2xl overflow-hidden border border-secondary bg-white hover:shadow-card-lg transition-all group">
+          {projectSteps.map((s, i) => (
+            <figure key={`${s.label}-${i}`} className="rounded-2xl overflow-hidden border border-secondary bg-white hover:shadow-card-lg transition-all group">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src={c.get(s.imgKey)}
+                  src={s.image}
                   alt={s.label}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
@@ -131,27 +107,30 @@ export default function WhatWeDo() {
             <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Strategic Programs</h2>
           </div>
           <div className="mt-16 grid md:grid-cols-2 gap-8">
-            {programKeys.map((p, i) => (
-              <article
-                key={p.title}
-                className="group relative bg-white rounded-[2rem] overflow-hidden border-2 border-primary/20 ring-1 ring-inset ring-primary/5 shadow-[0_12px_35px_-15px_hsl(var(--primary)/0.4)] hover:border-primary/50 hover:shadow-[0_22px_50px_-15px_hsl(var(--primary)/0.55)] hover:-translate-y-1 transition-all"
-              >
-                <span className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-primary via-accent to-primary z-10" />
-                <div
-                  className={`program-hero ${i % 2 === 0 ? "program-hero--accent" : ""}`}
-                  role="img"
-                  aria-label={`${p.title} — program illustration`}
-                  title={`${p.title} — program illustration`}
+            {programs.map((p, i) => {
+              const Icon = getIcon(p.icon);
+              return (
+                <article
+                  key={`${p.title}-${i}`}
+                  className="group relative bg-white rounded-[2rem] overflow-hidden border-2 border-primary/20 ring-1 ring-inset ring-primary/5 shadow-[0_12px_35px_-15px_hsl(var(--primary)/0.4)] hover:border-primary/50 hover:shadow-[0_22px_50px_-15px_hsl(var(--primary)/0.55)] hover:-translate-y-1 transition-all"
                 >
-                  <p.icon aria-hidden="true" focusable="false" />
-                </div>
-                <div className="p-7">
-                  <h3 className="text-xl md:text-2xl font-black text-navy">{p.title}</h3>
-                  <p className="mt-4 text-navy/70 leading-relaxed">{p.desc}</p>
-                  <p className="mt-5 text-sm italic text-navy/60 border-l-2 border-accent pl-4">{p.quote}</p>
-                </div>
-              </article>
-            ))}
+                  <span className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-primary via-accent to-primary z-10" />
+                  <div
+                    className={`program-hero ${i % 2 === 0 ? "program-hero--accent" : ""}`}
+                    role="img"
+                    aria-label={`${p.title} — program illustration`}
+                    title={`${p.title} — program illustration`}
+                  >
+                    <Icon aria-hidden="true" focusable="false" />
+                  </div>
+                  <div className="p-7">
+                    <h3 className="text-xl md:text-2xl font-black text-navy">{p.title}</h3>
+                    <p className="mt-4 text-navy/70 leading-relaxed">{p.desc}</p>
+                    <p className="mt-5 text-sm italic text-navy/60 border-l-2 border-accent pl-4">{p.quote}</p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -163,16 +142,11 @@ export default function WhatWeDo() {
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">What Sets Us Apart</h2>
         </div>
         <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {[
-            { t: "Run by Young People", b: "Our team is made of the next generation, not retired observers." },
-            { t: "100% Local Roots", b: "Every hub sits inside the community it serves." },
-            { t: "STEM-First", b: "We don't just teach — we equip with future-of-work skills." },
-            { t: "Total Transparency", b: "Open books, public reports, traceable impact." },
-          ].map((card) => (
-            <div key={card.t} className="bg-white rounded-3xl border border-secondary p-7 hover:-translate-y-1 hover:shadow-card-lg transition-all">
+          {differentiators.map((card, i) => (
+            <div key={`${card.title}-${i}`} className="bg-white rounded-3xl border border-secondary p-7 hover:-translate-y-1 hover:shadow-card-lg transition-all">
               <div className="size-10 rounded-xl bg-accent text-navy flex items-center justify-center font-black">★</div>
-              <h3 className="mt-4 font-black text-navy">{card.t}</h3>
-              <p className="mt-2 text-sm text-navy/70 leading-relaxed">{card.b}</p>
+              <h3 className="mt-4 font-black text-navy">{card.title}</h3>
+              <p className="mt-2 text-sm text-navy/70 leading-relaxed">{card.body}</p>
             </div>
           ))}
         </div>
@@ -190,17 +164,10 @@ export default function WhatWeDo() {
             <h2 className="mt-3 text-4xl md:text-5xl font-black">Impact in Numbers</h2>
           </div>
           <div className="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
-            {[
-              { v: "850+", l: "Children Empowered" },
-              { v: "12+", l: "Years of Sustained Care" },
-              { v: "2+", l: "Communities Impacted" },
-              { v: "65%", l: "Female Scholars" },
-              { v: "100%", l: "Enrollment Rate" },
-              { v: "$45K", l: "Grand Bassa Goal" },
-            ].map((s) => (
-              <div key={s.l} className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                <div className="text-5xl font-black text-accent tabular-nums tracking-tighter">{s.v}</div>
-                <div className="mt-2 text-xs font-bold uppercase tracking-widest text-white/80">{s.l}</div>
+            {impactStats.map((s, i) => (
+              <div key={`${s.label}-${i}`} className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                <div className="text-5xl font-black text-accent tabular-nums tracking-tighter">{s.value}</div>
+                <div className="mt-2 text-xs font-bold uppercase tracking-widest text-white/80">{s.label}</div>
               </div>
             ))}
           </div>

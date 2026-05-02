@@ -146,11 +146,11 @@ export default function WaysToGive() {
         </div>
         <div className="mt-14 grid md:grid-cols-3 gap-6">
           {mobile.map((m) => (
-            <div key={m.name} className="bg-navy text-white rounded-3xl p-8 hover:shadow-card-lg transition-all">
+            <div key={m.name} className="bg-primary text-white rounded-3xl p-8 border border-primary/40 shadow-[0_18px_40px_-15px_hsl(var(--primary)/0.55)] hover:shadow-[0_28px_55px_-15px_hsl(var(--primary)/0.7)] hover:-translate-y-1 transition-all">
               <Smartphone className="h-7 w-7 text-accent" />
               <h3 className="mt-4 text-xl font-black">{m.name}</h3>
               <div className="mt-4 font-mono text-2xl text-accent tracking-tight">{m.code}</div>
-              <p className="mt-3 text-sm text-white/70">{m.account}</p>
+              <p className="mt-3 text-sm text-white/80">{m.account}</p>
             </div>
           ))}
         </div>

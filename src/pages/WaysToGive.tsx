@@ -317,6 +317,206 @@ export default function WaysToGive() {
           </div>
         </div>
       </section>
+
+      {/* Mobile Money confirmation dialog */}
+      <Dialog open={pledgeOpen} onOpenChange={setPledgeOpen}>
+        <DialogContent className="sm:max-w-lg p-0 overflow-hidden">
+          {pledgeStep === "form" ? (
+            <form onSubmit={submitPledge}>
+              <DialogHeader className="px-6 pt-6">
+                <DialogTitle className="text-2xl font-black text-navy">
+                  Confirm your {pledgeProvider} donation
+                </DialogTitle>
+                <DialogDescription className="text-navy/65">
+                  Tell us a few details so we can match your transaction and send your impact receipt.
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="px-6 py-5 space-y-4">
+                <div className="grid gap-2">
+                  <Label htmlFor="donor_name">Full name</Label>
+                  <Input
+                    id="donor_name"
+                    required
+                    value={form.donor_name}
+                    onChange={(e) => setForm({ ...form, donor_name: e.target.value })}
+                    placeholder="Jane Doe"
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="contact">Phone or email</Label>
+                  <Input
+                    id="contact"
+                    required
+                    value={form.contact}
+                    onChange={(e) => setForm({ ...form, contact: e.target.value })}
+                    placeholder="+231 88 707 1690 or you@email.com"
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="grid gap-2">
+                    <Label htmlFor="amount">Amount (USD)</Label>
+                    <Input
+                      id="amount"
+                      required
+                      type="number"
+                      min={1}
+                      step="0.01"
+                      value={form.amount}
+                      onChange={(e) => setForm({ ...form, amount: e.target.value })}
+                      placeholder="50"
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="reference">Transaction ID (optional)</Label>
+                    <Input
+                      id="reference"
+                      value={form.reference}
+                      onChange={(e) => setForm({ ...form, reference: e.target.value })}
+                      placeholder="MM2026XXXX"
+                    />
+                  </div>
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="note">Message (optional)</Label>
+                  <Textarea
+                    id="note"
+                    rows={2}
+                    value={form.note}
+                    onChange={(e) => setForm({ ...form, note: e.target.value })}
+                    placeholder="Dedicate this gift to…"
+                  />
+                </div>
+              </div>
+
+              <DialogFooter className="bg-secondary/40 px-6 py-4 gap-2 sm:gap-3">
+                <button
+                  type="button"
+                  onClick={() => setPledgeOpen(false)}
+                  className="px-5 py-2.5 rounded-full font-bold text-sm text-navy/70 hover:text-navy"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="inline-flex items-center justify-center gap-2 bg-primary text-white font-bold text-sm rounded-full px-6 py-3 hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+                >
+                  {submitting ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Submitting…
+                    </>
+                  ) : (
+                    <>
+                      Confirm donation
+                      <ArrowRight className="h-4 w-4" />
+                    </>
+                  )}
+                </button>
+              </DialogFooter>
+            </form>
+          ) : (
+            <div>
+              <div className="bg-hero-gradient text-white px-6 pt-8 pb-7 text-center">
+                <div className="mx-auto size-16 rounded-full bg-accent text-navy flex items-center justify-center shadow-yellow-glow">
+                  <CheckCircle2 className="h-9 w-9" strokeWidth={2.4} />
+                </div>
+                <h2 className="mt-5 text-2xl md:text-3xl font-black tracking-tight">
+                  Thank you, {confirmation?.donor_name?.split(" ")[0] || "friend"}!
+                </h2>
+                <p className="mt-2 text-white/85">
+                  Your <span className="text-accent font-bold">${confirmation?.amount}</span> {confirmation?.provider} donation has been recorded. Our team will verify it within 24 hours and email your impact receipt.
+                </p>
+              </div>
+
+              <div className="px-6 py-5 space-y-3">
+                <div className="bg-secondary/50 border border-secondary rounded-2xl p-4">
+                  <div className="text-[11px] font-bold uppercase tracking-widest text-navy/55">
+                    Confirmation reference
+                  </div>
+                  <div className="mt-1 flex items-center justify-between gap-3">
+                    <code className="font-mono text-sm text-navy break-all">{confirmation?.id}</code>
+                    <button
+                      type="button"
+                      onClick={copyReference}
+                      className="shrink-0 inline-flex items-center gap-1 text-xs font-bold text-primary hover:text-navy"
+                    >
+                      <Copy className="h-3.5 w-3.5" /> Copy
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="text-[11px] font-bold uppercase tracking-widest text-navy/55 mb-2">
+                    What's next?
+                  </div>
+                  <div className="grid gap-2">
+                    <button
+                      type="button"
+                      onClick={sharePledge}
+                      className="flex items-center justify-between gap-3 bg-white border border-primary/25 rounded-2xl px-4 py-3 hover:border-primary/50 hover:shadow-[0_10px_25px_-12px_hsl(var(--primary)/0.4)] transition-all text-left"
+                    >
+                      <span className="flex items-center gap-3">
+                        <span className="size-9 rounded-xl bg-accent text-navy flex items-center justify-center">
+                          <Share2 className="h-4 w-4" strokeWidth={2.4} />
+                        </span>
+                        <span>
+                          <span className="block font-bold text-navy text-sm">Inspire a friend</span>
+                          <span className="block text-xs text-navy/60">Share your gift and double the impact.</span>
+                        </span>
+                      </span>
+                      <ArrowRight className="h-4 w-4 text-primary" />
+                    </button>
+                    <Link
+                      to="/what-we-do"
+                      onClick={() => setPledgeOpen(false)}
+                      className="flex items-center justify-between gap-3 bg-white border border-primary/25 rounded-2xl px-4 py-3 hover:border-primary/50 hover:shadow-[0_10px_25px_-12px_hsl(var(--primary)/0.4)] transition-all"
+                    >
+                      <span className="flex items-center gap-3">
+                        <span className="size-9 rounded-xl bg-primary text-white flex items-center justify-center">
+                          <Heart className="h-4 w-4" strokeWidth={2.4} fill="currentColor" />
+                        </span>
+                        <span>
+                          <span className="block font-bold text-navy text-sm">See your impact</span>
+                          <span className="block text-xs text-navy/60">Explore the programs your gift fuels.</span>
+                        </span>
+                      </span>
+                      <ArrowRight className="h-4 w-4 text-primary" />
+                    </Link>
+                    <Link
+                      to="/contact"
+                      onClick={() => setPledgeOpen(false)}
+                      className="flex items-center justify-between gap-3 bg-white border border-primary/25 rounded-2xl px-4 py-3 hover:border-primary/50 hover:shadow-[0_10px_25px_-12px_hsl(var(--primary)/0.4)] transition-all"
+                    >
+                      <span className="flex items-center gap-3">
+                        <span className="size-9 rounded-xl bg-navy text-accent flex items-center justify-center">
+                          <CalendarClock className="h-4 w-4" strokeWidth={2.4} />
+                        </span>
+                        <span>
+                          <span className="block font-bold text-navy text-sm">Become a monthly sustainer</span>
+                          <span className="block text-xs text-navy/60">Talk to our team about recurring giving.</span>
+                        </span>
+                      </span>
+                      <ArrowRight className="h-4 w-4 text-primary" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <DialogFooter className="bg-secondary/40 px-6 py-4">
+                <button
+                  type="button"
+                  onClick={() => setPledgeOpen(false)}
+                  className="ml-auto inline-flex items-center gap-2 bg-navy text-white font-bold text-sm rounded-full px-6 py-3 hover:bg-navy/90 transition-colors"
+                >
+                  Done
+                </button>
+              </DialogFooter>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

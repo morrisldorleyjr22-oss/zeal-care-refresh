@@ -278,6 +278,66 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* STAY CONNECTED / NEWSLETTER */}
+      <section className="container-zc pb-20 md:pb-24">
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-hero-gradient text-white p-8 md:p-14 shadow-card-lg">
+          <div className="absolute -top-24 -right-24 size-72 bg-accent/20 rounded-full blur-3xl" />
+          <div className="relative grid lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-6">
+              <span className="inline-block bg-accent text-navy text-[10px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded">
+                Stay Connected
+              </span>
+              <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight">
+                The Zeal <span className="text-accent italic">Impact</span>
+              </h2>
+              <p className="mt-4 text-base md:text-lg text-white/85 max-w-md">
+                Join 12,000+ monthly readers receiving direct impact reports from the field.
+              </p>
+            </div>
+            <form
+              className="lg:col-span-6 flex flex-col sm:flex-row gap-3"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <input
+                type="email"
+                required
+                placeholder="Enter your email"
+                className="flex-1 bg-white/10 border border-white/25 rounded-2xl px-5 py-4 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-accent/60"
+              />
+              <button type="submit" className="btn-primary justify-center">
+                Join Movement
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* READY TO MAKE AN IMPACT - FINAL CTA */}
+      <section className="container-zc pb-24 md:pb-32">
+        <div className="text-center max-w-3xl mx-auto">
+          <span className="eyebrow">Take Action Today</span>
+          <h2 className="mt-3 text-3xl md:text-5xl font-black tracking-tight text-navy text-balance">
+            Ready to make an <span className="text-primary">impact?</span>
+          </h2>
+          <p className="mt-5 text-base md:text-lg text-navy/70 leading-relaxed">
+            Your support transforms lives. Sponsor a child, partner with us, or share our mission — every action counts.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link to={hero.cta_primary_url} className="btn-primary">
+              {hero.cta_primary_label}
+              <span className="size-6 bg-navy rounded-full flex items-center justify-center text-accent">
+                <ArrowRight className="h-3 w-3" />
+              </span>
+            </Link>
+            <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border-2 border-navy text-navy font-bold px-6 py-3 hover:bg-navy hover:text-white transition-colors">
+              Get in Touch
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

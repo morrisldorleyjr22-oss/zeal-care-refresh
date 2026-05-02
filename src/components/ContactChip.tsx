@@ -29,8 +29,8 @@ export default function ContactChip({
   const isLink = !!href;
 
   const wrapBase =
-    "group inline-flex items-start max-w-full transition-colors";
-  const wrapBySize = size === "sm" ? "gap-2 text-xs" : "gap-3 text-sm";
+    "group inline-flex items-center max-w-full transition-colors leading-snug";
+  const wrapBySize = size === "sm" ? "gap-2 text-xs" : "gap-2.5 sm:gap-3 text-[13px] sm:text-sm";
   const wrapByVariant =
     variant === "dark"
       ? "text-white/85 hover:text-accent"
@@ -48,10 +48,10 @@ export default function ContactChip({
 
   const content = (
     <>
-      <span className={`${iconBoxBase} ${iconBoxBySize} ${iconBoxByVariant} mt-0.5`}>
+      <span className={`${iconBoxBase} ${iconBoxBySize} ${iconBoxByVariant} self-start mt-[2px]`}>
         <Icon className={`${iconSize} text-accent`} strokeWidth={ICON_STROKE} />
       </span>
-      <span className={`${size === "sm" ? "font-medium tracking-wide" : "font-medium"} min-w-0 break-words`}>
+      <span className={`${size === "sm" ? "font-medium tracking-wide" : "font-medium"} min-w-0 break-words [overflow-wrap:anywhere]`}>
         {label}
       </span>
     </>

@@ -1,7 +1,7 @@
 import { createContext, createElement, useContext, useEffect, type ReactNode } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { getDefault } from "@/lib/page-content";
+import { getDefault, getList } from "@/lib/page-content";
 
 type Row = { page: string; key: string; value: string };
 
@@ -65,8 +65,7 @@ export function usePageContent(page: string) {
   const map = new Map<string, string>();
   for (const r of data ?? []) map.set(`${r.page}::${r.key}`, r.value);
 
-  function get(key: string): string {
-    // Draft overrides win for live preview
+  function rawValue(key: string): string {
     const draft = overrides?.get(`${page}::${key}`);
     if (draft !== undefined && draft.length > 0) return draft;
     const override = map.get(`${page}::${key}`);
@@ -74,5 +73,13 @@ export function usePageContent(page: string) {
     return getDefault(page, key);
   }
 
-  return { get };
+  function get(key: string): string {
+    return rawValue(key);
+  }
+
+  function list<T = Record<string, string>>(key: string): T[] {
+    return getList<T>(page, key, rawValue(key));
+  }
+
+  return { get, list };
 }

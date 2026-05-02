@@ -175,12 +175,14 @@ export default function WaysToGive() {
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">How You Can Help</h2>
         </div>
         <div className="mt-14 grid md:grid-cols-3 gap-6">
-          {ways.map((w) => {
-            const isHash = w.to.startsWith("#");
+          {ways.map((w, i) => {
+            const Icon = getIcon(w.icon, CalendarClock);
+            const target = w.to || "/contact";
+            const isHash = target.startsWith("#");
             const inner = (
               <>
                 <div className="size-14 rounded-2xl bg-primary text-white flex items-center justify-center">
-                  <w.icon className="h-6 w-6" strokeWidth={2.5} />
+                  <Icon className="h-6 w-6" strokeWidth={2.5} />
                 </div>
                 <h3 className="mt-5 text-xl font-black text-navy">{w.title}</h3>
                 <p className="mt-3 text-navy/70 font-medium">{w.body}</p>
@@ -191,9 +193,9 @@ export default function WaysToGive() {
             );
             const cls = "group block bg-white rounded-3xl p-8 border border-secondary hover:shadow-card-lg hover:border-primary transition-all";
             return isHash ? (
-              <a key={w.title} href={w.to} className={cls}>{inner}</a>
+              <a key={`${w.title}-${i}`} href={target} className={cls}>{inner}</a>
             ) : (
-              <Link key={w.title} to={w.to} className={cls}>{inner}</Link>
+              <Link key={`${w.title}-${i}`} to={target} className={cls}>{inner}</Link>
             );
           })}
         </div>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Calendar, Play, Newspaper, ArrowRight, Search } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { useReveal } from "@/hooks/useReveal";
+import { usePageContent } from "@/hooks/usePageContent";
 import { articles, categories } from "@/data/articles";
 import comm from "@/assets/community-wide.jpg?responsive";
 import stem from "@/assets/program-stem.jpg?responsive";
@@ -23,6 +24,7 @@ const events = [
 
 export default function Media() {
   const ref = useReveal<HTMLDivElement>();
+  const cms = usePageContent("media");
   const [active, setActive] = useState<(typeof categories)[number]>("All");
   const [query, setQuery] = useState("");
 
@@ -42,10 +44,10 @@ export default function Media() {
   return (
     <div ref={ref}>
       <PageHero
-        eyebrow="News & stories"
-        title="The"
-        highlight="Impact Hub"
-        description="Direct narratives from the frontlines of African potential. Stay updated with our latest stories, films, and events."
+        eyebrow={cms.get("hero_eyebrow")}
+        title={cms.get("hero_title")}
+        highlight={cms.get("hero_highlight")}
+        description={cms.get("hero_description")}
       />
 
       {/* Newsroom */}

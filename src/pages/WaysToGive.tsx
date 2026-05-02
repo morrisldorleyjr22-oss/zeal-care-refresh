@@ -203,10 +203,9 @@ export default function WaysToGive() {
           <div className="absolute -top-20 -right-20 size-80 bg-accent/20 rounded-full blur-3xl" />
           <div className="relative max-w-3xl">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Final Appeal</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black">The Grand Bassa Expansion</h2>
+            <h2 className="mt-3 text-4xl md:text-5xl font-black">{c.get("appeal_title")}</h2>
             <p className="mt-5 text-white/85 text-lg leading-relaxed">
-              We are currently raising <strong className="text-accent">$45,000</strong> to establish three new Digital Hubs in Grand Bassa County by late 2026.
-              This will provide 450 children with their first-ever access to digital learning tools.
+              {c.get("appeal_body")}
             </p>
             <button className="mt-8 btn-primary">Help Us Build <ArrowRight className="h-4 w-4" /></button>
           </div>

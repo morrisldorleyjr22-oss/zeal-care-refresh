@@ -1,15 +1,6 @@
 import PageHero from "@/components/PageHero";
 import { GraduationCap, Lightbulb, Briefcase, Cpu, Smartphone, HeartHandshake, BookOpen, Shield } from "lucide-react";
-import community from "@/assets/community-wide.jpg?responsive";
-import stem from "@/assets/program-stem.jpg?responsive";
-import edu from "@/assets/program-education.jpg?responsive";
-import lead from "@/assets/program-leadership.jpg?responsive";
-import ent from "@/assets/program-entrepreneurship.jpg?responsive";
-import projSurvey from "@/assets/project-survey.jpg?responsive";
-import projInterviews from "@/assets/project-interviews.jpg?responsive";
-import projMaterials from "@/assets/project-materials-row.jpg?responsive";
-import projFee from "@/assets/project-feepayment.jpg?responsive";
-import ResponsiveImage from "@/components/ResponsiveImage";
+import { usePageContent } from "@/hooks/usePageContent";
 
 const supports = [
   { label: "School Fees & Tuition", icon: GraduationCap },

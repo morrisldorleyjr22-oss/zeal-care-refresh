@@ -163,7 +163,7 @@ export default function WhoWeAre() {
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6">
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-6">
             {[
               { name: "Varsco Harris", url: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/Varsco%20Harris.jpeg" },
               { name: "Scholar Highlight", url: "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/WhatsApp%20Image%202026-05-02%20at%202.08.17%20AM%20(5).jpeg" },
@@ -295,7 +295,7 @@ export default function WhoWeAre() {
           <span className="eyebrow">Recognition</span>
           <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Awards & Prizes</h2>
         </div>
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
+        <div className="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {awards.map((a) => (
             <div key={a.title} className="bg-white rounded-3xl border border-secondary p-8 hover:shadow-card-lg transition-all">
               <Trophy className="h-8 w-8 text-accent" />

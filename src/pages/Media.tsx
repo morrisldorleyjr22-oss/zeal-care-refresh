@@ -147,7 +147,7 @@ export default function Media() {
             <h2 className="mt-2 text-3xl md:text-4xl font-black text-navy">Success Stories</h2>
             <p className="mt-3 text-navy/70">Real scholars. Real outcomes. Their words, not ours.</p>
           </div>
-          <div className="mt-10 grid md:grid-cols-3 gap-6">
+          <div className="mt-10 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
               { name: "Samuel K., 15", quote: "The STEM lab changed my life. I never knew I could build robots in Liberia.", track: "Robotics Scholar" },
               { name: "Aminata D., 14", quote: "I was going to drop out. Now I'm planning to study engineering.", track: "Education Sponsorship" },
@@ -177,7 +177,7 @@ export default function Media() {
           <span className="eyebrow">In Pictures</span>
           <h2 className="mt-2 text-3xl md:text-4xl font-black text-navy">Photo Gallery</h2>
         </div>
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div className="mt-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3">
           {[
             { img: galleryTeam, caption: "Team meeting — in person & online" },
             { img: gallerySurvey, caption: "Project digital survey, June 2024" },
@@ -309,7 +309,7 @@ function CinematicsSection({ cms }: { cms: CmsHelper }) {
             </p>
           </div>
         ) : (
-          <div className="mt-10 grid lg:grid-cols-3 gap-6">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {videos.map((v, i) => (
               <div key={i} className={`reveal reveal-delay-${i + 1}`}>
                 <CinematicVideo src={v.src} title={v.title} poster={v.poster} />

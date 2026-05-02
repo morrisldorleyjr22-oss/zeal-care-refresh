@@ -154,7 +154,7 @@ export default function ArticleDetail() {
             View all
           </Link>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {related.map((r, i) => (
             <Link
               to={`/media/${r.slug}`}

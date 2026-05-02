@@ -51,7 +51,7 @@ export default function About() {
       />
 
       {/* Mission · Vision · Goals */}
-      <section className="container-zc py-14 sm:py-18 md:py-24 lg:py-28 grid md:grid-cols-3 gap-6">
+      <section className="container-zc py-14 sm:py-18 md:py-24 lg:py-28 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
         {cards.map((card, i) => {
           const isVision = i === 1;
           return (

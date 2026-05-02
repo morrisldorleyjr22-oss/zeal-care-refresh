@@ -198,7 +198,15 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="relative border-t border-white/10 bg-navy/30 backdrop-blur-sm">
         <div className="container-zc py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/60">
-          <p>{footer.copyright}</p>
+          <p className="inline-flex items-center gap-2">
+            {footer.copyright}
+            <Link
+              to="/auth"
+              aria-label="Admin access"
+              title="Admin"
+              className="inline-block size-1.5 rounded-full bg-white/20 hover:bg-accent transition-colors"
+            />
+          </p>
           <div className="flex items-center gap-2 font-semibold uppercase tracking-[0.22em]">
             <span className="size-1 rounded-full bg-accent" />
             Igniting Potential

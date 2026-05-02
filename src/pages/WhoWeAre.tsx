@@ -114,12 +114,12 @@ export default function WhoWeAre() {
         {/* Partnership snapshot */}
         <div className="mt-16 grid lg:grid-cols-12 gap-8 items-center bg-soft-gradient rounded-[2rem] border border-secondary p-6 md:p-8">
           <div className="lg:col-span-7 rounded-2xl overflow-hidden">
-            <ResponsiveImage
-              picture={partnershipPhoto}
+            <img
+              src="https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos/In%20the%20field.jpeg"
               alt="Zeal Care Team and Esfans Academy administrator in a partnership discussion"
-              sizes="(min-width: 1024px) 55vw, 90vw"
-              className="block w-full h-full aspect-[4/3]"
-              imgClassName="w-full h-full object-cover"
+              className="block w-full h-full aspect-[4/3] object-cover"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="lg:col-span-5">

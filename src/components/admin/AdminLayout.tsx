@@ -14,6 +14,7 @@ const items = [
 export default function AdminLayout() {
   const { user, signOut } = useAuth();
   const nav = useNavigate();
+  const loc = useLocation();
 
   return (
     <div className="min-h-screen bg-muted/20">

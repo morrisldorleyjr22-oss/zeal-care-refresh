@@ -4,14 +4,18 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 /**
- * Smoothly scrolls to a section by id, retrying for up to ~1.5s while the
- * page mounts (handles lazy images, code-split routes, draft content).
+ * Scrolls to a section by id, retrying for up to ~1.5s while the page mounts.
+ * Honors prefers-reduced-motion by jumping instantly instead of smoothly.
  */
 function scrollToId(id: string, attempts = 0) {
   const el = document.getElementById(id);
   if (el) {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const y = el.getBoundingClientRect().top + window.scrollY - 100;
-    window.scrollTo({ top: y, behavior: "smooth" });
+    window.scrollTo({
+      top: y,
+      behavior: (prefersReducedMotion ? "auto" : "smooth") as ScrollBehavior,
+    });
     return;
   }
   if (attempts < 30) {
@@ -23,14 +27,12 @@ function ScrollManager() {
   const { pathname, hash, key } = useLocation();
   const navType = useNavigationType();
 
-  // Re-runs on every navigation (key changes even when the same link is
-  // clicked twice), so re-clicking a section link always re-scrolls.
   useEffect(() => {
     if (hash) {
       const id = hash.replace("#", "");
       scrollToId(id);
     } else if (navType !== "POP") {
-      // Don't override browser back/forward scroll restoration.
+      // Top-of-page scroll on regular navigation; always instant.
       window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
     }
   }, [pathname, hash, key, navType]);

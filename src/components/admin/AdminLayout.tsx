@@ -45,23 +45,26 @@ export default function AdminLayout() {
 
       <div className="container-zc grid lg:grid-cols-[220px_1fr] gap-6 py-8">
         <aside className="space-y-1">
-          {items.map(({ to, label, icon: Icon, end }) => (
-            <NavLink
-              key={to}
-              to={to}
-              end={end}
-              className={({ isActive }) =>
-                `flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
-                  isActive
-                    ? "bg-primary text-primary-foreground shadow-sm"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                }`
-              }
-            >
-              <Icon className="size-4" />
-              {label}
-            </NavLink>
-          ))}
+          {items.map(({ to, label, icon: Icon, end }) => {
+            const forceActive = to.startsWith("/admin/content") && loc.pathname.startsWith("/admin/content");
+            return (
+              <NavLink
+                key={to}
+                to={to}
+                end={end}
+                className={({ isActive }) =>
+                  `flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
+                    isActive || forceActive
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  }`
+                }
+              >
+                <Icon className="size-4" />
+                {label}
+              </NavLink>
+            );
+          })}
         </aside>
         <main className="min-w-0">
           <Outlet />

@@ -137,21 +137,15 @@ export default function WhatWeDo() {
                 className="group relative bg-white rounded-[2rem] overflow-hidden border-2 border-primary/20 ring-1 ring-inset ring-primary/5 shadow-[0_12px_35px_-15px_hsl(var(--primary)/0.4)] hover:border-primary/50 hover:shadow-[0_22px_50px_-15px_hsl(var(--primary)/0.55)] hover:-translate-y-1 transition-all"
               >
                 <span className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-primary via-accent to-primary z-10" />
-                <div className="aspect-[16/9] overflow-hidden">
-                  <img
-                    src={c.get(p.imgKey)}
-                    alt={p.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
+                <div
+                  className={`program-hero ${i % 2 === 0 ? "program-hero--accent" : ""}`}
+                  role="img"
+                  aria-label={`${p.title} program icon`}
+                >
+                  <p.icon aria-hidden="true" />
                 </div>
                 <div className="p-7">
-                  <div className="flex items-center gap-3">
-                    <div className={`program-icon ${i % 2 === 0 ? "program-icon--accent" : ""}`}>
-                      <p.icon />
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-black text-navy">{p.title}</h3>
-                  </div>
+                  <h3 className="text-xl md:text-2xl font-black text-navy">{p.title}</h3>
                   <p className="mt-4 text-navy/70 leading-relaxed">{p.desc}</p>
                   <p className="mt-5 text-sm italic text-navy/60 border-l-2 border-accent pl-4">{p.quote}</p>
                 </div>

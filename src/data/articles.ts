@@ -1,17 +1,13 @@
-import edu from "@/assets/program-education.jpg?responsive";
-import stem from "@/assets/program-stem.jpg?responsive";
-import lead from "@/assets/program-leadership.jpg?responsive";
-import ent from "@/assets/program-entrepreneurship.jpg?responsive";
-import comm from "@/assets/community-wide.jpg?responsive";
-
 export type Picture = {
   sources: Record<string, string>;
   img: { src: string; w: number; h: number };
 };
 
+export type ArticleImage = string | Picture;
+
 export type Article = {
   slug: string;
-  img: Picture;
+  img: ArticleImage;
   tag: "Field Story" | "STEM Lab" | "Leadership" | "Workshop" | "Christmas" | "Advocacy";
   date: string;
   iso: string;
@@ -22,10 +18,12 @@ export type Article = {
   body: string[];
 };
 
+const BASE = "https://hqtyhblmmfhjfyucjttd.supabase.co/storage/v1/object/public/school-logos";
+
 export const articles: Article[] = [
   {
     slug: "school-supplies-west-point",
-    img: edu,
+    img: `${BASE}/In%20the%20field.jpeg`,
     tag: "Field Story",
     date: "Mar 2026",
     iso: "2026-03-12",
@@ -42,7 +40,7 @@ export const articles: Article[] = [
   },
   {
     slug: "first-robotics-cohort",
-    img: stem,
+    img: `${BASE}/hero.jpeg`,
     tag: "STEM Lab",
     date: "Feb 2026",
     iso: "2026-02-22",
@@ -59,7 +57,7 @@ export const articles: Article[] = [
   },
   {
     slug: "youth-leadership-summit",
-    img: lead,
+    img: `${BASE}/Our%20Mission.jpeg`,
     tag: "Leadership",
     date: "Jan 2026",
     iso: "2026-01-18",
@@ -75,7 +73,7 @@ export const articles: Article[] = [
   },
   {
     slug: "entrepreneurship-bootcamp-2025",
-    img: ent,
+    img: `${BASE}/Our%20Philosophy.jpeg`,
     tag: "Workshop",
     date: "Dec 2025",
     iso: "2025-12-04",
@@ -91,7 +89,7 @@ export const articles: Article[] = [
   },
   {
     slug: "christmas-2025-chicken-soup-factory",
-    img: comm,
+    img: `${BASE}/home%20hero%20page.jpeg`,
     tag: "Christmas",
     date: "Dec 2025",
     iso: "2025-12-25",
@@ -107,7 +105,7 @@ export const articles: Article[] = [
   },
   {
     slug: "inclusive-education-roundtable",
-    img: edu,
+    img: `${BASE}/Social%20Justice.jpeg`,
     tag: "Advocacy",
     date: "Nov 2025",
     iso: "2025-11-09",

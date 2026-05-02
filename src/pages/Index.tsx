@@ -30,6 +30,7 @@ export default function Index() {
   const ref = useReveal<HTMLDivElement>();
   const hero = useSetting("hero_home");
   const c = usePageContent("home");
+  const homePrograms = c.list<HomeProgram>("programs");
   return (
     <div ref={ref}>
       {/* HERO */}

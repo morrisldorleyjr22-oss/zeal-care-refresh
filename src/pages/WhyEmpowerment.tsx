@@ -1,8 +1,6 @@
 import PageHero from "@/components/PageHero";
 import { Scale, Sprout, Shield } from "lucide-react";
-import img1 from "@/assets/program-education.jpg?responsive";
-import img2 from "@/assets/program-leadership.jpg?responsive";
-import ResponsiveImage from "@/components/ResponsiveImage";
+import { usePageContent } from "@/hooks/usePageContent";
 
 const stats = [
   { value: "73%", label: "Children without digital learning devices" },
@@ -11,38 +9,31 @@ const stats = [
 ];
 
 export default function WhyEmpowerment() {
+  const c = usePageContent("why");
   return (
     <>
       <PageHero
-        eyebrow="The Case for Change"
-        title="Why"
-        highlight="Empowerment?"
-        description="At Zeal Care, we believe every child carries untapped greatness. Empowerment is the key to unlocking a brighter, more equitable future for Liberia."
+        eyebrow={c.get("hero_eyebrow")}
+        title={c.get("hero_title")}
+        highlight={c.get("hero_highlight")}
+        description={c.get("hero_description")}
       />
 
       {/* Philosophy */}
       <section className="container-zc py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7">
           <span className="eyebrow">Our Philosophy</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Closing the Gaps Early</h2>
+          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">{c.get("philosophy_title")}</h2>
           <p className="mt-6 text-navy/75 text-lg leading-relaxed">
-            For children ages 4 to 17 from low or no-income families, opportunity is often limited not by ability, but by circumstance.
-            In many underserved communities in Liberia, children lack access to quality learning support, digital tools, mentorship, and safe spaces to grow.
+            {c.get("philosophy_body_1")}
           </p>
           <p className="mt-4 text-navy/75 text-lg leading-relaxed">
-            To Zeal Care, empowerment means closing those gaps early — strengthening foundational literacy, introducing digital awareness,
-            providing mentorship and life skills, and creating safe, inclusive environments where confidence can grow.
+            {c.get("philosophy_body_2")}
           </p>
         </div>
         <div className="lg:col-span-5 relative">
           <div className="rounded-[2rem] overflow-hidden shadow-card-lg">
-            <ResponsiveImage
-              picture={img1}
-              alt="Children receiving books"
-              sizes="(min-width: 1024px) 40vw, 90vw"
-              className="block w-full aspect-[4/5]"
-              imgClassName="w-full h-full object-cover"
-            />
+            <img src={c.get("img_philosophy")} alt="Children receiving books" className="w-full aspect-[4/5] object-cover" loading="lazy" />
           </div>
           <div className="absolute -bottom-6 -left-6 bg-accent rounded-2xl p-5 shadow-yellow-glow rotate-[-4deg]">
             <Sprout className="h-8 w-8 text-navy" />
@@ -55,13 +46,7 @@ export default function WhyEmpowerment() {
         <div className="container-zc grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="rounded-[2rem] overflow-hidden border border-white/10">
-              <ResponsiveImage
-                picture={img2}
-                alt="Mentorship in action"
-                sizes="(min-width: 1024px) 40vw, 90vw"
-                className="block w-full aspect-[4/3]"
-                imgClassName="w-full h-full object-cover"
-              />
+              <img src={c.get("img_social_justice")} alt="Mentorship in action" className="w-full aspect-[4/3] object-cover" loading="lazy" />
             </div>
           </div>
           <div className="lg:col-span-7 order-1 lg:order-2">

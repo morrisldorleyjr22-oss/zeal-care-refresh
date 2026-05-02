@@ -90,7 +90,7 @@ export default function WhyEmpowerment() {
             { v: "3×", l: "Faster GDP growth in nations prioritizing education" },
             { v: "1 gen", l: "Time needed to break the poverty cycle" },
           ].map((s) => (
-            <div key={s.l} className="bg-white rounded-2xl border border-secondary p-5">
+            <div key={s.l} className="animated-border p-5" style={{ borderRadius: "1rem" }}>
               <div className="text-3xl font-black text-primary tabular-nums tracking-tighter">{s.v}</div>
               <div className="mt-2 text-xs font-bold text-navy/60 uppercase tracking-widest leading-tight">{s.l}</div>
             </div>

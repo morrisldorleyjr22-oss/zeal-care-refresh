@@ -12,6 +12,7 @@ import galleryMaterials from "@/assets/project-materials-row.jpg?responsive";
 import galleryFeePayment from "@/assets/project-feepayment.jpg?responsive";
 import galleryTeam from "@/assets/team-meeting.jpg?responsive";
 import ResponsiveImage from "@/components/ResponsiveImage";
+import ArticleImage from "@/components/ArticleImage";
 
 const events = [
   { date: "May 18, 2026", title: "Annual Donor Gala", place: "Monrovia, Liberia" },

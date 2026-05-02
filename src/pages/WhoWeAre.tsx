@@ -29,11 +29,11 @@ const partners = [
 ];
 
 const history = [
-  { year: "2013", title: "The Spark", body: "Founded in Monrovia with 15 children and a single after-school program." },
-  { year: "2017", title: "First Hub", body: "Opened our first dedicated learning center in Chicken Soup Factory." },
-  { year: "2021", title: "STEM Lab", body: "Launched Liberia's first community robotics lab for under-served youth." },
-  { year: "2024", title: "850+ Scholars", body: "Crossed the milestone of 850 active beneficiaries across two communities." },
-  { year: "2026", title: "Grand Bassa", body: "Expanding into rural Grand Bassa County with three new digital hubs." },
+  { year: "2013", title: "The Spark", body: "Founded in Monrovia with 15 children and a single after-school program.", icon: Sparkles, stat: "15", statLabel: "First scholars" },
+  { year: "2017", title: "First Hub", body: "Opened our first dedicated learning center in Chicken Soup Factory.", icon: Building2, stat: "1", statLabel: "Learning hub" },
+  { year: "2021", title: "STEM Lab", body: "Launched Liberia's first community robotics lab for under-served youth.", icon: Cpu, stat: "1st", statLabel: "Robotics lab in country" },
+  { year: "2024", title: "850+ Scholars", body: "Crossed the milestone of 850 active beneficiaries across two communities.", icon: Users, stat: "850+", statLabel: "Active scholars" },
+  { year: "2026", title: "Grand Bassa", body: "Expanding into rural Grand Bassa County with three new digital hubs.", icon: MapPin, stat: "3", statLabel: "New hubs" },
 ];
 
 const awards = [

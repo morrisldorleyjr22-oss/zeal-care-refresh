@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { createContext, createElement, useContext, useEffect, type ReactNode } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { getDefault } from "@/lib/page-content";
@@ -18,8 +18,28 @@ async function fetchAll(): Promise<Row[]> {
   return (data ?? []) as Row[];
 }
 
+// Draft overrides for live preview in the admin editor.
+// Map of `${page}::${key}` -> value.
+type OverrideMap = Map<string, string>;
+const PageContentOverrideContext = createContext<OverrideMap | null>(null);
+
+export function PageContentOverrideProvider({
+  overrides,
+  children,
+}: {
+  overrides: OverrideMap;
+  children: ReactNode;
+}) {
+  return createElement(
+    PageContentOverrideContext.Provider,
+    { value: overrides },
+    children,
+  );
+}
+
 export function usePageContent(page: string) {
   const qc = useQueryClient();
+  const overrides = useContext(PageContentOverrideContext);
 
   useEffect(() => {
     const channel = supabase
@@ -46,6 +66,9 @@ export function usePageContent(page: string) {
   for (const r of data ?? []) map.set(`${r.page}::${r.key}`, r.value);
 
   function get(key: string): string {
+    // Draft overrides win for live preview
+    const draft = overrides?.get(`${page}::${key}`);
+    if (draft !== undefined && draft.length > 0) return draft;
     const override = map.get(`${page}::${key}`);
     if (override && override.length > 0) return override;
     return getDefault(page, key);

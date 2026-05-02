@@ -115,7 +115,7 @@ export default function WhyEmpowerment() {
         <div className="bg-accent rounded-[2.5rem] p-10 md:p-14 flex flex-col md:flex-row items-center gap-8">
           <Shield className="h-16 w-16 text-navy shrink-0" />
           <div>
-            <h3 className="text-2xl md:text-3xl font-black text-navy">When the right support reaches the right child at the right time, transformation becomes possible — not just for that child, but for entire communities.</h3>
+            <h3 className="text-2xl md:text-3xl font-black text-navy">{c.get("promise_text")}</h3>
           </div>
         </div>
       </section>

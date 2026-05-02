@@ -65,13 +65,14 @@ function Avatar({ name, photo }: { name: string; photo?: { sources: Record<strin
 }
 
 export default function WhoWeAre() {
+  const c = usePageContent("who_we_are");
   return (
     <>
       <PageHero
-        eyebrow="Who We Are"
-        title="A youth-led movement for"
-        highlight="education and empowerment"
-        description="Run entirely by young people passionate about creating positive change in Liberia and across Africa."
+        eyebrow={c.get("hero_eyebrow")}
+        title={c.get("hero_title")}
+        highlight={c.get("hero_highlight")}
+        description={c.get("hero_description")}
       />
 
       {/* Team meeting hero strip */}

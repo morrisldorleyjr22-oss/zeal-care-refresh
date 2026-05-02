@@ -63,7 +63,10 @@ export default function Index() {
                   <ArrowRight className="h-3 w-3" />
                 </span>
               </Link>
-              <Link to={hero.cta_secondary_url} className="btn-secondary">{hero.cta_secondary_label}</Link>
+              <Link to={hero.cta_secondary_url || "/who-we-are"} className="btn-secondary group">
+                {hero.cta_secondary_label || "Learn More"}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
             </div>
           </div>
 

@@ -19,6 +19,7 @@ import projInterviews from "@/assets/project-interviews.jpg";
 import projMaterials from "@/assets/project-materials-row.jpg";
 import projSurvey from "@/assets/project-survey.jpg";
 import teamMeeting from "@/assets/team-meeting.jpg";
+import heroBg from "@/assets/hero-students-group.jpg";
 
 export type FieldType = "text" | "textarea" | "image";
 

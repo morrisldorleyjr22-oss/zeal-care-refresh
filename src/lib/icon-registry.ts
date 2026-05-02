@@ -1,14 +1,14 @@
 import {
-  GraduationCap, BookOpen, Shield, HeartHandshake, Lightbulb, Smartphone, Cpu, Briefcase,
+  GraduationCap, BookOpen, Shield, ShieldCheck, HeartHandshake, Lightbulb, Smartphone, Cpu, Briefcase,
   Compass, Rocket, FlaskConical, BookOpenCheck, Sparkles, Building2, Users, MapPin, Trophy,
-  CalendarClock, Package, Heart,
+  CalendarClock, Package, Heart, Clock,
   type LucideIcon,
 } from "lucide-react";
 
 const REGISTRY: Record<string, LucideIcon> = {
-  GraduationCap, BookOpen, Shield, HeartHandshake, Lightbulb, Smartphone, Cpu, Briefcase,
+  GraduationCap, BookOpen, Shield, ShieldCheck, HeartHandshake, Lightbulb, Smartphone, Cpu, Briefcase,
   Compass, Rocket, FlaskConical, BookOpenCheck, Sparkles, Building2, Users, MapPin, Trophy,
-  CalendarClock, Package, Heart,
+  CalendarClock, Package, Heart, Clock,
 };
 
 export function getIcon(name: string | undefined, fallback: LucideIcon = Sparkles): LucideIcon {

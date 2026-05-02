@@ -158,7 +158,7 @@ export default function WaysToGive() {
 
       {/* Become a Partner */}
       <section id="partner" className="scroll-mt-32 container-zc pb-24">
-        <div className="bg-navy text-white rounded-[2.5rem] p-10 md:p-14 grid lg:grid-cols-12 gap-10 items-center">
+        <div className="bg-hero-gradient text-white rounded-[2.5rem] p-10 md:p-14 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7">
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Corporate & Institutional</span>
             <h2 className="mt-3 text-4xl md:text-5xl font-black">Become a Partner</h2>

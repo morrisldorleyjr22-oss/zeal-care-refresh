@@ -137,7 +137,7 @@ function Editor({ def }: { def: PageDef }) {
     const safe = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
     const path = `${Date.now()}-${safe}`;
     const { error } = await supabase.storage.from("site-media").upload(path, file, {
-      cacheControl: "3600",
+      cacheControl: "31536000",
       upsert: false,
       contentType: file.type,
     });

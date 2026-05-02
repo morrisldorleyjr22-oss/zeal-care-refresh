@@ -111,7 +111,7 @@ export default function Footer() {
               <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent/90 mb-3">
                 Follow the journey
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
                 {socialIcons.map(({ Icon, label, key }) => (
                   <a
                     key={label}

@@ -21,7 +21,7 @@ import projSurvey from "@/assets/project-survey.jpg";
 import teamMeeting from "@/assets/team-meeting.jpg";
 import heroBg from "@/assets/hero-students-group.jpg";
 
-export type FieldType = "text" | "textarea" | "image";
+export type FieldType = "text" | "textarea" | "image" | "video";
 
 export interface FieldDef {
   key: string;
@@ -158,9 +158,18 @@ export const PAGE_REGISTRY: PageDef[] = [
       { key: "hero_title", label: "Hero · Title", type: "text", default: "The" },
       { key: "hero_highlight", label: "Hero · Highlight", type: "text", default: "Impact Hub" },
       { key: "hero_description", label: "Hero · Description", type: "textarea", default: "Direct narratives from the frontlines of African potential. Stay updated with our latest stories, films, and events." },
-      { key: "img_cinematic_1", label: "Cinematic · Image 1", type: "image", default: comm },
-      { key: "img_cinematic_2", label: "Cinematic · Image 2", type: "image", default: progStem },
-      { key: "img_cinematic_3", label: "Cinematic · Image 3", type: "image", default: progLead },
+      { key: "cinematic_section_title", label: "Cinematics · Section title", type: "text", default: "Cinematics" },
+      { key: "cinematic_section_eyebrow", label: "Cinematics · Eyebrow", type: "text", default: "Visual Narratives" },
+      { key: "cinematic_empty_message", label: "Cinematics · Empty state message", type: "text", default: "No videos have been uploaded yet. Check back soon for visual stories from the field." },
+      { key: "video_cinematic_1", label: "Cinematic · Video 1 (upload or paste URL — MP4 or YouTube/Vimeo link)", type: "video", default: "" },
+      { key: "video_cinematic_1_title", label: "Cinematic · Video 1 title", type: "text", default: "" },
+      { key: "video_cinematic_1_poster", label: "Cinematic · Video 1 poster image (optional)", type: "image", default: "" },
+      { key: "video_cinematic_2", label: "Cinematic · Video 2 (upload or paste URL)", type: "video", default: "" },
+      { key: "video_cinematic_2_title", label: "Cinematic · Video 2 title", type: "text", default: "" },
+      { key: "video_cinematic_2_poster", label: "Cinematic · Video 2 poster image (optional)", type: "image", default: "" },
+      { key: "video_cinematic_3", label: "Cinematic · Video 3 (upload or paste URL)", type: "video", default: "" },
+      { key: "video_cinematic_3_title", label: "Cinematic · Video 3 title", type: "text", default: "" },
+      { key: "video_cinematic_3_poster", label: "Cinematic · Video 3 poster image (optional)", type: "image", default: "" },
     ],
   },
   {

@@ -38,8 +38,10 @@ export default function AdminMedia() {
     setUploading(true);
     try {
       for (const file of Array.from(files)) {
-        if (file.size > 10 * 1024 * 1024) {
-          toast({ title: "Too large", description: `${file.name} exceeds 10MB`, variant: "destructive" });
+        const isVideo = file.type.startsWith("video/");
+        const maxMB = isVideo ? 200 : 10;
+        if (file.size > maxMB * 1024 * 1024) {
+          toast({ title: "Too large", description: `${file.name} exceeds ${maxMB}MB`, variant: "destructive" });
           continue;
         }
         const safe = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
@@ -85,7 +87,7 @@ export default function AdminMedia() {
           <div>
             <h1 className="text-2xl font-black tracking-tight">Media Library</h1>
             <p className="text-sm text-muted-foreground">
-              Upload site images. Copy a URL to use it anywhere.
+              Upload site images and videos. Copy a URL to use it anywhere.
             </p>
           </div>
         </div>
@@ -93,7 +95,7 @@ export default function AdminMedia() {
           <input
             type="file"
             multiple
-            accept="image/*"
+            accept="image/*,video/*"
             className="hidden"
             onChange={(e) => upload(e.target.files)}
           />
@@ -104,7 +106,7 @@ export default function AdminMedia() {
               ) : (
                 <Upload className="size-4 mr-2" />
               )}
-              Upload images
+              Upload media
             </span>
           </Button>
         </label>
@@ -123,7 +125,11 @@ export default function AdminMedia() {
           {items.map((it) => (
             <div key={it.name} className="group bg-card border border-border rounded-xl overflow-hidden">
               <div className="aspect-square bg-muted">
-                <img src={it.url} alt={it.name} className="w-full h-full object-cover" loading="lazy" />
+                {/\.(mp4|webm|mov|m4v|ogv)$/i.test(it.name) ? (
+                  <video src={it.url} className="w-full h-full object-cover" muted playsInline preload="metadata" />
+                ) : (
+                  <img src={it.url} alt={it.name} className="w-full h-full object-cover" loading="lazy" />
+                )}
               </div>
               <div className="p-2.5 space-y-1.5">
                 <p className="text-[11px] truncate text-muted-foreground" title={it.name}>{it.name}</p>

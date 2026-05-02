@@ -251,7 +251,7 @@ function Editor({ def }: { def: PageDef }) {
                 dirty={(draft[f.key] ?? "") !== (saved[f.key] ?? "")}
                 onChange={(v) => setField(f.key, v)}
                 onReset={() => resetField(f.key)}
-                onUpload={(file) => uploadInline(f.key, file)}
+                onUpload={(file) => uploadInline(f.key, file, f.type === "video" ? "video" : "image")}
                 onPickFromLibrary={() => setPickerForKey(f.key)}
               />
             ))
@@ -404,6 +404,53 @@ function FieldEditor({
               className="flex-1 min-w-[160px] text-xs"
             />
           </div>
+        </div>
+      )}
+
+      {field.type === "video" && (
+        <div className="space-y-2">
+          <div className="rounded-lg border border-border bg-muted/40 aspect-video overflow-hidden grid place-items-center">
+            {value ? (
+              /youtube\.com|youtu\.be|vimeo\.com/.test(value) ? (
+                <div className="text-[11px] text-muted-foreground p-3 text-center break-all">
+                  External video link set:<br />{value}
+                </div>
+              ) : (
+                <video src={value} controls className="w-full h-full object-contain bg-black" />
+              )
+            ) : (
+              <span className="text-xs text-muted-foreground">No video</span>
+            )}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <label className="cursor-pointer">
+              <input
+                type="file"
+                accept="video/*"
+                className="hidden"
+                onChange={(e) => {
+                  const f = e.target.files?.[0];
+                  if (f) onUpload(f);
+                  e.target.value = "";
+                }}
+              />
+              <span className="inline-flex items-center text-xs px-3 py-1.5 rounded-md bg-primary text-primary-foreground hover:opacity-90">
+                Upload video
+              </span>
+            </label>
+            <Input
+              value={value}
+              onChange={(e) => onChange(e.target.value)}
+              placeholder="or paste MP4 / YouTube / Vimeo URL"
+              className="flex-1 min-w-[160px] text-xs"
+            />
+            {value && (
+              <Button size="sm" variant="outline" type="button" onClick={() => onChange("")}>
+                Clear
+              </Button>
+            )}
+          </div>
+          <p className="text-[11px] text-muted-foreground">Max 200MB. MP4/WebM recommended for direct upload.</p>
         </div>
       )}
 

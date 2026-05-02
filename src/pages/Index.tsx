@@ -187,7 +187,8 @@ export default function Index() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {programKeys.map((p, i) => (
-            <article key={p.title} className={`reveal reveal-delay-${i + 1} hover-lift group rounded-[2rem] overflow-hidden border border-secondary bg-white`}>
+            <article key={p.title} className={`reveal reveal-delay-${i + 1} hover-lift group relative rounded-[2rem] overflow-hidden border-2 border-primary/20 ring-1 ring-inset ring-primary/5 bg-white shadow-[0_12px_30px_-15px_hsl(var(--primary)/0.35)] hover:border-primary/50 hover:shadow-[0_20px_45px_-15px_hsl(var(--primary)/0.5)] transition-all`}>
+              <span className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-primary via-accent to-primary z-10" />
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={c.get(p.imgKey)}

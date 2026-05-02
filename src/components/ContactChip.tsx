@@ -48,10 +48,10 @@ export default function ContactChip({
 
   const content = (
     <>
-      <span className={`${iconBoxBase} ${iconBoxBySize} ${iconBoxByVariant} mt-0.5`}>
+      <span className={`${iconBoxBase} ${iconBoxBySize} ${iconBoxByVariant} self-start mt-[2px]`}>
         <Icon className={`${iconSize} text-accent`} strokeWidth={ICON_STROKE} />
       </span>
-      <span className={`${size === "sm" ? "font-medium tracking-wide" : "font-medium"} min-w-0 break-words`}>
+      <span className={`${size === "sm" ? "font-medium tracking-wide" : "font-medium"} min-w-0 break-words [overflow-wrap:anywhere]`}>
         {label}
       </span>
     </>

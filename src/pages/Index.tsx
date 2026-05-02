@@ -183,15 +183,14 @@ export default function Index() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {programs.map((p, i) => (
+          {programKeys.map((p, i) => (
             <article key={p.title} className={`reveal reveal-delay-${i + 1} hover-lift group rounded-[2rem] overflow-hidden border border-secondary bg-white`}>
               <div className="aspect-[4/3] overflow-hidden">
-                <ResponsiveImage
-                  picture={p.img}
+                <img
+                  src={c.get(p.imgKey)}
                   alt={p.title}
-                  sizes="(min-width: 1024px) 32vw, (min-width: 768px) 45vw, 90vw"
-                  className="block w-full h-full"
-                  imgClassName="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
                 />
               </div>
               <div className="p-6">
@@ -217,13 +216,13 @@ export default function Index() {
             <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">Voices of Impact</span>
             <Quote className="h-10 w-10 text-accent mt-5" />
             <p className="mt-5 text-2xl md:text-3xl font-light leading-tight text-balance">
-              "The digital skills I learned here got me my first job at a local tech firm. I am now the breadwinner for my family."
+              {c.get("testimonial_quote")}
             </p>
             <div className="mt-7 flex items-center gap-4">
-              <div className="size-12 rounded-full bg-accent flex items-center justify-center font-black text-navy text-lg">K</div>
+              <div className="size-12 rounded-full bg-accent flex items-center justify-center font-black text-navy text-lg">{c.get("testimonial_name").trim().charAt(0) || "K"}</div>
               <div>
-                <div className="font-bold text-sm">Kelvin M.</div>
-                <div className="text-xs text-white/60">STEM Scholar</div>
+                <div className="font-bold text-sm">{c.get("testimonial_name")}</div>
+                <div className="text-xs text-white/60">{c.get("testimonial_role")}</div>
               </div>
             </div>
           </div>

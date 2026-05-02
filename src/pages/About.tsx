@@ -52,15 +52,29 @@ export default function About() {
 
       {/* Mission · Vision · Goals */}
       <section className="container-zc py-20 md:py-28 grid md:grid-cols-3 gap-6">
-        {cards.map((c, i) => (
-          <article id={c.id} key={c.tag} className={`scroll-mt-32 rounded-[2rem] p-8 md:p-10 border border-secondary ${i === 1 ? "bg-navy text-white" : "bg-white"} hover:shadow-card-lg transition-all`}>
-            <span className={`inline-block text-[11px] font-bold uppercase tracking-[0.2em] ${i === 1 ? "text-accent" : "text-primary"}`}>
-              {c.tag}
-            </span>
-            <h2 className={`mt-3 text-3xl font-black ${i === 1 ? "text-white" : "text-navy"}`}>{c.title}</h2>
-            <p className={`mt-4 leading-relaxed ${i === 1 ? "text-white/80" : "text-navy/70"}`}>{c.body}</p>
-          </article>
-        ))}
+        {cards.map((card, i) => {
+          const isVision = i === 1;
+          return (
+            <article
+              id={card.id}
+              key={card.tag}
+              className={
+                isVision
+                  ? "scroll-mt-32 rounded-[2rem] p-8 md:p-10 bg-hero-gradient text-white border-2 border-primary/40 shadow-[0_20px_45px_-15px_hsl(var(--primary)/0.55)] ring-1 ring-white/10 hover:shadow-[0_28px_60px_-15px_hsl(var(--primary)/0.7)] transition-all relative overflow-hidden"
+                  : "scroll-mt-32 rounded-[2rem] p-8 md:p-10 bg-white border-2 border-primary/25 shadow-[0_12px_30px_-12px_hsl(var(--primary)/0.35)] hover:border-primary/50 hover:shadow-[0_20px_45px_-15px_hsl(var(--primary)/0.5)] hover:-translate-y-1 transition-all"
+              }
+            >
+              {isVision && (
+                <div className="absolute -top-20 -right-20 size-56 bg-accent/15 rounded-full blur-3xl pointer-events-none" />
+              )}
+              <span className={`relative inline-block text-[11px] font-bold uppercase tracking-[0.2em] ${isVision ? "text-accent" : "text-primary"}`}>
+                {card.tag}
+              </span>
+              <h2 className={`relative mt-3 text-3xl font-black ${isVision ? "text-white" : "text-navy"}`}>{card.title}</h2>
+              <p className={`relative mt-4 leading-relaxed ${isVision ? "text-white/85" : "text-navy/70"}`}>{card.body}</p>
+            </article>
+          );
+        })}
       </section>
 
       {/* Values */}

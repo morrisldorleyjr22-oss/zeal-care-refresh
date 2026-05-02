@@ -291,3 +291,66 @@
 @media (prefers-reduced-motion: reduce) {
   .group:hover .program-hero > svg { transform: none; }
 }
+
+/* ============================================================
+   Creative quote frame — double border, gradient corners,
+   accent ribbon, decorative quote marks. No animation.
+   ============================================================ */
+.quote-frame {
+  position: relative;
+  padding: 2rem 1.75rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--background)) 100%);
+  border: 2px solid hsl(var(--primary) / 0.25);
+  box-shadow:
+    0 0 0 6px hsl(var(--background)),
+    0 0 0 8px hsl(var(--accent) / 0.45),
+    0 18px 45px -20px hsl(var(--primary) / 0.35);
+}
+@media (min-width: 768px) {
+  .quote-frame { padding: 2.5rem 2.25rem; }
+}
+/* Decorative corner brackets */
+.quote-frame::before,
+.quote-frame::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 3px solid hsl(var(--primary));
+  border-radius: 4px;
+}
+.quote-frame::before {
+  top: -10px;
+  left: -10px;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: 0.75rem;
+}
+.quote-frame::after {
+  bottom: -10px;
+  right: -10px;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: 0.75rem;
+}
+/* Big decorative opening quote mark */
+.quote-frame > .quote-mark {
+  position: absolute;
+  top: -1.25rem;
+  left: 1.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, hsl(var(--accent)), hsl(47 92% 62%));
+  color: hsl(var(--navy));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px -8px hsl(var(--accent) / 0.7);
+}
+.quote-frame > .quote-mark > svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke-width: 2.5;
+}

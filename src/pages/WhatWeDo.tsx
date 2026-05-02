@@ -11,29 +11,30 @@ const supports = [
   { label: "Digital Exposure", icon: Smartphone },
 ];
 
-const programs = [
-  { icon: GraduationCap, img: edu, title: "Education Sponsorship & Advocacy",
+const programKeys = [
+  { icon: GraduationCap, imgKey: "img_program_education", title: "Education Sponsorship & Advocacy",
     desc: "Tailored for children aged 4–17 in slums and rural communities. We provide tuition, supplies, and advocate for inclusive education.",
     quote: '"The best way to fight poverty is to empower people through access to quality education." — John Legend' },
-  { icon: Lightbulb, img: lead, title: "Leadership Development",
+  { icon: Lightbulb, imgKey: "img_program_leadership", title: "Leadership Development",
     desc: "Structured initiatives focusing on personal development, mentorship, coaching, and problem-solving through summits and seminars.",
     quote: '"If your actions inspire others to dream more, learn more, do more, and become more, you are a leader." — John Quincy Adams' },
-  { icon: Briefcase, img: ent, title: "Entrepreneurship Programs",
+  { icon: Briefcase, imgKey: "img_program_entrepreneurship", title: "Entrepreneurship Programs",
     desc: "Equipping youth with the knowledge and mindset to identify business opportunities and manage growth.",
     quote: '"It\'s not about ideas. It\'s about making ideas happen." — Scott Belsky' },
-  { icon: Cpu, img: stem, title: "Career Paths in STEM",
+  { icon: Cpu, imgKey: "img_program_stem", title: "Career Paths in STEM",
     desc: "Hands-on labs in coding, robotics, and applied science that bridge the digital divide for the next generation of African innovators.",
     quote: '"Science is a way of thinking much more than it is a body of knowledge." — Carl Sagan' },
 ];
 
 export default function WhatWeDo() {
+  const c = usePageContent("what_we_do");
   return (
     <>
       <PageHero
-        eyebrow="Our Methodology"
-        title="What"
-        highlight="We Do"
-        description="Architecting holistic intervention systems that multiply opportunity for the next generation of leaders."
+        eyebrow={c.get("hero_eyebrow")}
+        title={c.get("hero_title")}
+        highlight={c.get("hero_highlight")}
+        description={c.get("hero_description")}
       />
 
       {/* How we operate */}

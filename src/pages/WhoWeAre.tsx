@@ -1,4 +1,5 @@
 import PageHero from "@/components/PageHero";
+import { usePageContent } from "@/hooks/usePageContent";
 import { Quote, Handshake, Trophy, ShieldCheck, FileBarChart2, Briefcase, FileText, Clock } from "lucide-react";
 import community from "@/assets/community-wide.jpg?responsive";
 import teamMeeting from "@/assets/team-meeting.jpg?responsive";

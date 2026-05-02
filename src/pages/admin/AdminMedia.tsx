@@ -125,7 +125,11 @@ export default function AdminMedia() {
           {items.map((it) => (
             <div key={it.name} className="group bg-card border border-border rounded-xl overflow-hidden">
               <div className="aspect-square bg-muted">
-                <img src={it.url} alt={it.name} className="w-full h-full object-cover" loading="lazy" />
+                {/\.(mp4|webm|mov|m4v|ogv)$/i.test(it.name) ? (
+                  <video src={it.url} className="w-full h-full object-cover" muted playsInline preload="metadata" />
+                ) : (
+                  <img src={it.url} alt={it.name} className="w-full h-full object-cover" loading="lazy" />
+                )}
               </div>
               <div className="p-2.5 space-y-1.5">
                 <p className="text-[11px] truncate text-muted-foreground" title={it.name}>{it.name}</p>

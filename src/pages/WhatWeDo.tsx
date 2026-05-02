@@ -21,7 +21,7 @@ export default function WhatWeDo() {
       />
 
       {/* How we operate */}
-      <section id="how" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-32 grid lg:grid-cols-12 gap-12 items-start">
+      <section id="how" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24 lg:py-32 grid lg:grid-cols-12 gap-12 items-start">
         <div className="lg:col-span-6">
           <span className="eyebrow">Our Approach</span>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">{c.get("approach_title")}</h2>
@@ -100,7 +100,7 @@ export default function WhatWeDo() {
         </div>
       </section>
 
-      <section id="programs" className="scroll-mt-32 bg-soft-gradient py-14 sm:py-20 md:py-14 sm:py-20 md:py-24 lg:py-32">
+      <section id="programs" className="scroll-mt-32 bg-soft-gradient py-14 sm:py-20 md:py-24 lg:py-32">
         <div className="container-zc">
           <div className="max-w-3xl mx-auto text-center">
             <span className="eyebrow">Our Core Initiatives</span>

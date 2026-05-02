@@ -1,7 +1,6 @@
 import PageHero from "@/components/PageHero";
 import { Heart, Users, Globe2, Eye, Sparkles, HandHeart, Target, BookOpen, Compass, Award, Lightbulb, Shield, Smile, Brain } from "lucide-react";
-import community from "@/assets/community-wide.jpg?responsive";
-import ResponsiveImage from "@/components/ResponsiveImage";
+import { usePageContent } from "@/hooks/usePageContent";
 
 const values = [
   { icon: Heart, title: "Integrity", body: "We fulfill our commitments and conduct ourselves in a way that is true to our identity." },
@@ -41,13 +40,14 @@ const characteristics = [
 ];
 
 export default function About() {
+  const c = usePageContent("about");
   return (
     <>
       <PageHero
-        eyebrow="Our Heritage"
-        title="About"
-        highlight="Zeal Care"
-        description="Our journey of empowerment and the values that drive every decision we make to transform lives in Liberia."
+        eyebrow={c.get("hero_eyebrow")}
+        title={c.get("hero_title")}
+        highlight={c.get("hero_highlight")}
+        description={c.get("hero_description")}
       />
 
       {/* Mission · Vision · Goals */}

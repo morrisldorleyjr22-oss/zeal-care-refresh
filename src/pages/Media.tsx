@@ -4,7 +4,8 @@ import { Calendar, Play, Newspaper, ArrowRight, Search } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { useReveal } from "@/hooks/useReveal";
 import { usePageContent } from "@/hooks/usePageContent";
-import { articles, categories } from "@/data/articles";
+import { categories } from "@/data/articles";
+import { rowsToArticles, type CmsArticleRow } from "@/lib/cms-articles";
 import gallerySurvey from "@/assets/project-survey.jpg?responsive";
 import galleryAnalysis from "@/assets/project-analysis.jpg?responsive";
 import galleryInterviews from "@/assets/project-interviews.jpg?responsive";
@@ -14,15 +15,16 @@ import galleryTeam from "@/assets/team-meeting.jpg?responsive";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import ArticleImage from "@/components/ArticleImage";
 
-const events = [
-  { date: "May 18, 2026", title: "Annual Donor Gala", place: "Monrovia, Liberia" },
-  { date: "Jun 04, 2026", title: "STEM Open House", place: "West Point Hub" },
-  { date: "Jul 22, 2026", title: "Sponsor Field Visit", place: "Grand Bassa County" },
-];
+type EventRow = { date: string; title: string; place: string };
 
 export default function Media() {
   const ref = useReveal<HTMLDivElement>();
   const cms = usePageContent("media");
+  const articles = useMemo(
+    () => rowsToArticles(cms.list<CmsArticleRow>("news_articles")),
+    [cms],
+  );
+  const events = cms.list<EventRow>("events");
   const [active, setActive] = useState<(typeof categories)[number]>("All");
   const [query, setQuery] = useState("");
 
@@ -37,7 +39,7 @@ export default function Media() {
         a.tag.toLowerCase().includes(q);
       return matchCat && matchQ;
     });
-  }, [active, query]);
+  }, [active, query, articles]);
 
   return (
     <div ref={ref}>

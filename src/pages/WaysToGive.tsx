@@ -127,8 +127,8 @@ export default function WaysToGive() {
       />
 
       {/* Impact slider */}
-      <section className="container-zc py-20">
-        <div className="bg-white rounded-[2.5rem] border border-secondary shadow-card-lg p-8 md:p-14 grid lg:grid-cols-12 gap-12">
+      <section className="container-zc py-14 sm:py-20">
+        <div className="bg-white rounded-3xl sm:rounded-[2.5rem] border border-secondary shadow-card-lg p-6 sm:p-8 md:p-14 grid lg:grid-cols-12 gap-8 sm:gap-12">
           <div className="lg:col-span-6">
             <span className="eyebrow">Impact Meter</span>
             <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">See Your Impact</h2>

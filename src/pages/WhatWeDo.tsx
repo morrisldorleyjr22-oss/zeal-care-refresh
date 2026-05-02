@@ -41,14 +41,12 @@ export default function WhatWeDo() {
       <section id="how" className="scroll-mt-32 container-zc py-24 md:py-32 grid lg:grid-cols-12 gap-12 items-start">
         <div className="lg:col-span-6">
           <span className="eyebrow">Our Approach</span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">How We Operate</h2>
+          <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">{c.get("approach_title")}</h2>
           <p className="mt-6 text-navy/75 text-lg leading-relaxed">
-            Zeal Care creates a model that radically improves the lives of underprivileged children. We believe that effectively
-            supporting an individual means investing in the structures that surround them.
+            {c.get("approach_body_1")}
           </p>
           <p className="mt-4 text-navy/75 leading-relaxed">
-            We work in partnership with slums and rural communities — partnerships founded on trust and deep respect for local expertise.
-            Successfully supporting a child means providing both financial and social support.
+            {c.get("approach_body_2")}
           </p>
         </div>
         <div className="lg:col-span-6 grid grid-cols-2 gap-4">
@@ -103,19 +101,18 @@ export default function WhatWeDo() {
         </div>
         <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { img: projSurvey, label: "Digital Survey", note: "Door-to-door community mapping in Bloc D, Monrovia." },
-            { img: projInterviews, label: "Candidate Interviews", note: "Shortlisted children meet our team with parents & bloc leaders." },
-            { img: projMaterials, label: "Procuring Materials", note: "Uniforms, shoes, books, pens — sourced and verified." },
-            { img: projFee, label: "School Fee Payment", note: "Paid directly to schools in the presence of bloc leadership." },
+            { imgKey: "img_proj_survey", label: "Digital Survey", note: "Door-to-door community mapping in Bloc D, Monrovia." },
+            { imgKey: "img_proj_interviews", label: "Candidate Interviews", note: "Shortlisted children meet our team with parents & bloc leaders." },
+            { imgKey: "img_proj_materials", label: "Procuring Materials", note: "Uniforms, shoes, books, pens — sourced and verified." },
+            { imgKey: "img_proj_fee", label: "School Fee Payment", note: "Paid directly to schools in the presence of bloc leadership." },
           ].map((s) => (
             <figure key={s.label} className="rounded-2xl overflow-hidden border border-secondary bg-white hover:shadow-card-lg transition-all group">
               <div className="aspect-[4/3] overflow-hidden">
-                <ResponsiveImage
-                  picture={s.img}
+                <img
+                  src={c.get(s.imgKey)}
                   alt={s.label}
-                  sizes="(min-width: 1024px) 22vw, (min-width: 768px) 45vw, 90vw"
-                  className="block w-full h-full"
-                  imgClassName="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
                 />
               </div>
               <figcaption className="p-4">
@@ -134,15 +131,14 @@ export default function WhatWeDo() {
             <h2 className="mt-3 text-4xl md:text-5xl font-black text-navy">Strategic Programs</h2>
           </div>
           <div className="mt-16 grid md:grid-cols-2 gap-8">
-            {programs.map((p, i) => (
+            {programKeys.map((p, i) => (
               <article key={p.title} className="bg-white rounded-[2rem] overflow-hidden border border-secondary hover:shadow-card-lg transition-all">
                 <div className="aspect-[16/9] overflow-hidden">
-                  <ResponsiveImage
-                    picture={p.img}
+                  <img
+                    src={c.get(p.imgKey)}
                     alt={p.title}
-                    sizes="(min-width: 768px) 45vw, 90vw"
-                    className="block w-full h-full"
-                    imgClassName="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-8">
@@ -173,11 +169,11 @@ export default function WhatWeDo() {
             { t: "100% Local Roots", b: "Every hub sits inside the community it serves." },
             { t: "STEM-First", b: "We don't just teach — we equip with future-of-work skills." },
             { t: "Total Transparency", b: "Open books, public reports, traceable impact." },
-          ].map((c) => (
-            <div key={c.t} className="bg-white rounded-3xl border border-secondary p-7 hover:-translate-y-1 hover:shadow-card-lg transition-all">
+          ].map((card) => (
+            <div key={card.t} className="bg-white rounded-3xl border border-secondary p-7 hover:-translate-y-1 hover:shadow-card-lg transition-all">
               <div className="size-10 rounded-xl bg-accent text-navy flex items-center justify-center font-black">★</div>
-              <h3 className="mt-4 font-black text-navy">{c.t}</h3>
-              <p className="mt-2 text-sm text-navy/70 leading-relaxed">{c.b}</p>
+              <h3 className="mt-4 font-black text-navy">{card.t}</h3>
+              <p className="mt-2 text-sm text-navy/70 leading-relaxed">{card.b}</p>
             </div>
           ))}
         </div>
@@ -186,7 +182,7 @@ export default function WhatWeDo() {
       {/* Impact in Numbers */}
       <section id="impact" className="scroll-mt-32 relative overflow-hidden">
         <div className="absolute inset-0">
-          <ResponsiveImage picture={community} alt="" sizes="100vw" className="block w-full h-full" imgClassName="w-full h-full object-cover" />
+          <img src={c.get("img_impact_band")} alt="" className="w-full h-full object-cover" loading="lazy" />
           <div className="absolute inset-0 bg-navy/85" />
         </div>
         <div className="container-zc relative py-20 text-white">

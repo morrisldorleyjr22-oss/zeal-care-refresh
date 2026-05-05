@@ -118,8 +118,8 @@ export default function Footer() {
                     href={(social as Record<string, string>)[key]}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={label}
-                    className="group size-10 rounded-xl bg-white/10 border border-white/15 hover:bg-accent hover:border-accent hover:text-navy flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5"
+                    aria-label={`Follow Zeal Care on ${label}`}
+                    className="group size-10 rounded-xl bg-white/10 border border-white/15 hover:bg-accent hover:border-accent hover:text-navy flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
                   >
                     <Icon className="h-4 w-4" strokeWidth={ICON_STROKE_LG} />
                   </a>

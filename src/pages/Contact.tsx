@@ -143,15 +143,19 @@ export default function Contact() {
             </ul>
             <div className="mt-7 pt-7 border-t border-secondary">
               <div className="font-bold text-navy text-sm mb-3">Follow Us</div>
-              <div className="flex gap-3">
-                {[Facebook, Instagram, Linkedin].map((Icon, i) => (
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { Icon: Facebook, label: "Facebook" },
+                  { Icon: Instagram, label: "Instagram" },
+                  { Icon: Linkedin, label: "LinkedIn" },
+                ].map(({ Icon, label }) => (
                   <a
-                    key={i}
+                    key={label}
                     href="#"
-                    aria-label="Social"
-                    className="size-10 rounded-full bg-secondary text-primary hover:bg-accent hover:text-navy transition-colors flex items-center justify-center"
+                    aria-label={`Follow Zeal Care on ${label}`}
+                    className="size-10 rounded-full bg-secondary text-primary hover:bg-accent hover:text-navy transition-colors flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                   >
-                    <Icon className="h-4 w-4" />
+                    <Icon className="h-4 w-4" aria-hidden="true" />
                   </a>
                 ))}
               </div>

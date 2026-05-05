@@ -280,33 +280,42 @@ export default function Index() {
 
       {/* STAY CONNECTED / NEWSLETTER */}
       <section className="container-zc pb-20 md:pb-24">
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-hero-gradient text-white p-8 md:p-14 shadow-card-lg">
+        <div className="relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] bg-hero-gradient text-white p-6 sm:p-8 md:p-14 shadow-card-lg">
           <div className="absolute -top-24 -right-24 size-72 bg-accent/20 rounded-full blur-3xl" />
-          <div className="relative grid lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-6">
+          <div className="relative grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-12 items-center">
+            <div className="md:col-span-1 lg:col-span-6 min-w-0">
               <span className="inline-block bg-accent text-navy text-[10px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded">
                 Stay Connected
               </span>
-              <h2 className="mt-4 text-3xl md:text-4xl font-black tracking-tight">
+              <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight">
                 The Zeal <span className="text-accent italic">Impact</span>
               </h2>
-              <p className="mt-4 text-base md:text-lg text-white/85 max-w-md">
+              <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-white/85 max-w-md leading-relaxed">
                 Join 12,000+ monthly readers receiving direct impact reports from the field.
               </p>
             </div>
             <form
-              className="lg:col-span-6 flex flex-col sm:flex-row gap-3"
+              className="md:col-span-1 lg:col-span-6 grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-3 min-w-0"
               onSubmit={(e) => e.preventDefault()}
+              aria-label="Newsletter signup"
             >
+              <label htmlFor="newsletter-email" className="sr-only">
+                Email address
+              </label>
               <input
+                id="newsletter-email"
                 type="email"
                 required
                 placeholder="Enter your email"
-                className="flex-1 bg-white/10 border border-white/25 rounded-2xl px-5 py-4 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-accent/60"
+                aria-label="Email address"
+                className="w-full min-w-0 bg-white/10 border border-white/25 rounded-2xl px-4 sm:px-5 py-3.5 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:border-accent leading-snug"
               />
-              <button type="submit" className="btn-primary justify-center">
+              <button
+                type="submit"
+                className="btn-primary justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+              >
                 Join Movement
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </button>
             </form>
           </div>

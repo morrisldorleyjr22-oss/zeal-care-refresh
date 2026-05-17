@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "@/components/Layout";
 import { AuthProvider } from "@/hooks/useAuth";
+import { LanguageProvider } from "@/hooks/useLanguage";
 import RequireAdmin from "@/components/RequireAdmin";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -27,6 +28,7 @@ import AdminContent from "./pages/admin/AdminContent";
 const queryClient = new QueryClient();
 
 const App = () => (
+  <LanguageProvider>
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -79,6 +81,7 @@ const App = () => (
       </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>
+  </LanguageProvider>
 );
 
 export default App;

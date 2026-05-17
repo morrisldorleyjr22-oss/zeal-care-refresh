@@ -1,20 +1,12 @@
 import { Link } from "react-router-dom";
 import {
-  Mail,
-  Phone,
-  MapPin,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Twitter,
-  Youtube,
-  ArrowUpRight,
-  Sparkles,
+  Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Twitter, Youtube, ArrowUpRight, Sparkles,
 } from "lucide-react";
 import ContactChip from "@/components/ContactChip";
 import DonateButton from "@/components/DonateButton";
 import { ICON_STROKE, ICON_STROKE_LG } from "@/lib/icon-defaults";
 import { useSetting } from "@/hooks/useSiteSettings";
+import { useLanguage } from "@/hooks/useLanguage";
 import logo from "@/assets/zealcare-logo.png";
 
 export default function Footer() {
@@ -22,6 +14,7 @@ export default function Footer() {
   const footer = useSetting("footer");
   const social = useSetting("social_links");
   const donate = useSetting("donate");
+  const { t } = useLanguage();
 
   const socialIcons = [
     { key: "facebook" as const, Icon: Facebook, label: "Facebook" },
@@ -68,24 +61,23 @@ export default function Footer() {
             <div className="inline-flex items-center gap-2 bg-accent/15 border border-accent/30 rounded-full px-3 py-1">
               <Sparkles className="h-3 w-3 text-accent" strokeWidth={ICON_STROKE} />
               <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent">
-                Get Involved
+                {t.footer.getInvolved}
               </span>
             </div>
             <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-tight text-balance">
-              Ready to <span className="text-accent">make an impact?</span>
+              {t.footer.readyImpact}
             </h2>
             <p className="mt-3 text-white/75 text-sm md:text-base max-w-2xl leading-relaxed">
-              Your support helps us provide a future full of hope and possibility for
-              underprivileged children in Liberia.
+              {t.footer.supportText}
             </p>
           </div>
           <div className="lg:col-span-5 flex flex-col sm:flex-row flex-wrap gap-3 lg:justify-end relative w-full">
-            <DonateButton label={donate.label || "Become a Donor"} to={donate.url} size="lg" />
+            <DonateButton label={donate.label || t.footer.becomedonor} to={donate.url} size="lg" />
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white/25 font-semibold px-6 sm:px-7 py-3.5 sm:py-4 rounded-full uppercase tracking-wide text-xs sm:text-sm hover:bg-white/20 hover:border-white/40 transition-colors backdrop-blur-sm"
             >
-              Volunteer Now
+              {t.footer.volunteer}
               <ArrowUpRight className="h-4 w-4 shrink-0" strokeWidth={ICON_STROKE} />
             </Link>
           </div>
@@ -109,7 +101,7 @@ export default function Footer() {
           {socialIcons.length > 0 && (
             <div className="pt-2">
               <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent/90 mb-3">
-                Follow the journey
+                {t.footer.followJourney}
               </div>
               <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
                 {socialIcons.map(({ Icon, label, key }) => (
@@ -130,21 +122,21 @@ export default function Footer() {
         </div>
 
         <FooterCol
-          title="Organization"
+          title={t.footer.organization}
           links={[
-            { to: "/about", label: "About Us" },
-            { to: "/who-we-are", label: "Our Team" },
-            { to: "/who-we-are#finance", label: "Accountability" },
-            { to: "/about#values", label: "Transparency" },
+            { to: "/about", label: t.nav.aboutUs },
+            { to: "/who-we-are", label: t.nav.whoWeAre },
+            { to: "/who-we-are#finance", label: t.nav.finance },
+            { to: "/about#values", label: t.nav.values },
           ]}
         />
         <FooterCol
-          title="Impact"
+          title={t.footer.impact}
           links={[
-            { to: "/what-we-do#programs", label: "Our Programs" },
-            { to: "/why-empowerment", label: "Why Empowerment" },
-            { to: "/media", label: "News & Stories" },
-            { to: "/ways-to-give", label: "Ways to Give" },
+            { to: "/what-we-do#programs", label: t.nav.programs },
+            { to: "/why-empowerment", label: t.nav.whyEmpowerment },
+            { to: "/media", label: t.nav.newsroom },
+            { to: "/ways-to-give", label: t.nav.waysToGive },
           ]}
         />
 
@@ -152,7 +144,7 @@ export default function Footer() {
         <div className="sm:col-span-2 md:col-span-3 flex flex-col gap-4 min-w-0">
           <h4 className="font-bold uppercase text-xs tracking-[0.22em] text-accent inline-flex items-center gap-2">
             <span className="block size-1.5 rounded-full bg-accent" />
-            Get in Touch
+            {t.footer.getInTouch}
           </h4>
           <ul className="space-y-3">
             {contact.address_line && (
@@ -183,7 +175,7 @@ export default function Footer() {
           {footer.office_hours && (
             <div className="mt-2 rounded-2xl bg-accent/10 border border-accent/25 p-4">
               <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent">
-                Office Hours
+                {t.footer.officeHours}
               </div>
               <div className="mt-1.5 text-sm font-semibold text-white">
                 {footer.office_hours}
@@ -207,9 +199,9 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-2 font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em] flex-wrap justify-center text-[10px] sm:text-xs">
             <span className="size-1 rounded-full bg-accent" />
-            Igniting Potential
+            {t.footer.ignitingPotential}
             <span className="text-accent">·</span>
-            Inspiring Change
+            {t.footer.inspiringChange}
           </div>
         </div>
       </div>

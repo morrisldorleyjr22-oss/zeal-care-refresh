@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Zeal Care — Vibrant Maker-Space design system.
-   All colors HSL. Brand: Blue #0B5FA8, Yellow #F5C518, Navy #051C36. */
+/* Zeal Care — Clean, accessible design system.
+   Official brand colors: Blue #0B5FA8 (hsl 208 88% 35%), Yellow #F5C518, Navy #051C36. */
 
 @layer base {
   :root {
@@ -16,10 +16,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 213 80% 11%;
 
-    /* Brand blue */
-    --primary: 209 88% 35%;
+    /* Official brand blue #0B5FA8 */
+    --primary: 208 87% 35%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 209 88% 45%;
+    --primary-glow: 208 87% 50%;
 
     /* Light blue surface */
     --secondary: 209 65% 95%;
@@ -28,13 +28,13 @@
     --muted: 210 30% 96%;
     --muted-foreground: 213 25% 40%;
 
-    /* Brand yellow accent */
-    --accent: 47 92% 53%;
+    /* Brand yellow accent #F5C518 */
+    --accent: 48 91% 53%;
     --accent-foreground: 213 80% 11%;
-    --accent-soft: 47 92% 88%;
+    --accent-soft: 48 91% 90%;
 
-    /* Deep navy */
-    --navy: 213 80% 11%;
+    /* Official deep navy #051C36 */
+    --navy: 213 82% 12%;
     --navy-foreground: 0 0% 100%;
 
     --destructive: 0 75% 50%;
@@ -50,10 +50,10 @@
     --surface: 209 60% 97%;
     --surface-2: 47 60% 97%;
 
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(209 88% 30%) 0%, hsl(209 88% 38%) 60%, hsl(213 80% 22%) 100%);
-    --gradient-yellow: linear-gradient(135deg, hsl(47 95% 58%) 0%, hsl(45 95% 50%) 100%);
-    --gradient-soft: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(209 60% 97%) 100%);
+    /* Gradients — use official brand blue */
+    --gradient-hero: linear-gradient(135deg, hsl(208 87% 22%) 0%, hsl(208 87% 32%) 60%, hsl(213 82% 16%) 100%);
+    --gradient-yellow: linear-gradient(135deg, hsl(48 91% 60%) 0%, hsl(46 91% 50%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(208 55% 97%) 100%);
 
     /* Shadows */
     --shadow-soft: 0 10px 30px -12px hsl(209 88% 35% / 0.18);
@@ -312,6 +312,31 @@ html, body { overflow-x: hidden; }
 }
 @media (prefers-reduced-motion: reduce) {
   .group:hover .program-hero > svg { transform: none; }
+}
+
+/* ============================================================
+   Size utility missing from Tailwind v3 defaults
+   ============================================================ */
+.size-13 {
+  width: 3.25rem;
+  height: 3.25rem;
+}
+
+/* ============================================================
+   Arabic / RTL support
+   ============================================================ */
+html.lang-ar {
+  font-family: 'Noto Sans Arabic', 'Inter', system-ui, sans-serif;
+}
+html[dir="rtl"] .container-zc {
+  direction: rtl;
+}
+html[dir="rtl"] .eyebrow {
+  direction: rtl;
+}
+/* Flip arrows in RTL */
+html[dir="rtl"] .group-hover\:translate-x-0\.5:hover {
+  --tw-translate-x: -0.125rem;
 }
 
 /* ============================================================

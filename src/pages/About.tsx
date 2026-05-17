@@ -1,46 +1,31 @@
 import PageHero from "@/components/PageHero";
-import { Heart, Users, Globe2, Eye, Sparkles, HandHeart, Target, BookOpen, Compass, Award, Lightbulb, Shield, Smile, Brain, Quote } from "lucide-react";
+import { Heart, Users, Globe2, Eye, Sparkles, HandHeart, Target, Compass, Award, Lightbulb, Shield, Smile, Brain, Quote } from "lucide-react";
 import { usePageContent } from "@/hooks/usePageContent";
+import { useLanguage } from "@/hooks/useLanguage";
 
-const values = [
-  { icon: Heart, title: "Integrity", body: "We fulfill our commitments and conduct ourselves in a way that is true to our identity." },
-  { icon: HandHeart, title: "Community Services", body: "We strive to create equal opportunities, foster growth, and inspire lifelong learning." },
-  { icon: Globe2, title: "Diversity & Inclusion", body: "Accepting diverse ways of life and opinions found within a multicultural environment." },
-  { icon: Eye, title: "Transparency & Accountability", body: "Upholding a culture of total accountability in every decision and internal process." },
-  { icon: Sparkles, title: "Innovation", body: "Embracing creativity, adaptability, and new approaches to enhance our initiative." },
-  { icon: Users, title: "Teamwork", body: "Collaboration, shared goals, and mutual respect are the engines of the change we seek." },
-];
-
-const cards = [
-  { id: "mission", tag: "Mission", title: "Our Mission",
-    body: "Empower underprivileged children from low- or no-income backgrounds to break the cycle of poverty by providing resources, opportunities, and support through education sponsorship, leadership, entrepreneurship, STEM, and digital education." },
-  { id: "vision", tag: "Vision", title: "Our Vision",
-    body: "We envision underprivileged children realizing their full potential by learning and contributing to society. Talent and knowledge are the only limits to destiny." },
-  { id: "goals", tag: "Goals", title: "Our Goals",
-    body: "Ensuring access to education regardless of background, equipping children with skills to break poverty cycles, and building a community network that champions child safety across Africa." },
-];
-
-const sdgs = [
-  { n: "01", title: "No Poverty", desc: "Breaking generational cycles through education access." },
-  { n: "04", title: "Quality Education", desc: "Inclusive, equitable learning for every child we serve." },
-  { n: "05", title: "Gender Equality", desc: "65% of our scholars are young women and girls." },
-  { n: "10", title: "Reduced Inequalities", desc: "Targeting slums and rural communities most often left behind." },
-  { n: "17", title: "Partnerships", desc: "Building coalitions of donors, schools, and local leaders." },
-];
-
-const characteristics = [
-  { icon: Brain, title: "Critical Thinking" },
-  { icon: Lightbulb, title: "Creativity" },
-  { icon: Users, title: "Collaboration" },
-  { icon: Smile, title: "Confidence" },
-  { icon: Compass, title: "Self-Awareness" },
-  { icon: Award, title: "Leadership" },
-  { icon: HandHeart, title: "Empathy" },
-  { icon: Shield, title: "Resilience" },
-];
+const valueIcons = [Heart, HandHeart, Globe2, Eye, Sparkles, Users];
+const charIcons = [Brain, Lightbulb, Users, Smile, Compass, Award, HandHeart, Shield];
 
 export default function About() {
   const c = usePageContent("about");
+  const { t } = useLanguage();
+  const a = t.about;
+
+  const values = [
+    { icon: valueIcons[0], ...a.values.integrity },
+    { icon: valueIcons[1], ...a.values.community },
+    { icon: valueIcons[2], ...a.values.diversity },
+    { icon: valueIcons[3], ...a.values.transparency },
+    { icon: valueIcons[4], ...a.values.innovation },
+    { icon: valueIcons[5], ...a.values.teamwork },
+  ];
+
+  const cards = [
+    { id: "mission", ...a.cards.mission },
+    { id: "vision", ...a.cards.vision },
+    { id: "goals", ...a.cards.goals },
+  ];
+
   return (
     <>
       <PageHero
@@ -81,9 +66,8 @@ export default function About() {
       <section id="values" className="scroll-mt-32 bg-soft-gradient py-14 sm:py-20 md:py-24">
         <div className="container-zc">
           <div className="max-w-3xl">
-            <span className="eyebrow">The Zeal Compass</span>
-            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Our Core Values</h2>
-            <p className="mt-4 text-navy/70 text-lg">Six principles that anchor every decision, partnership, and program we run.</p>
+            <span className="eyebrow">{a.valuesEyebrow}</span>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">{a.valuesTitle}</h2>
           </div>
           <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((v) => (
@@ -137,14 +121,11 @@ export default function About() {
       <section id="sdg" className="scroll-mt-32 bg-hero-gradient text-white py-14 sm:py-20 md:py-24">
         <div className="container-zc">
           <div className="max-w-3xl">
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">Global Alignment</span>
-            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black">SDG Focus</h2>
-            <p className="mt-4 text-white/75 text-lg">
-              Our work is anchored in the United Nations Sustainable Development Goals — five priority areas where Zeal Care drives measurable impact.
-            </p>
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">{a.sdgEyebrow}</span>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black">{a.sdgTitle}</h2>
           </div>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {sdgs.map((s) => (
+            {a.sdgs.map((s) => (
               <div key={s.n} className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
                 <div className="text-3xl sm:text-4xl font-black text-accent tabular-nums tracking-tighter">{s.n}</div>
                 <div className="mt-3 font-black text-white">{s.title}</div>
@@ -158,21 +139,21 @@ export default function About() {
       {/* Characteristics We Develop */}
       <section id="characteristics" className="scroll-mt-32 container-zc py-14 sm:py-20 md:py-24">
         <div className="max-w-3xl">
-          <span className="eyebrow">The Zeal Profile</span>
-          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">Characteristics We Develop</h2>
-          <p className="mt-4 text-navy/70 text-lg">
-            Every child in our program leaves with more than knowledge — they leave with the eight traits of a confident, capable changemaker.
-          </p>
+          <span className="eyebrow">{a.charEyebrow}</span>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-black text-navy">{a.charTitle}</h2>
         </div>
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-          {characteristics.map((ch) => (
-            <div key={ch.title} className="bg-white rounded-2xl p-6 border border-secondary text-center hover:shadow-card-lg hover:-translate-y-1 transition-all">
+          {a.characteristics.map((title, idx) => {
+            const Icon = charIcons[idx];
+            return (
+            <div key={title} className="bg-white rounded-2xl p-6 border border-secondary text-center hover:shadow-card-lg hover:-translate-y-1 transition-all">
               <div className="size-12 mx-auto rounded-2xl bg-accent text-navy flex items-center justify-center">
-                <ch.icon className="h-5 w-5" strokeWidth={2.5} />
+                <Icon className="h-5 w-5" strokeWidth={2.5} />
               </div>
-              <div className="mt-4 font-black text-navy text-sm">{ch.title}</div>
+              <div className="mt-4 font-black text-navy text-sm">{title}</div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
